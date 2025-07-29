@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    .container {
+        display: grid;
+        /* isme simple sa ye hjota he ke kitne colunms ho kitne rows hon */
+        border: 2px solid yellow;
+        /* grid-template-columns: 220px 100px 90px 90px 90px ; */
+        /* dekho sare alag alag colunms me bat jayegi  */
+        /* second colunm will be 100px 1st will be 220 px wide this is width
+         */
+        /* 2 colunms me bat jayegi */
+        /* ab ham in items ko khin bhi rkh skt ehen overlap bhi kr skte hen sab kch */
+        /* grid cell bhi hopta he */
+
+        /* grid track kisi bhi 2 lines ke bich ka track hota he or grid area kisi bhi 2 columns ya rows ke bich ka area hota he */
+        grid-template-columns: 120px 100px;
+        gridte
+
+    }
+    .item{
+        border: 2px solid red;
+        height: 55px;
+        width: 55px;
+
+    }
+    .item-1 {
+        grid-column: 1 / 2; /* 1st column se 2nd column tak */
+        grid-row: 1 / 2; /* 1st row se 3rd row tak */
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <div class="item item-1">1</div>
+        <div class="item item-2">2</div>
+        <div class="item item-3">3</div>
+        <div class="item item-4">4</div>
+        <div class="item item-5">5</div>
+    </div>
+</body>
+</html>
