@@ -1,47 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-<style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grid Layout Practice</title>
+
+  <style>
     .container {
-        display: grid;
-        /* isme simple sa ye hjota he ke kitne colunms ho kitne rows hon */
-        border: 2px solid yellow;
-        /* grid-template-columns: 220px 100px 90px 90px 90px ; */
-        /* dekho sare alag alag colunms me bat jayegi  */
-        /* second colunm will be 100px 1st will be 220 px wide this is width
-         */
-        /* 2 colunms me bat jayegi */
-        /* ab ham in items ko khin bhi rkh skt ehen overlap bhi kr skte hen sab kch */
-        /* grid cell bhi hopta he */
+      display: grid;
+      width: 80vw;
+      height: 50vh;
+      border: 2px solid yellow; /* sirf dikhane ke liye container ka area */
 
-        /* grid track kisi bhi 2 lines ke bich ka track hota he or grid area kisi bhi 2 columns ya rows ke bich ka area hota he */
-        grid-template-columns: 120px 100px;
-        gridte
+      /* isme simple sa ye hota he ke kitne columns ho kitni rows hon */
 
+      /* 👇 static widths try ki thi (but not responsive) */
+      /* grid-template-columns: 220px 100px 90px 90px 90px; */
+      /* dekho sare alag alag columns me bat jayengi */
+
+      /* 👇 column line names diye the – zyada control ke liye */
+      /* grid-template-columns: [pehla] 120px [doosra] 100px [t]; */
+
+      /* 👇 fr unit try ki thi – cool layout tha */
+      /* grid-template-columns: 1fr 2fr 1fr; */
+
+      /* 👇 abhi ham repeat & minmax use kar rahe – best of both worlds */
+      grid-template-columns: repeat(3, minmax(100px, 1fr)); 
+      grid-template-rows: 100px 100px 100px;
+
+      /* agar grid choti he or container bara he to center me lao */
+      justify-content: center;
+
+      /* if i do place-content: center; then both align + justify center ho jayein */
+      place-content: center;
     }
-    .item{
-        border: 2px solid red;
-        height: 55px;
-        width: 55px;
 
-    }
-    .item-1 {
-        grid-column: 1 / 2; /* 1st column se 2nd column tak */
-        grid-row: 1 / 2; /* 1st row se 3rd row tak */
-    }
-</style>
+    .item {
+      border: 2px solid red;
+      height: 55px;
 
+      /* niche wale teen flex properties tab kaam aayengi jab
+         .item ke andar bhi flex box hoga ya content aligned hoga */
+
+      align-items: flex-end;
+      align-content: flex-end;
+      justify-content: flex-end;
+    }
+
+    /* 👇 Specific grid positioning try kar raha tha */
+
+    /*
+    .item-4 {
+      grid-column: 1 / 2;   1st column se 2nd tak
+      grid-row: 1 / 2;      1st row se 2nd tak
+      ab 4 jo he wo udhar ajayega aur 1 side pr push ho jayega
+    }
+    */
+
+    /* 👇 agar me overlap krna chahun to 1 me bhi same property de dun */
+
+    /*
+    .item-4 {
+      align-self: flex-start;
+      justify-self: first baseline;
+      // ye individual item ke alignment ke liye tha
+    }
+    */
+  </style>
 </head>
+
 <body>
-    <div class="container">
-        <div class="item item-1">1</div>
-        <div class="item item-2">2</div>
-        <div class="item item-3">3</div>
-        <div class="item item-4">4</div>
-        <div class="item item-5">5</div>
-    </div>
+  <div class="container">
+    <div class="item item-1">1</div>
+    <div class="item item-2">2</div>
+    <div class="item item-3">3</div>
+    <div class="item item-4">4</div>
+    <div class="item item-5">5</div>
+  </div>
 </body>
 </html>

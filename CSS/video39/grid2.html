@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grid 2</title>
+
+  <style>
+    .container {
+      border: 2px solid yellow;
+      display: grid;
+      height: 80vh;
+      width: 90vw;
+
+      /* grid-template-areas se pura layout like newspaper style set hota he */
+      grid-template-areas: 
+        "nav nav nav"           /* 1st row – nav poori line le raha */
+        "side article article2" /* 2nd row – side bar + 2 articles */
+        "footer footer footer"; /* 3rd row – footer full width */
+
+      /* optional: you can also control row/col sizes if needed */
+      grid-template-columns: 1fr 2fr 2fr; /* thoda space article2 ko zyada de rahe */
+      /* grid-template-rows: 70px 150px 70px; */
+      /* agr rows assign ni krenge to jitni items hen wo us hisab se khud auto set hojayenge  */
+    }
+
+    .item {
+      border: 2px solid red;
+      height: 100%; /* full height of grid cell */
+    }
+
+    .item-1 {
+      grid-area: nav; /* grid me nav ke jagah set hoga */
+      background-color: darkgray;
+    }
+
+    .item-2 {
+      grid-area: side; /* sidebar jaise left me hoga */
+      background-color: rgb(206, 61, 61);
+    }
+
+    .item-3 {
+      grid-area: article; /* pehla article */
+      background-color: rgb(15, 130, 172);
+    }
+
+    .item-4 {
+      grid-area: footer; /* neeche full width footer */
+      background-color: rgba(95, 59, 174, 0.471);
+    }
+
+    .item-5 {
+      grid-area: article2; /* doosra article ya right side ka box */
+      background-color: rgb(55, 42, 42);
+
+      /* over lap bhi kr skte hen agr same grid-area deden to kisi aur item ko */
+      /* jaise: item-3 aur item-5 dono ko article do => overlap hojayega */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="item item-1">1</div>
+    <div class="item item-2">2</div>
+    <div class="item item-3">3</div>
+    <div class="item item-4">4</div>
+    <div class="item item-5">5</div>
+  </div>
+</body>
+</html>
