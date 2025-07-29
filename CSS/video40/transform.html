@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transform</title>
+
+<style>
+    .box{
+position: relative;
+left: 50%;
+top: 50%;
+transform: translate(-50%,-50%);
+        height: 50px;
+        width: 50px;
+        background-color: beige;
+        border: 2px solid crimson;
+    
+        /* rotate trasnform */
+        transform: rotate(40deg);
+        transform: rotate(0.5turn);
+        /* we can also rotate on specifc axis */
+        transform: rotateX(50deg);
+        /* x axis ke around rotate horha he imagine paper sidha khra he 0 pe 90 pe zameen par girjayega */
+        transform: rotateY(50deg);
+        /* imagine paper sidha he blkl or wo aik axis pr rotate kr rha he */
+        transform: rotateZ(1deg);
+        /* imagine kro wo */
+        /* Each line overwrites the previous one — meaning only the last transform (in this case rotateZ(1deg)) will actually be applied. */
+transform: rotate3d(2,1,1,45deg);
+/* this way we can assign different values for it  */
+transform-style: preserve-3d;
+perspective: 500px;
+box-shadow: -4px 0px 10px greenyellow;
+
+transform: scale(2);
+/* this can also be done in specific axis */
+
+transform: scaleX(4);
+
+transform: scaleY(4);
+transform: scaleZ(22);
+transform: rotate3d(2,1,2,95deg);
+
+    }
+
+
+    .container{
+        position: absolute;
+        width: 100vw;
+        height: 80vh;
+        border: 2px solid purple;
+
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">box</div>
+    </div>
+</body>
+</html>

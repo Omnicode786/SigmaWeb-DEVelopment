@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cosmic 3D Cube</title>
+  <style>
+    body {
+      background: radial-gradient(#111, #000);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .scene {
+      perspective: 800px;
+    }
+
+    .cube {
+      width: 100px;
+      height: 100px;
+      position: relative;
+      transform-style: preserve-3d;
+      transform: rotateX(-20deg) rotateY(20deg);
+      animation: spin 8s infinite linear;
+    }
+
+    .face {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: rgba(0, 255, 255, 0.1);
+      border: 1px solid #0ff;
+      box-shadow: 0 0 20px #0ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-family: sans-serif;
+      font-weight: bold;
+    }
+
+    .front  { transform: rotateY(  0deg) translateZ(50px); }
+    .back   { transform: rotateY(180deg) translateZ(50px); }
+    .right  { transform: rotateY( 90deg) translateZ(50px); }
+    .left   { transform: rotateY(-90deg) translateZ(50px); }
+    .top    { transform: rotateX( 90deg) translateZ(50px); }
+    .bottom { transform: rotateX(-90deg) translateZ(50px); }
+
+    @keyframes spin {
+      from { transform: rotateX(-20deg) rotateY(0deg); }
+      to   { transform: rotateX(-20deg) rotateY(360deg); }
+    }
+
+    .cube:hover {
+      animation: none;
+      transform: rotateX(40deg) rotateY(60deg) scale(1.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="scene">
+    <div class="cube">
+      <div class="face front">Front</div>
+      <div class="face back">Back</div>
+      <div class="face right">Right</div>
+      <div class="face left">Left</div>
+      <div class="face top">Top</div>
+      <div class="face bottom">Bottom</div>
+    </div>
+  </div>
+</body>
+</html>
