@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation</title>
+    <style>
+        .container
+        {
+            width: 80vw;
+            height: 40vh;
+            background-color: darksalmon;
+
+        }
+        .box{
+            width: 40px;
+            height: 45px;
+            background-color: rgb(4, 133, 255);
+        /* animation: muzammil 2s ease-in-out infinite; */
+        /* animation ki bhot sari properties hoti hen
+         */
+
+         animation-name: muzammil;
+         animation-duration: 3s; /* animation ki duration hoti he */
+         animation-iteration-count: 3;
+            /* animation ki timing function hoti he
+            isko infinite bhi kr skte*/
+            animation-timing-function: ease-in-out;
+            /* animation ka function hota he ke akhir me akar slow hona he ya aisa kch   */
+            /* animation delay hoti he */
+            animation-delay: 2s; /*har 2 sec ke bad chalega */
+/* animation iteration hoti he kitni bar chalega*/
+animation-direction: reverse; /* animation ka direction hota he */
+            /* reverse se animation pehle se end pr aayega */
+            /* animation fill mode hoti he */
+            animation-fill-mode: forwards; /* isse animation ke baad bhi effect rahega */
+            /* proeprt retain krega agar forwards na ho to animation ke baad element apne original position pr chala jayega */
+            /* property retainni karega agar backwards ho to animation ke pehle se chalega */
+/* animation: aglternate        ; isse animation alternate chalega */
+            /* agar animation ke baad bhi effect chahiye to forwards use krna padega */
+            /* agar animation ke pehle se chalega to backwards use krna padega */
+            /* agar animation ke beech me chalega to normal use krna padega */
+            /* agar animation ke beech me chalega to normal use krna padega */
+            /* agar animation ke beech me chalega to normal use krna padega */
+            /* agar animation ke beech me chalega to normal use krna padega */
+       animation: muzammil 3s ease-in-out infinite, 
+                   muzammil2 1ms ease-in-out infinite;
+                   /* this will not work because both animations are trying to animate the same properties aka transform */
+                   /* alternative to this  is simply
+ 
+                   you just create a separate element for each animation */
+                /* aka a wrapper */
+                }
+.wrapper{
+    width: 100%;
+    height: 100%;
+   animation: muzammil 1s ease-in-out infinite;
+    /* this will apply the animation to the wrapper */
+    /* so that it can be applied to all children */
+
+}
+@keyframes muzammil {
+    0%{
+
+    }
+    50%{
+        transform: translate(100px);
+    }
+    100%{
+
+    }
+}
+@keyframes muzammil2 {
+    0%{
+        background-color: rgb(4, 133, 255);
+        transform: rotate(30deg);
+    }
+    50%{
+                transform: rotate(180deg);
+background-color: rgb(237, 205, 100);
+    }
+    100%{
+ transform: rotate(360deg);
+background-color: rgb(31, 206, 25);
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="contianer">
+        <div class="wrapper">
+        <div class="box"></div>
+
+        </div>
+    </div>
+</body>
+</html>
