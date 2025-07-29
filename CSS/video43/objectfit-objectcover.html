@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object fit & Object cover and position</title>
+    <style>
+        .container{
+            width: 100vw;
+            height: 100vh;
+
+            background-color: rgb(77, 19, 19);
+        }
+        .box{
+            width: 566px;
+            height: 600px;
+            background-color: darkslategray;
+/*  abhi agar dekho geto imag bahir niklegi  */
+            border: 2px solid black;
+            background-color: rgb(201, 138, 101);
+        
+        }
+        .img1{
+            width: 466px;
+            height: 488px;
+/* is widht height ke hisab se hoga jo bhi hoga */
+
+            object-fit: cover; /* isse image cover ho jayegi */
+            /* object-fit: contain;  isse image apne aspect ratio ke sath fit
+       */
+            /* object-fit: fill; isse image distort ho jayegi */
+            /* object-fit: none; isse image apne original size me rahegi */ 
+            /* object-fit: scale-down; isse image apne original size me rahegi agar container se choti ho to */
+            /* object-fit: cover; isse image container ko cover karegi */
+            /* ye basically box ko cover krlega */
+           /* agar aspect ration mainain krana he to  ham ye kr skte hen */
+             object-fit: contain; /* isse image apne aspect ratio ke sath fit ho jayegi */
+            /* isse image container ke andar fit ho jayegi */   
+object-fit: cover;
+   /* apne widht ke hisab se hoga  
+*/
+object-position: top left; /* isse image top left se start hogi */
+            /* object-position: center; isse image center se start hogi */
+            /* object-position: bottom right; isse image bottom right se start hogi */
+            /* object-position: 50% 50%; isse image center se start hogi */
+            /* object-position: 0% 0%; isse image top left se start hogi */
+            /* object-position: 100% 100%; isse image bottom right se start hogi */
+            /* object-position: 0% 100%; isse image bottom left se start hogi */
+            /* object-position: 100% 0%; isse image top right se start hogi */
+
+
+   }
+    </style>
+</head>
+<body>
+    <h1>Object fit & Object cover</h1>
+    <div class="container">
+        <div class="box">
+            <img class="img1" src="image.jpg" alt="Sample Image">
+        </div>
+    </div>
+</body>
+</html>

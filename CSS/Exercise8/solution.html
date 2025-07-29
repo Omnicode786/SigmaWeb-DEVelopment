@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 8</title>
+    <style>
+        .container{
+            width: 100vh;
+            height:80vh;
+            background-color: darkolivegreen;
+
+display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+        .ball {
+  width: 80px;
+  height: 80px;
+  background-color: lightsteelblue;
+  text-align: center;
+  border-radius: 50%;
+  transform: translateZ(0);
+
+   will-change: transform, scale;
+
+  animation: bounce 1.5s ease-out 1;
+}
+
+
+ @keyframes bounce {
+  0%   { transform: translateY(0) scaleY(1); }
+  20%  { transform: translateY(-250px) scaleY(1); }
+  40%  { transform: translateY(0) scaleY(0.65); }
+  55%  { transform: translateY(-180px) scaleY(1); }
+  70%  { transform: translateY(0) scaleY(0.78); }
+  80%  { transform: translateY(-120px) scaleY(1); }
+  90%  { transform: translateY(0) scaleY(0.82); }
+  95%  { transform: translateY(-60px) scaleY(1); }
+  100% { transform: translateY(0) scaleY(0.98); }
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="ball">
+            ball
+        </div>
+    </div>
+</body>
+</html>
