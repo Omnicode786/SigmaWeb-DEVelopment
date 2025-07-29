@@ -40,10 +40,20 @@ transform: scaleX(4);
 
 transform: scaleY(4);
 transform: scaleZ(22);
-transform: rotate3d(2,1,2,95deg);
+/* transform: rotate3d(2,1,2,95deg); */
+/* transform: scale3d(2,2,5); */
 
-    }
+/* we can also do skew */
+transform: skew(80deg);
+/* Skew in CSS is a transformation that tilts or slants an element along the X or Y axis. It changes the angle of the element without affecting its actual size */
+/* parallelogram */
+ transform:  skewX(50deg); /*→ You're nudging the top edge of the box to the right. */
+ transform:  skewY(60deg) ;/*→ You’re pushing the left side of the box upward. */
 
+ transform: rotate3d(6,2,4,30deg) skew(20deg) translateX(50px) translateY(60px) ;
+    /* }like this you can add more than one transform to a aspecific element
+     */
+/* you can also do */
 
     .container{
         position: absolute;
