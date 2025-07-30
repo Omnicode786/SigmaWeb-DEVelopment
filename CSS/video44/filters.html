@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CSS Filters Demo - Muzammil Style</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #181818;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #00ffff;
+    }
+
+    .filters-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .card {
+      background-color: #292929;
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    }
+.card img:hover{
+     filter: none;
+    
+}
+    .card img {
+      width: 100%;
+      border-radius: 10px;
+      height: 200px;
+      object-fit: cover;
+      margin-bottom: 10px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .note {
+      font-size: 0.85rem;
+      color: #ccc;
+    }
+
+    /* FILTERS APPLIED BELOW (EXPLAINED) */
+
+    .blur img {
+      filter: blur(4px);
+      /* Blur kar diya image ko. Nazar kamzor ho gayi XD */
+    }
+
+    .brightness img {
+      filter: brightness(150%);
+      /* Brightness barha di... jaise light ka dimmer full ghooma diya ho */
+    }
+
+    .contrast img {
+      filter: contrast(200%);
+      /* Contrast double kar diya. Ab rang zyada pop karenge */
+    }
+
+    .grayscale img {
+      filter: grayscale(100%);
+      /* Sad image ban gayi. Purey black and white mood mein */
+    }
+
+    .hue img {
+      filter: hue-rotate(120deg);
+      /* Rang ghooma diye. Jaise sab cheez ne alien filter laga liya ho */
+    }
+
+    .invert img {
+      filter: invert(100%);
+      /* Invert kar diya. Jaise photo ka negative ban gaya ho */
+    }
+
+    .opacity img {
+      filter: opacity(50%);
+      /* Ghost bana diya image ko. Dheere se dikh rahi hai */
+    }
+
+    .saturate img {
+      filter: saturate(300%);
+      /* Colors ka overdose. Zyada vibrant kar diya */
+    }
+
+    .sepia img {
+      filter: sepia(100%);
+      /* Old movie style filter. Jaise 1970s ki yaadein ho */
+    }
+
+    .drop-shadow img {
+      filter: drop-shadow(8px 8px 10px #00ffff);
+      /* Stylish neon shadow di image ko. Eye-catching! */
+    }
+  </style>
+</head>
+<body>
+  <h1>✨ CSS Filters Explained - Muzammil Style 😎</h1>
+  <div class="filters-grid">
+    
+    <div class="card blur">
+      <img src="image.jpg" alt="Blur">
+      <h3>Blur</h3>
+      <p class="note">filter: blur(4px)</p>
+    </div>
+
+    <div class="card brightness">
+      <img src="image.jpg" alt="Brightness">
+      <h3>Brightness</h3>
+      <p class="note">filter: brightness(150%)</p>
+    </div>
+
+    <div class="card contrast">
+      <img src="image.jpg" alt="Contrast">
+      <h3>Contrast</h3>
+      <p class="note">filter: contrast(200%)</p>
+    </div>
+
+    <div class="card grayscale">
+      <img src="image.jpg" alt="Grayscale">
+      <h3>Grayscale</h3>
+      <p class="note">filter: grayscale(100%)</p>
+    </div>
+
+    <div class="card hue">
+      <img src="image.jpg" alt="Hue Rotate">
+      <h3>Hue Rotate</h3>
+      <p class="note">filter: hue-rotate(120deg)</p>
+    </div>
+
+    <div class="card invert">
+      <img src="image.jpg" alt="Invert">
+      <h3>Invert</h3>
+      <p class="note">filter: invert(100%)</p>
+    </div>
+
+    <div class="card opacity">
+      <img src="image.jpg" alt="Opacity">
+      <h3>Opacity</h3>
+      <p class="note">filter: opacity(50%)</p>
+    </div>
+
+    <div class="card saturate">
+      <img src="image.jpg" alt="Saturate">
+      <h3>Saturate</h3>
+      <p class="note">filter: saturate(300%)</p>
+    </div>
+
+    <div class="card sepia">
+      <img src="image.jpg" alt="Sepia">
+      <h3>Sepia</h3>
+      <p class="note">filter: sepia(100%)</p>
+    </div>
+
+    <div class="card drop-shadow">
+      <img src="image.jpg" alt="Drop Shadow">
+      <h3>Drop Shadow</h3>
+      <p class="note">filter: drop-shadow(8px 8px 10px #00ffff)</p>
+    </div>
+
+  </div>
+</body>
+</html>

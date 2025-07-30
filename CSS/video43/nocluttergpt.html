@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Object fit & Object cover and position</title>
+
+  <style>
+    .container {
+      width: 100vw; /* full width of viewport */
+      height: 100vh; /* full height of viewport */
+      background-color: rgb(77, 19, 19); /* reddish brown background */
+    }
+
+    .box {
+      width: 566px;
+      height: 600px;
+
+      /* If image size > box size, it will overflow without object-fit */
+      border: 2px solid black;
+      background-color: rgb(201, 138, 101); /* fallback color in case image fails */
+    }
+
+    .img1 {
+      width: 100%;
+      height: 100%;
+
+      /* 👇 Now here's the magic area: object-fit properties explained below */
+
+      object-fit: cover;
+      /* Ye box ka size poora cover karega but may crop the image
+         Imagine apki image ka aspect ratio (width:height) kuch aur ho
+         To wo adjust hone k liye thodi crop ho jayegi
+         Lekin pura box bharega, koi space nahi chhodega
+      */
+
+      /*
+      object-fit: contain;
+      // Isse image apne aspect ratio maintain karte hue poora dikh jaayega
+      // But box me white space aa sakti he (image undersized lag sakti he)
+      */
+
+      /*
+      object-fit: fill;
+      // Ye forcefully image ko stretch karega so it fills the entire box
+      // But zyada distortion ho sakti he (fat ya tall image)
+      */
+
+      /*
+      object-fit: none;
+      // Ye image ko bilkul resize nahi karega
+      // Box ke andar fit ho ya na ho, wo apne original size me dikhegi
+      */
+
+      /*
+      object-fit: scale-down;
+      // Agar image choti he to original size me dikhayega
+      // Agar badi he to 'contain' jaisa behave karega (adjust karega)
+      */
+
+      /*
+      object-fit: contain;
+      // This was previously applied above to test image fitting with no crop
+      */
+
+      /*👇 Now positioning part */
+
+      object-position: top left;
+      /* Ye image ko box ke top-left corner se align karega
+         Useful when using object-fit: contain aur image me gap ho
+      */
+
+      /*
+      object-position: center;
+      // Image center me align hoti he
+      */
+
+      /*
+      object-position: bottom right;
+      // Bottom-right se start karega image positioning
+      */
+
+      /*
+      object-position: 50% 50%;
+      // Center exactly in percentage terms
+      */
+
+      /*
+      object-position: 0% 0%;
+      // Same as top left
+      */
+
+      /*
+      object-position: 100% 100%;
+      // Bottom right
+      */
+
+      /*
+      object-position: 0% 100%;
+      // Bottom left
+      */
+
+      /*
+      object-position: 100% 0%;
+      // Top right
+      */
+
+      /*
+      Alternative approach: background-image use krlo img tag ki jagah
+      // isse user right click karke image download nahi kar sakta directly
+      */
+    }
+
+    .box2 {
+      width: 566px;
+      height: 600px;
+      border: 2px solid black;
+
+      /*👇 image as background directly to the div */
+      background-image: url('image.jpg');
+
+      background-position: center center;
+      /* image center se start hogi horizontally and vertically */
+
+      background-repeat: no-repeat;
+      /* By default agar image choti hoti he, wo repeat hoti rehti he
+         isse wo repeat nahi hogi
+      */
+
+      background-clip: border-box;
+      /* Ye bata raha he k background image kaunsa area cover kare
+         border-box = content + padding + border
+         Ye rarely change krna padta he, mostly default rehta he
+      */
+
+      /*
+      Other options:
+      background-clip: content-box;
+      // image sirf content area me dikhegi, padding/border me nahi
+      */
+    }
+  </style>
+</head>
+<body>
+  <h1>Object fit & Object cover</h1>
+
+  <div class="container">
+    <!-- 🟨 First Box: using <img> with object-fit -->
+    <div class="box">
+      <img class="img1" src="image.jpg" alt="Sample Image">
+    </div>
+
+    <!-- 🟩 Second Box: using background-image -->
+    <div class="box2"></div>
+  </div>
+</body>
+</html>
