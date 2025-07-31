@@ -1,0 +1,1 @@
+console.log("This is a tutorial for variables in js")
