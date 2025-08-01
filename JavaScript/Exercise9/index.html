@@ -168,6 +168,9 @@ animation: gradientMove 8s ease infinite;
         let string = ""
         btn.forEach(element => {
             element.addEventListener("click", function () {
+                if (string.length >= 18 && item.innerHTML.match(/[0-9.]/)) {
+    return; // Block input if length limit is reached for numbers
+}
                if (element.innerHTML == "AC") {
     string = "";
     display.innerHTML = "0";
@@ -191,9 +194,7 @@ animation: gradientMove 8s ease infinite;
                     string += element.innerHTML;
                     display.innerHTML = string
                 }
-if (string.length >= 18 && item.innerHTML.match(/[0-9.]/)) {
-    return; // Block input if length limit is reached for numbers
-}
+
                 //  let lastchar = string.at(-1);
                 // //   .at(-1) is a newer method introduced in ES2022 — cleaner and more readable!
 
