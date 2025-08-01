@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,8 +41,8 @@ animation: gradientMove 8s ease infinite;
             left: 50%;
             transform: translate(-50%, -50%);
             background: linear-gradient(135deg, rgba(8, 92, 121, 0.947), rgba(0, 0, 139, 0.2));
-              width: min(90vw, 500px);
-  height: min(90vh, 600px);
+            width: 30vw;
+            height: 80vh;
             border: 2px solid black;
              backdrop-filter: blur(60px) saturate(160%) brightness(1.4);
             -webkit-backdrop-filter: blur(20px) saturate(160%);
@@ -61,31 +59,32 @@ animation: gradientMove 8s ease infinite;
   
             padding: 10px;
             margin: 80px auto 0px auto;
-            width: 90%;
+            width: 85%;
             height: 10%;
-            background-color: gray;
             border-radius: 20px;
             color: white;
             font-size: 45px;
-            background-color: rgba(0, 0, 0, 0.563);
-            backdrop-filter: blur(60px) saturate(160%) brightness(1.4);
+            background-color: rgba(0, 0, 0, 0.389);
+            backdrop-filter: blur(90px) saturate(160%) brightness(1.7);
             -webkit-backdrop-filter: blur(20px) saturate(160%);
             border: 2px solid var(--glass-border);
 
 
         }
-.limit {
-    color: red;
-    animation: shake 0.3s;
-}
-@keyframes shake {
-    0% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    50% { transform: translateX(5px); }
-    75% { transform: translateX(-5px); }
-    100% { transform: translateX(0); }
-}
 
+        .limit{
+            color: red;
+            animation: shake 0.4s linear infinite;
+        }
+        @keyframes shake{
+             0%{transform: translateX(0px);}
+             20%{ transform: translateX(5px);} 
+              40%{transform: translateX(-5px);}
+              60%{transform: translateX(3px);}
+              80%{transform: translateX(-3px);}
+              100%{transform: translateX(0px);}
+
+                }
 
         .things {
             width: 100%;
@@ -143,8 +142,6 @@ animation: gradientMove 8s ease infinite;
             border: 4px solid var(--glass-border);
    backdrop-filter: blur(10px) saturate(190%) brightness(2);
             -webkit-backdrop-filter: blur(20px) saturate(260%);        }
-
-
     </style>
 </head>
 
@@ -184,18 +181,16 @@ animation: gradientMove 8s ease infinite;
         let string = ""
         btn.forEach(element => {
             element.addEventListener("click", function () {
-                if (string.length >= 16 && element.innerHTML.match(/[0-9.]/)) {
-
-                    display.classList.add("limit");
-    setTimeout(() => display.classList.remove("limit"), 300);
-    return; // Block input if length limit is reached for numbers
-}
+                if (string.length >= 16 && element.innerHTML.match(/[0-9.]/)){
+                    display.classList.add('limit');
+                    setTimeout(() => display.classList.remove('limit'),400);
+                    return;
+                }
                if (element.innerHTML == "AC") {
     string = "";
     display.innerHTML = "0";
     return; // 🛑 Stop further code in this click
 }
-
                 if (element.innerHTML == "=") {
                     if (eval(string) == Infinity ||eval(string)  ==  -Infinity || isNaN(eval(string)) || eval(string == undefined)) 
                     // if (result == NaN) // ❌ Doesn't work! Because in JavaScript, NaN is not equal to anything, not even itself 😵
@@ -226,7 +221,18 @@ animation: gradientMove 8s ease infinite;
 
         });
 
-   
+        function sum(num1, num2) {
+            return num1 + num2;
+        }
+        function subtract(num1, num2) {
+            return num1 - num2;
+        }
+        function multiply(num1, num2) {
+            return num1 * num2;
+        }
+        function divide(num1, num2) {
+            return num1 / num2;
+        }
     </script>
 
 </body>
