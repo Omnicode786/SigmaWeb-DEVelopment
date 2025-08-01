@@ -60,3 +60,52 @@ txt.replace(/cats/g, "dogs");
 "apple,banana,mango".split(","); // ["apple", "banana", "mango"]
 
 // Pad
+
+"5".padStart(2, "0"); // "05"
+"5".padEnd(3, "*");   // "5**"
+
+// Repeat
+
+"ha".repeat(3); // "hahaha"
+
+//  Template Literals (Backticks)
+
+let user = "Muzammil";
+let task = "JavaScript";
+
+let msg2 = `Hey ${user}, keep grinding ${task} 💪`; 
+// Nice, clean multiline string & variables injected
+
+
+//  Character Access
+
+let str = "Hello";
+
+str[0];       // 'H'
+str.charAt(0) // 'H'
+str.charCodeAt(0); // 72 — Unicode
+str.at(-1);   // 'o' — gets last char (ES2022)
+ 
+
+// Raw String (useful in escaping)
+String.raw`This is\n not escaped`; // This is\n not escaped
+
+// Advanced & Lesser Known
+
+// match() with regex
+"abc123".match(/\d+/); // ["123"]
+
+// search() returns index of regex match
+"abc123".search(/\d+/); // 3
+
+// localeCompare() compares strings (alphabetically)
+"A".localeCompare("B"); // -1
+
+// normalize() useful for accented characters
+"\u00E9".normalize("NFD"); // e + ´
+
+// String is Immutable!
+
+let str = "hello";
+str[0] = "H"; // ❌ doesn't work
+str = "Hello"; // ✅ reassign
