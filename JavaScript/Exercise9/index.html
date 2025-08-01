@@ -5,17 +5,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
-    <style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=VT323&display=swap" rel="stylesheet">
+<style>
         :root {
             --glass-border: rgba(255, 255, 255, 0.15);
         }
+body {
+background: linear-gradient(135deg,
+  rgba(20, 30, 48, 0.8),   /* Deep Navy */
+  rgba(36, 59, 85, 0.7),   /* Midnight Blue */
+  rgba(72, 103, 139, 0.6), /* Steel Blue */
+  rgba(123, 166, 196, 08),/* Sky Blue */
+  rgba(173, 216, 230, 0.9) /* Light Blue */
+);  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-repeat: no-repeat;
+            background-size: 600% 600%;
 
+animation: gradientMove 8s ease infinite;
+
+}
         .container {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background: linear-gradient(135deg, rgba(1, 192, 255, 0.947), rgba(0, 0, 139, 0.2));
+            background: linear-gradient(135deg, rgba(8, 92, 121, 0.947), rgba(0, 0, 139, 0.2));
             width: 30vw;
             height: 80vh;
             border: 2px solid black;
@@ -28,6 +53,10 @@ animation: gradientMove 8s ease infinite;
         }
 
         .display {
+             font-family: "Share Tech Mono", monospace;
+  font-weight: 400;
+  font-style: bold;
+  
             padding: 10px;
             margin: 80px auto 0px auto;
             width: 90%;
@@ -35,7 +64,7 @@ animation: gradientMove 8s ease infinite;
             background-color: gray;
             border-radius: 20px;
             color: white;
-            font-size: 30px;
+            font-size: 45px;
             background-color: rgba(0, 0, 0, 0.563);
             backdrop-filter: blur(60px) saturate(160%) brightness(1.4);
             -webkit-backdrop-filter: blur(20px) saturate(160%);
@@ -106,7 +135,7 @@ animation: gradientMove 8s ease infinite;
 <body>
     <div class="calcualtor">
         <div class="container">
-            <div class="display"></div>
+            <div class="display">0</div>
             <div class="things">
                 <div class="numbers">
                     <button>9</button>
@@ -139,10 +168,16 @@ animation: gradientMove 8s ease infinite;
         let string = ""
         btn.forEach(element => {
             element.addEventListener("click", function () {
-               
+               if (element.innerHTML == "AC") {
+    string = "";
+    display.innerHTML = "0";
+    return; // 🛑 Stop further code in this click
+}
                 if (element.innerHTML == "=") {
-                    if (eval(string) == (Infinity || -Infinity)) {
-                        display.innerHTML = "undefined"
+                    if (eval(string) == Infinity ||eval(string)  ==  -Infinity || isNaN(eval(string)) || eval(string == undefined)) 
+                    // if (result == NaN) // ❌ Doesn't work! Because in JavaScript, NaN is not equal to anything, not even itself 😵
+{
+                        display.innerHTML = "Math Error"
                         string = ""
 
                     }
@@ -156,10 +191,7 @@ animation: gradientMove 8s ease infinite;
                     string += element.innerHTML;
                     display.innerHTML = string
                 }
- if (element.innerHTML == "AC") {
-                    string = ""
-                    display.innerHTML = " "
-                }
+
                 //  let lastchar = string.at(-1);
                 // //   .at(-1) is a newer method introduced in ES2022 — cleaner and more readable!
 
