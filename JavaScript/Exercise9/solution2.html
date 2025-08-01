@@ -74,6 +74,18 @@ animation: gradientMove 8s ease infinite;
 
 
         }
+.limit {
+    color: red;
+    animation: shake 0.3s;
+}
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
 
         .things {
             width: 100%;
@@ -131,6 +143,18 @@ animation: gradientMove 8s ease infinite;
             border: 4px solid var(--glass-border);
    backdrop-filter: blur(10px) saturate(190%) brightness(2);
             -webkit-backdrop-filter: blur(20px) saturate(260%);        }
+
+            @media (max-width: 400px) {
+    .button {
+        padding: 0.75rem;
+        font-size: 1.5rem;
+
+    }
+    .container{
+        width: 90vw;
+        height: 50vh;
+    }
+}
     </style>
 </head>
 
@@ -170,14 +194,18 @@ animation: gradientMove 8s ease infinite;
         let string = ""
         btn.forEach(element => {
             element.addEventListener("click", function () {
+                if (string.length >= 16 && element.innerHTML.match(/[0-9.]/)) {
+
+                    display.classList.add("limit");
+    setTimeout(() => display.classList.remove("limit"), 300);
+    return; // Block input if length limit is reached for numbers
+}
                if (element.innerHTML == "AC") {
     string = "";
     display.innerHTML = "0";
     return; // 🛑 Stop further code in this click
 }
-if (string.length >= 18 && item.innerHTML.match(/[0-9.]/)) {
-    return; // Block input if length limit is reached for numbers
-}
+
                 if (element.innerHTML == "=") {
                     if (eval(string) == Infinity ||eval(string)  ==  -Infinity || isNaN(eval(string)) || eval(string == undefined)) 
                     // if (result == NaN) // ❌ Doesn't work! Because in JavaScript, NaN is not equal to anything, not even itself 😵
