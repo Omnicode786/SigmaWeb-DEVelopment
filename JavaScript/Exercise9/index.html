@@ -6,11 +6,28 @@
     <title>Calculator</title>
 <style>
 .container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
     background-color: red;
+    width: 30vw;
+    height: 80vh;
+    border: 2px solid black;
 }
-.display{background-color: gray;}
+.display{
+    padding: 10px;
+    margin: 80px auto 0px auto;
+    width: 90%;
+    height: 10%;
+    background-color: gray;
+    border-radius:20px;
+
+}
 .numbers{
-    background-color: aquamarine;
+    background-color: rgb(0, 172, 115);
+    width: 70%;
+    height: 80%;
 }
 .operators{
     background-color:yellow;
@@ -19,14 +36,16 @@
 </style>
 </head>
 <body>
-
-    <div class="container">
+<div class="calcualtor">
+  <div class="container">
         <div class="display"></div>
         <div class="things">
             <div class="numbers"></div>
             <div class="operators"></div>
         </div>
     </div>
+</div>
+  
 
 
 </body>
