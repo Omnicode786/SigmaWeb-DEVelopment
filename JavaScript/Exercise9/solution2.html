@@ -43,8 +43,8 @@ animation: gradientMove 8s ease infinite;
             left: 50%;
             transform: translate(-50%, -50%);
             background: linear-gradient(135deg, rgba(8, 92, 121, 0.947), rgba(0, 0, 139, 0.2));
-            width: 30vw;
-            height: 80vh;
+              width: min(90vw, 500px);
+  height: min(90vh, 600px);
             border: 2px solid black;
              backdrop-filter: blur(60px) saturate(160%) brightness(1.4);
             -webkit-backdrop-filter: blur(20px) saturate(160%);
@@ -144,17 +144,7 @@ animation: gradientMove 8s ease infinite;
    backdrop-filter: blur(10px) saturate(190%) brightness(2);
             -webkit-backdrop-filter: blur(20px) saturate(260%);        }
 
-            @media (max-width: 400px) {
-    .button {
-        padding: 0.75rem;
-        font-size: 1.5rem;
 
-    }
-    .container{
-        width: 90vw;
-        height: 50vh;
-    }
-}
     </style>
 </head>
 
@@ -236,18 +226,7 @@ animation: gradientMove 8s ease infinite;
 
         });
 
-        function sum(num1, num2) {
-            return num1 + num2;
-        }
-        function subtract(num1, num2) {
-            return num1 - num2;
-        }
-        function multiply(num1, num2) {
-            return num1 * num2;
-        }
-        function divide(num1, num2) {
-            return num1 / num2;
-        }
+   
     </script>
 
 </body>
