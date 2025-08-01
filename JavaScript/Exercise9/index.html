@@ -168,7 +168,7 @@ animation: gradientMove 8s ease infinite;
         let string = ""
         btn.forEach(element => {
             element.addEventListener("click", function () {
-                if (string.length >= 18 && item.innerHTML.match(/[0-9.]/)) {
+                if (string.length >= 16 && item.innerHTML.match(/[0-9.]/)) {
     return; // Block input if length limit is reached for numbers
 }
                if (element.innerHTML == "AC") {
