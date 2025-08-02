@@ -8,7 +8,7 @@ function factorial(n){
 }
 
 // another way to do this is 
-d
+
 
 
 console.log(factorial(5)); // Output: 120
