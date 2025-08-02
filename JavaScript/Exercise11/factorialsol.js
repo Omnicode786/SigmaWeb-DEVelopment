@@ -10,5 +10,6 @@ function factorial(n){
 // another way to do this is 
 
 
+
 console.log(factorial(5)); // Output: 120
 d
