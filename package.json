@@ -1,0 +1,23 @@
+{
+  "name": "sigmaweb-development",
+  "version": "1.0.0",
+  "description": "<div align=\"center\">",
+  "main": "auto-commit.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Omnicode786/SigmaWeb-DEVelopment.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Omnicode786/SigmaWeb-DEVelopment/issues"
+  },
+  "homepage": "https://github.com/Omnicode786/SigmaWeb-DEVelopment#readme",
+  "dependencies": {
+    "chokidar": "^4.0.3"
+  }
+}
