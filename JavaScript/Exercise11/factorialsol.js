@@ -10,6 +10,7 @@ function factorial(n){
 // another way to do this is simply
 
 
+console.log("The commit system work")
 
 
 
