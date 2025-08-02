@@ -3,7 +3,6 @@
 function factorial(n){
     if (n == 0) return 1;
     else{
-        turn n*factorial(n - 1)
-        ;    
+        turn n*factorial(n - 1);    
     }
 }
