@@ -1,3 +1,4 @@
+// auto-commit.js
 const chokidar = require("chokidar");
 const { exec } = require("child_process");
 
@@ -9,11 +10,11 @@ const watcher = chokidar.watch(".", {
 
 watcher.on("change", (path) => {
   console.log(`📁 File changed: ${path}`);
-  exec('git add . && git commit -m "Auto commit" --no-verify && git push', (err, stdout, stderr) => {
+  exec('git add . && git commit -m "Auto commit" --no-verify', (err, stdout, stderr) => {
     if (err) {
       console.error("❌ Git error:", stderr);
     } else {
-      console.log("✅ Auto committed and pushed!");
+      console.log("✅ Auto committed!");
     }
   });
 });
