@@ -1,34 +1,36 @@
 const chokidar = require("chokidar");
 const { spawn } = require("child_process");
 
-// Watch current directory, ignore .git, node_modules, and dotfiles
+let timeoutId = null;
+const DEBOUNCE_DELAY = 3000; // 5000ms = 5 seconds
+
 const watcher = chokidar.watch(".", {
   ignored: /(^|[\/\\])\..|node_modules|\.git/,
-  persistent: true
+  persistent: true,
 });
 
 watcher.on("change", (path) => {
-  console.log(`📁 File changed: ${path}`);
+  console.log(`📁 Change detected: ${path}`);
 
-  const gitAdd = spawn("git", ["add", "."]);
+  clearTimeout(timeoutId); // Clear previous timeout
+  timeoutId = setTimeout(() => {
+    console.log("💾 Committing after changes settled...");
 
-  gitAdd.on("close", () => {
-    const gitCommit = spawn("git", ["commit", "-m", "Auto commit", "--no-verify"]);
+    const gitAdd = spawn("git", ["add", "."]);
 
-    gitCommit.stdout.on("data", (data) => {
-      console.log(`✅ ${data}`);
+    gitAdd.on("close", () => {
+      const gitCommit = spawn("git", ["commit", "-m", "Auto commit", "--no-verify"]);
+
+      gitCommit.stdout.on("data", (data) => console.log(`✅ ${data}`));
+      gitCommit.stderr.on("data", (data) => console.error(`❌ ${data}`));
+
+      gitCommit.on("close", (code) => {
+        if (code === 0) {
+          console.log("✅ Auto committed!");
+        } else {
+          console.log("⚠️ Nothing to commit or commit failed.");
+        }
+      });
     });
-
-    gitCommit.stderr.on("data", (data) => {
-      console.error(`❌ ${data}`);
-    });
-
-    gitCommit.on("close", (code) => {
-      if (code === 0) {
-        console.log("✅ Auto committed!");
-      } else {
-        console.log("⚠️ Nothing to commit or commit failed.");
-      }
-    });
-  });
+  }, DEBOUNCE_DELAY); // Wait 5 seconds after last change
 });
