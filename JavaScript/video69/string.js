@@ -8,7 +8,7 @@ console.log(typeof name); // "string"
 
 
 // You can also create a string using the String object
-let str = String(123); // converts number to "123"
+let str6 = String(123); // converts number to "123"
 let str2 = new String("Not recommended"); // returns a String object, not a primitive
 
 let str1 = "Hello World";
@@ -79,12 +79,12 @@ let msg2 = `Hey ${user}, keep grinding ${task} 💪`;
 
 //  Character Access
 
-let str = "Hello";
+let str4 = "Hello";
 
-str[0];       // 'H'
-str.charAt(0) // 'H'
-str.charCodeAt(0); // 72 — Unicode
-str.at(-1);   // 'o' — gets last char (ES2022)
+str4[0];       // 'H'
+str4.charAt(0) // 'H'
+str4.charCodeAt(0); // 72 — Unicode
+str4.at(-1);   // 'o' — gets last char (ES2022)
  
 
 // Raw String (useful in escaping)
