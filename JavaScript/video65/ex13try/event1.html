@@ -10,10 +10,30 @@
     <button id="btn">Click me</button>
 
     <script>
+        let body = document.querySelector('body');
         let button = document.getElementById('btn');
         button.addEventListener('click', function() {
-            alert('Button was clicked!');
+    body.insertAdjacentHTML('beforeend', '<p>single click action</p>');
         });
+
+
+        // similarly we also have double click, mouseover, mouseout, keydown, keyup, etc.
+        button.addEventListener('dblclick', function() {
+            alert('Button was double clicked!');
+    body.insertAdjacentHTML('beforeend', '<p>Double click action</p>');
+
+        });
+
+        button.addEventListener("mouseenter",() => {
+    body.insertAdjacentHTML('beforeend', '<p>mouse has entered the button</p>');
+
+        })
+
+        
+        button.addEventListener("mouseleave",() => {
+    body.insertAdjacentHTML('beforeend', '<p>mouse has left the button</p>');
+
+        })
     </script>
 </body>
 </html>
