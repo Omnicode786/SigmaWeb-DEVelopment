@@ -9,27 +9,8 @@
     <div data-createdby="Muzammil" id="check"  class="container"></div>
 <!-- data bhi dal skte hen -->
 
-    <script>
-     let check =    document.querySelector(".container")
-     check.innerHTML =  "I am a container"
-     console.log(check.hasAttribute("id"));
-     console.log(check.getAttribute("id"));
-     check.setAttribute("style","background-color: red")
-     check.setAttribute("id","checked");
-
-    //  we can change id and other classes types of things like this
-    // we can changeany attriute
-
-     console.log(check.getAttribute("id"))
-        let body = document.querySelector("body");
-        console.log(body.attributes);
-        check.removeAttribute("style")
-console.log(check.dataset)
-let div = document.createElement("div");
-div.setAttribute("class","inserted-elem");
-div.innerHTML = "I am a div who was inserted through js"
-check.append(div)
-
+    <script src="insert-remove.js">
+   
     </script>
 </body>
 </html>
