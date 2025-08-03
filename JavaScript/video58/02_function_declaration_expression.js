@@ -21,4 +21,3 @@ sayBye(); // ✅ also works, but only after definition
 
 
 
-dsd
