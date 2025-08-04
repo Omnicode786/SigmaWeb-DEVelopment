@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set interval 
+    & set Timeout
+    </title>
+    <style>
+.box{
+    padding: 20px;
+    margin: 20px;
+    background-color: blanchedalmond;
+
+
+}
+
+    </style>
+</head>
+<body>
+<div class="contain">
+    <div class="box">
+        I am box
+    </div>
+</div>
+
+
+    <script>
+        // set interval aik aisa function he jo kuch time tak chlta rehta he har interval me
+function getRandomcolor(){
+    let val1 = Math.ceil(0 + Math.random() * 255);
+    let val2 = Math.ceil(0 + Math.random() * 255);
+    let val3 = Math.ceil(0 + Math.random() * 255);
+    return `rgb(${val1}, ${val2}, ${val3})`;
+
+}
+// let box = document.getElementsByClassName('box')
+// function me function ata he
+// this will not work because class name returns an array which is an iterable
+let box = document.querySelector('.box')
+
+
+setInterval(() => {
+    box.style.backgroundColor =  getRandomcolor();
+}, 50);
+// this is in ms
+    </script>
+
+</body>
+</html>
