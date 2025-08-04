@@ -20,10 +20,10 @@
         let container = document.querySelector("container");
         let childcontainer = document.querySelector("childcontainer");
         let child = document.querySelector(".child");
-        child.addEventListener("contextmenu", () => {
+        container.addEventListener("contextmenu", () => {
             alert("Child was right clicked")
         })
-        child.addEventListener("contextmenu", () => {
+        childcontainer.addEventListener("contextmenu", () => {
             alert("Child was right clicked")
         })
         child.addEventListener("contextmenu", () => {
