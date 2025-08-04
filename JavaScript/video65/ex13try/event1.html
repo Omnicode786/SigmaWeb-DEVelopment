@@ -9,45 +9,8 @@
 <body>
     <button id="btn">Click me</button>
 
-    <script>
-        let body = document.querySelector('body');
-        let button = document.getElementById('btn');
-        button.addEventListener('click', function() {
-    body.insertAdjacentHTML('beforeend', '<p>single click action</p>');
-        });
-
-
-        // similarly we also have double click, mouseover, mouseout, keydown, keyup, etc.
-        button.addEventListener('dblclick', function() {
-            alert('Button was double clicked!');
-    body.insertAdjacentHTML('beforeend', '<p>Double click action</p>');
-
-        });
-
-        button.addEventListener("mouseenter",() => {
-    body.insertAdjacentHTML('beforeend', '<p>mouse has entered the button</p>');
-
-        })
-
-        
-        button.addEventListener("mouseleave",() => {
-    body.insertAdjacentHTML('beforeend', '<p>mouse has left the button</p>');
-
-        })
-
-   button.addEventListener("contextmenu",() => {
-alert("Dont hack us by right clicking please")
-        })
-document.addEventListener("keydown", (e) => {
-    console.log(e)
-    // e has key and keycode
-
-    // e is basically the event object
-    // it contains information about the event that occurred
-        body.insertAdjacentHTML('beforeend', `<p>${e.key}</p>`);
-
-
-})
+    <script src="even1.js">
+     
 
 
     </script>
