@@ -40,11 +40,32 @@ function getRandomcolor(){
 let box = document.querySelector('.box')
 
 
-setInterval(() => {
+let a = setInterval(() => {
     box.style.backgroundColor =  getRandomcolor();
 }, 500);
 // this is in ms
-    </script>
+
+// the set  interval function returns a number and if we clear interval that number then it stops
+console.log(a);
+
+// like below
+// clearInterval(a);
+
+// set timeout bhis ame treke ka he bas usme ye hota he ke utnje time bad krdo
+
+function random(){
+    return `${Math.random() * 100}px`;
+}
+
+let b = setTimeout(() => {
+    box.style.border =  "5px solid " + getRandomcolor();
+}, 2000);
+let c =  setInterval(() => {
+    box.style.color =  getRandomcolor();
+    box.style.fontSize = random();
+}, 500);
+
+</script>
 
 
 
