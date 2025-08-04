@@ -34,6 +34,17 @@
     body.insertAdjacentHTML('beforeend', '<p>mouse has left the button</p>');
 
         })
+
+   button.addEventListener("contextmenu",() => {
+alert("Dont hack us by right clicking please")
+        })
+document.addEventListener("keydown", (e){
+    console.log(e)
+    // e is basically the event object
+    // it contains information about the event that occurred
+})
+
+
     </script>
 </body>
 </html>
