@@ -55,6 +55,7 @@ async function main() {
     console.log("I am inside the async function");
     console.log("I am also under the water brrr");
     let data2 = await getData2();
+    console.log(data2);
 
 }
 
