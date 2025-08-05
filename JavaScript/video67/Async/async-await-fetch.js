@@ -46,7 +46,7 @@ console.log("process data");
 function getData2(){
     return new Promise((resolve,reject) => {
     setTimeout (() => {
-        resolve(455);
+        resolve(476);
     }, 5000)
 })
 }
