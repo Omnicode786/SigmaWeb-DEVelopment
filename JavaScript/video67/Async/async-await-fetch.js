@@ -59,7 +59,7 @@ async function main() {
 
 }
 
-
+actual thod to use async await and fetch functon
 
 
 
