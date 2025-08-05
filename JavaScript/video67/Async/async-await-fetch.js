@@ -51,4 +51,6 @@ function getData2(){
 })
 }
 
-as
+async function main() {
+    
+}
