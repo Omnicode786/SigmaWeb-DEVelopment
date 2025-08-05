@@ -5,7 +5,7 @@ let  x = await fetch("https://jsonplaceholder.typicode.com/todos/1");
 
 let data = await x.json();
 // ab ham iske json hone ka wait kr rhe hen
-
+console.log(data);
 
 
 }
