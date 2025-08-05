@@ -52,5 +52,7 @@ function getData2(){
 }
 
 async function main() {
-    console.log("I am inside the ")
+    console.log("I am inside the async function");
+    console.log("I am inside the async function");
+
 }
