@@ -38,7 +38,8 @@ data.then((a) => {
 
 console.log("process data");
 
-// await function use krne kelie hame ise pehle hame in sab ko
+// await function use krne kelie hame ise pehle hame in sab ko 
+//  
 
 
 function getData2(){
