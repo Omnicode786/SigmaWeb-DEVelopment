@@ -52,5 +52,5 @@ function getData2(){
 }
 
 async function main() {
-    
+    console.log("")
 }
