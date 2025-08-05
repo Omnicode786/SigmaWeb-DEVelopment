@@ -29,6 +29,7 @@ data.then((a) => {
     console.log(a);
     console.log("Data has been recieved")
 })
+
 // if we dont watch this approach
 
 
@@ -36,3 +37,14 @@ data.then((a) => {
 
 
 console.log("process data");
+
+// await function use krne kelie hame ise peh
+
+
+function getData2(){
+    return new Promise((resolve,reject) => {
+    setTimeout (() => {
+        resolve(455);
+    }, 5000)
+})
+}
