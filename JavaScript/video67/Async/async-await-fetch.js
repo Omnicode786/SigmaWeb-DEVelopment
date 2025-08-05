@@ -57,3 +57,5 @@ async function main() {
     let data2 = await getData2();
 
 }
+
+main();
