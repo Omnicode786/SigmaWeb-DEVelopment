@@ -50,3 +50,5 @@ function getData2(){
     }, 5000)
 })
 }
+
+as
