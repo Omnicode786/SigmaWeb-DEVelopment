@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hacking terminal</title>
+    <style>
+        .card {
+            background-color: rgb(138, 138, 133);
+            width: 800px;
+            height: 300px;
+            border: 2px solid black;
+            display: block;
+        }
+
+        .header {
+            width: 100%;
+            background-color: rgb(221, 211, 211);
+            height: 40px;
+            color: rgb(0, 0, 0);
+            display: flex;
+            justify-content: space-between;
+            font-size: 40px;
+            border-bottom: 2px solid black;
+        }
+
+        .close {
+            display: flex;
+        }
+
+        .close-btn {
+            font-size: 30px;
+            border-radius: 5px;
+        }
+
+        .main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80%;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="card">
+            <div class="header">
+                <div class="hacking">Hacking</div>
+                <div class="close">
+                    <button class="close-btn">X</button>
+                </div>
+            </div>
+            <div class="main">
+                Your computer is being hacked
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let card = document.querySelector(".card");
+        let closeBtn = document.querySelector(".close-btn");
+        closeBtn.addEventListener("click", () => {
+            card.style.display = "none";
+        })
+        let body = document.querySelector("body");
+        let arr = [
+            "Hacking into your computer", "Got access to the main machine", "Getting passwords folder", "Attainign data", "Hacking windows", "sending data to server"];
+
+let c = Maths.random() * 100
+        arr.forEach((e) => {
+            let clutter = `<div class="card"  style="transform: translate(${c});>
+            <div class="header">
+                <div class="hacking">Hacking</div>
+                <div class="close">
+                    <button class="close-btn">X</button></div>
+            </div>
+            <div class="main">
+                ${e}
+            </div>
+        </div>`
+
+
+            body.insertAdjacentHTML("beforeend", clutter);
+
+        })
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>
