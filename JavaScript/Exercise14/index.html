@@ -6,12 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hacking terminal</title>
     <style>
+        body{
+              background-color: green;
+      margin: 0;
+      overflow: hidden;
+    }
+        .container{
+            background-color: green;
+        }
         .card {
             background-color: rgb(138, 138, 133);
-            width: 800px;
-            height: 300px;
+            width: 60vw;
+            height: 30vh;
             border: 2px solid black;
             display: block;
+            padding: 20px;
+            margin: 20px;
         }
 
         .header {
@@ -47,51 +57,11 @@
 <body>
 
     <div class="container">
-        <div class="card">
-            <div class="header">
-                <div class="hacking">Hacking</div>
-                <div class="close">
-                    <button class="close-btn">X</button>
-                </div>
-            </div>
-            <div class="main">
-                Your computer is being hacked
-            </div>
-        </div>
+
     </div>
 
-    <script>
-        let card = document.querySelector(".card");
-        let closeBtn = document.querySelector(".close-btn");
-        closeBtn.addEventListener("click", () => {
-            card.style.display = "none";
-        })
-        let body = document.querySelector("body");
-        let arr = [
-            "Hacking into your computer", "Got access to the main machine", "Getting passwords folder", "Attainign data", "Hacking windows", "sending data to server"];
-
-let c = Maths.random() * 100
-        arr.forEach((e) => {
-            let clutter = `<div class="card"  style="transform: translate(${c});>
-            <div class="header">
-                <div class="hacking">Hacking</div>
-                <div class="close">
-                    <button class="close-btn">X</button></div>
-            </div>
-            <div class="main">
-                ${e}
-            </div>
-        </div>`
-
-
-            body.insertAdjacentHTML("beforeend", clutter);
-
-        })
-
-
-
-
-
+    <script src="hack.js">
+     
     </script>
 
 </body>
