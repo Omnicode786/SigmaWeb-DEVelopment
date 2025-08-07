@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add User Form</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+  <style>
+  
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Poppins,sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: radial-gradient(ellipse at center, #1e1e2f, #121212);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      width: 350px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .addUser {
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 10px;
+      color: #f0f0f0;
+    }
+
+    .form form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    label {
+      font-size: 0.9rem;
+      color: #e0e0e0;
+    }
+
+    input[type="text"],
+    input[type="url"] {
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+    }
+
+    input[type="text"]::placeholder,
+    input[type="url"]::placeholder {
+      color: #ccc;
+    }
+
+    input[type="submit"] {
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      background-color: #00bcd4;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0097a7;
+    }
+    .people{
+        width: 100%;
+      max-width: 1500px;
+        height: 29%;
+        background-color: rgba(48, 47, 47, 0.068);
+        backdrop-filter: blur(20px) brightness(1.5);
+        -webkit-backdrop-filter:  blur(20px) brightness(1.5);
+
+        border-radius: 20px;
+        position: absolute;
+        top: 79%;
+        display: flex;
+       align-items: center;
+       overflow-x: auto;
+      /* scroll-snap-type: x mandatory; */
+        
+    }
+        .people::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .people::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+    }
+    .container2{
+        margin: 20px;
+        width: 15rem;
+        min-width: 200px;
+      flex-shrink: 0;
+        height: 80%;
+        background-color: rgba(0, 128, 0, 0.233);
+        backdrop-filter: blur(20px) brightness(1.5);
+        -webkit-backdrop-filter:  blur(20px) brightness(1.5);
+        text-align: center;
+        border: 2px solid rgba(255, 255, 255, 0.274);
+        border-radius: 50px;
+      scroll-snap-align: start;
+
+    }
+    .image{
+        margin-top: 10px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 20px;
+        
+    }
+    #profile{
+        border: 2px solid white;
+        
+        width: 50%;
+        border-radius: 50%;
+    }
+    .texts{
+        margin: 20px;
+        font-style: italic;
+        font-size: larger;
+        font-weight: 800;
+      filter: brightness(2) ;
+    
+        color: #ffffffa9;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="addUser">Add User</div>
+    <div class="form">
+      <form action="submit">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" placeholder="Enter username">
+
+        <label for="role">Role:</label>
+        <input type="text" id="role" name="role" placeholder="Enter role">
+
+        <label for="bio">Bio:</label>
+        <input type="text" id="bio" name="bio" placeholder="Enter bio">
+
+        <label for="photo-url">Photo URL:</label>
+        <input type="url" id="photo-url" name="photo-url" placeholder="Enter photo URL">
+
+        <input type="submit" value="Submit">
+      </form>
+     
+    </div>
+  </div>
+   <div class="people">
+        <div class="container2">
+            <div class="image"><img id="profile" src="iamge1.jpg" alt="userprofile"></div>
+            <div class="texts">
+ <div class="userName">Muzammil</div>
+            <div class="Userrole">DEv</div>
+            <div class="UserBio">I love you </div>
+            </div>
+           
+        </div>
+        
+      </div>
+
+  <script src="exercise.js"></script>
+</body>
+</html>
