@@ -15,4 +15,25 @@ function FetchTheProfile(username, callback){
 
 FetchTheProfile("Muzamml", function(profileData){
     console.log("The profile data fetched came out as: ", profileData)
-})
+}) 
+
+
+// trying instagram profile getter 
+
+
+    async function getInstaProfile() {
+        try{
+            let response = await fetch (`https://pokeapi.co/api/v2/pokemon`);
+            
+            console.log(response);
+            let data = await response.json();
+            console.log(data);
+        }
+        catch(error){
+console.log(error);
+        }
+        
+    }
+
+
+getInstaProfile();
