@@ -1,49 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chuck noris joke</title>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Inter:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chuck Norris Jokes</title>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Inter:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<style>
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+body {
+    background: linear-gradient(135deg, #028987, #0b848b);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-    <style>
-        .container{
-            background: linear-gradient(purple, rgb(236, 84, 109));
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%,-50%);
-            width: 30vw;
-            height: 90vh;
-        }
-        .title{
-                font-family: 'Poppins', sans-serif;
-            text-align: center;
-            margin-top: 40px;
-            color: white;
-            font-weight: 900;
-            font-size: 22px;
-            flex-wrap: nowrap;
-        }
-        .jokes{
-                font-family: 'Poppins', sans-serif;
-                text-align: center;
-                margin-top: 4rem;
-                font-size: 25px;
-                background-image: linear-gradient(to right, #f3ec78, #af4261);
-           -webkit-background-clip: text;
-              background-clip: text; /* For broader compatibility */
+/* Glass container */
+.container {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(18px) saturate(180%);
+    -webkit-backdrop-filter: blur(18px) saturate(180%);
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+    width: min(90%, 400px);
+    padding: 2rem;
+    text-align: center;
+    color: white;
+}
 
-        }
-    </style>
+/* Chuck Norris image */
+.image img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    padding: 5px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Title */
+.title h1 {
+    margin: 1rem 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+/* Jokes text */
+.jokes {
+    margin: 1.5rem auto;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #e5ff8d;
+    font-weight: 500;
+    text-shadow: 0 0 5px rgba(0,255,0,0.4);
+}
+
+/* Refresh button */
+.refresh {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #00ff4c, #80ff00);
+    border: none;
+    padding: 12px 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    box-shadow: 0 4px 15px rgba(0, 255, 100, 0.5);
+}
+.refresh:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 255, 100, 0.7);
+}
+.refresh:active {
+    transform: scale(0.95);
+}
+</style>
 </head>
 <body>
-    <div class="container">
-        <div class="title"><h1>Chuck Noris Jokes</h1></div>
-        <div class="jokes">hioahahd</div>
-        <button class="refresh"></button>
-    </div>
 
+<div class="container">
+    <div class="image">
+        <img class="chuck-noris" src="https://api.chucknorris.io/img/avatar/chuck-norris.png" alt="Chuck Norris">
+    </div>
+    <div class="title">
+        <h1>Chuck Norris Jokes</h1>
+    </div>
+    <div class="jokes">Loading joke...</div>
+    <button class="refresh">Refresh Joke</button>
+</div>
+
+<script>
+let jokeBox = document.querySelector(".jokes");
+let refreshBtn = document.querySelector(".refresh");
+let imageContainer = document.querySelector(".chuck-noris");
+
+async function JokeGen() {
+    let response = await fetch('https://api.chucknorris.io/jokes/random');
+    let data = await response.json();
+    imageContainer.src = data.icon_url;
+    jokeBox.innerHTML = data.value;
+    return data.value;
+}
+
+refreshBtn.addEventListener('click', async () => {
+    jokeBox.innerHTML = await JokeGen();
+    speakJoke(jokeBox.innerHTML);
+});
+
+function speakJoke(text) {
+    const utterance = new SpeechSynthesisUtterance(text);
+    const voices = speechSynthesis.getVoices();
+    const funnyVoice = voices.find(v => v.name.toLowerCase().includes("fred") || v.name.toLowerCase().includes("daniel"));
+    if (funnyVoice) utterance.voice = funnyVoice;
+    utterance.pitch = 1.4;
+    utterance.rate = 1.022;
+    utterance.volume = 1;
+    speechSynthesis.speak(utterance);
+}
+
+JokeGen();
+</script>
 
 </body>
 </html>
