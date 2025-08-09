@@ -33,7 +33,7 @@ font-family: 'Playfair Display', serif;
         border-radius: 20px 20px 20px 20px;
         position: absolute;
         z-index: 1;
-        transition: all 0.3s ease-in;
+        transition: all 0.2s ease-in;
         
     }
     .nav:hover{
@@ -43,6 +43,7 @@ font-family: 'Playfair Display', serif;
     .icon{
         width: 20%;
         height: 100%;
+        padding: 20px;
     }
     .logo{
         position: relative;
@@ -75,6 +76,7 @@ object-fit: cover
 }
 .places h3{
     margin: 15px;
+    transition: all 0.15s ease-in-out;
 }
 .places h3:hover{
     color: rgb(243, 26, 26);
@@ -116,25 +118,23 @@ object-fit: cover
 
 .text-overlay {
   position: absolute;
-  top: 0%;
+  bottom: 0%;
   width: 100%;
   text-align: center;
   color: rgba(255, 255, 255, 0.797);
   z-index: 10;
-  background: rgba(0, 0, 0, 0.3); /* translucent background */
   padding: 2rem 0;
   border-radius: 20px;
-  box-shadow: 20px 50px 20px 20px rgba(0, 0, 0, 0.3);
 }
 
 .destin {
-  font-size: 150px;
+  font-size: 100px;
    font-family: "Share Tech Mono", monospace;
    font-weight: 900;
 }
 
 .destin1 {
-  font-size: 40px;
+  font-size: 30px;
   font-family: 'Playfair Display', serif;
 }
 
@@ -155,16 +155,210 @@ object-fit: cover
   border: none;
   cursor: pointer;
   padding: 0.5rem 1rem;
-  border-radius: 5px;
+  border-radius: 25px;
+  transition: all 0.5s ease-in-out;
 }
+.slider-controls button:hover{
+  border: 2px solid rgb(6, 184, 238);
+  background-color: rgba(0, 0, 0, 0.8);
 
+}
 .hero-image.bright-flash {
   filter: brightness(1.8);
 }
 
+.destination{
+  position: absolute;
+  top: 5%;
+  width: 99.8%;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.797);
+  z-index: 10;
+  padding: 2rem 0;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.17);
+  border-radius: 0px 0px 34px 24px;
+  box-shadow: 0px -50px 20px 29px rgb(0, 0, 0, 0.17);
 
+}
+.desti{
+    font-size: 120px;
+   font-family: "Share Tech Mono", monospace;
+   font-weight: 900;
+}
+.desti1{
+    font-size: 40px;
+  font-family: 'Playfair Display', serif;
+}
+.Attraction {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
 
-</style>
+.Attraction::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('bg-culture.avif') no-repeat center center / cover;
+  opacity: 0.5; /* Adjust this value for background transparency */
+  z-index: -1; /* Keeps it behind content */
+}
+
+.main-heading{
+    position: relative;
+  font-family: 'Playfair Display', serif;
+
+  top: 8%;
+  width: 99.8%;
+  text-align: center;
+  color: #2696db;
+  z-index: 10;
+  /* padding: 2rem 0; */
+  border-radius: 20px;
+  border-radius: 0px 0px 34px 24px;
+  font-size: 90px;
+height: 16vh;
+}
+.stories{
+  font-size: 40px;
+}
+.Attraction {
+  position: relative;
+  width: 100%;
+  height: 95vh; /* Allow height to adjust for smaller screens */
+  overflow: hidden;
+  padding-bottom: 3rem; /* space for smaller screens */
+}
+
+.Attraction::before {
+  content: "";
+  position: absolute;
+  top: 0%;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: url('bg-culture.avif') no-repeat center center / cover;
+  opacity: 0.5;
+  z-index: -1;
+}
+
+.main-heading {
+  position: relative;
+  font-family: 'Playfair Display', serif;
+  top: 0%;
+  width: 100%;
+  text-align: center;
+  color: #2696db;
+  z-index: 10;
+  font-size: 90px;
+  height: auto;
+}
+
+.stories {
+  font-size: 40px;
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap; /* already helps responsiveness */
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 2rem 1rem;
+}
+
+/* Keep original styles for desktop */
+.imagecontainer {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  width: 300px;
+  height: 550px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.imagecontainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.imagecontainer:hover {
+  transform: scale(1.05);
+}
+
+.image-place {
+  position: absolute;
+  background: rgba(54, 53, 53, 0.192);
+  bottom: 5%;
+  width: 100%;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  font-size: 25px;
+  transition: all 0.3s ease;
+}
+
+/* ======================= */
+/*      RESPONSIVE FIXES   */
+/* ======================= */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .main-heading {
+    font-size: 60px;
+  }
+  .stories {
+    font-size: 28px;
+  }
+  .imagecontainer {
+    width: 400px;
+    height: 650px;
+  }
+}
+
+/* Small tablets & large phones */
+@media (max-width: 768px) {
+  .main-heading {
+    font-size: 45px;
+  }
+  .stories {
+    font-size: 22px;
+  }
+  .imagecontainer {
+    width: 90%;
+    height: auto;
+    max-width: 450px;
+  }
+  .image-place {
+    font-size: 20px;
+  }
+}
+
+/* Phones */
+@media (max-width: 480px) {
+  .main-heading {
+    font-size: 32px;
+  }
+  .stories {
+    font-size: 18px;
+  }
+  .imagecontainer {
+    width: 100%;
+    height: auto;
+  }
+  .image-place {
+    font-size: 16px;
+    padding: 8px;
+  }</style>
 </head>
 <body>
     <div class="nav">
@@ -187,6 +381,10 @@ object-fit: cover
     
 </div>
 <section class="slider">
+  <div class="destination">
+   <h1 class="desti">DESTINATIONS</h1>
+    <h4 class="desti1">for every bucket list</h4>
+</div>
   <div class="image-container">
     <img src="passu-valley-hunza-valley.jpg" class="hero-image active">
     <img src="Makli-sindh.jpg" class="hero-image">
@@ -206,8 +404,33 @@ object-fit: cover
   </div>
 </section>
 
+<section class="Attraction">
+  <div class="main-heading">
+    <h1>ATTRACTIONS</h1>
+    <p class="stories">worth a thousand stories</p>
+  </div>
 
+  <div class="card">
+    <div class="imagecontainer">
+      <img src="faisal.jpg" alt="">
+      <div class="image-place">Faisal Mosque</div>
+    </div>
+    <div class="imagecontainer">
+      <img src="Makli-sindh.jpg" alt="">
+      <div class="image-place">Makli Sindh</div>
+    </div>
+    <div class="imagecontainer">
+      <img src="minar.jpg" alt="">
+      <div class="image-place">Minare Pakistan</div>
+    </div>
+    <div class="imagecontainer">
+      <img src="derawarfort.jpg" alt="">
+      <div class="image-place">Derawar Fort</div>
+    </div>
+  </div>
+</section>
 <script>
+
     const images = document.querySelectorAll('.hero-image');
 const heading = document.querySelector('.destin');
 const subheading = document.querySelector('.destin1');
