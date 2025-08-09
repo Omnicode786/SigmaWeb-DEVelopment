@@ -21,13 +21,17 @@ FetchTheProfile("Muzamml", function(profileData){
 // trying instagram profile getter 
 
 
-    async function getInstaProfile() {
+    async function getPokemons() {
         try{
             let response = await fetch (`https://pokeapi.co/api/v2/pokemon`);
             
             console.log(response);
             let data = await response.json();
             console.log(data);
+            data.results.forEach(pokemon => {
+                console.log("name of pokemon", pokemon.name)
+                
+            });
         }
         catch(error){
 console.log(error);
@@ -36,4 +40,4 @@ console.log(error);
     }
 
 
-getInstaProfile();
+getPokemons();

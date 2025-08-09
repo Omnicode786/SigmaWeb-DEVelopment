@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FEtch multiple users</title>
+</head>
+<body>
+    
+<!-- Pokémon Card Template -->
+ <div class="container">
+<div class="pokemon-card">
+    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png" alt="Pokemon Name" class="pokemon-img">
+    <h2 class="pokemon-name">Pikachu</h2>
+    <p class="pokemon-type">Electric</p>
+</div>
+ </div>
+
+
+<style>
+    .container{
+        display: flex;
+        background-color: black;
+        flex-wrap: wrap;
+    }
+.pokemon-card {
+    background: linear-gradient(145deg, #2b2828, #08b63c);
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    padding: 20px;
+    width: 220px;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    font-family: 'Poppins', sans-serif;
+    margin: 20px;
+}
+
+.pokemon-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+.pokemon-img {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 15px;
+}
+
+.pokemon-name {
+    font-size: 1.5rem;
+    color: #fcf0f0;
+    margin: 0;
+}
+
+.pokemon-type {
+    background: #ffcc00;
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    color: #333;
+    font-weight: bold;
+    margin-top: 8px;
+}
+</style>
+
+<script src="exercise.js"></script>
+
+</body>
+</html>
