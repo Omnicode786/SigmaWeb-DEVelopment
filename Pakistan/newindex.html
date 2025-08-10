@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enchanting Pakistan</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Bebas+Neue&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+<style>
+/* ─── Root Design Tokens ─────────────────────────────────── */
+:root{
+  --color-surface:#fffdfd;
+  --color-background:#fcfcf9;
+  --color-primary:#21808d;
+  --color-primary-hover:#1d7480;
+  --color-text:#13343b;
+  --color-text-secondary:#626c71;
+  --radius-lg:12px;
+  --shadow-md:0 4px 6px rgb(0 0 0 / .05);
+  --shadow-lg:0 10px 15px rgb(0 0 0 / .06);
+  --font-heading:"Share Tech Mono",monospace;
+  --font-body:"Playfair Display",serif;
+}
+
+/* ─── Global Reset ───────────────────────────────────────── */
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{
+  font-family:var(--font-body);
+  color:var(--color-text);
+  background:var(--color-background);
+  overflow-x:hidden;
+}
+
+/* ─── Navigation Bar ─────────────────────────────────────── */
+.nav{
+  position:fixed;top:0;left:0;right:0;
+  display:flex;justify-content:space-between;align-items:center;
+  height:10vh;padding:0 2rem;
+  backdrop-filter:blur(15px) brightness(1.3);
+  background:rgba(77,75,75,.22);
+  border-bottom:1px solid rgba(0,0,0,.05);
+  z-index:20;
+}
+.logo{width:130px}
+.places{display:flex;gap:1.5rem;font-size:1.1rem;color:#fff;cursor:pointer}
+.places h3:hover{color:#ff4242;transition:.2s}
+
+/* ─── Hero Section (video) ───────────────────────────────── */
+#hero-section{position:relative;width:100%;min-height:100vh}
+.hero-video{
+  position:absolute;top:0;left:0;width:100%;height:100%;
+  object-fit:cover;z-index:-1
+}
+
+/* ─── Slider Overlay Titles ─────────────────────────────── */
+.slider{position:relative;width:100%;min-height:100vh;overflow:hidden}
+.image-container{width:100%;height:100%}
+.hero-image{
+  position:absolute;width:100%;height:100%;object-fit:cover;opacity:0;
+  transition:opacity 1s
+}
+.hero-image.active{opacity:1}
+.text-overlay,.destination{
+  position:absolute;width:100%;text-align:center;color:#fff9;
+  padding:2rem 0;z-index:2
+}
+.text-overlay{bottom:0}
+.destination{top:12vh;background:rgba(0,0,0,.25)}
+.destin,.desti{font-family:var(--font-heading);font-size:clamp(2.5rem,8vw,6rem);font-weight:900}
+.destin1,.desti1{font-size:clamp(1rem,2.5vw,2rem)}
+
+/* Slider buttons */
+.slider-controls{position:absolute;bottom:40px;left:0;right:0;display:flex;justify-content:space-between;padding:0 2rem;z-index:2}
+.slider-controls button{
+  background:rgba(0,0,0,.6);color:#fff;border:none;font-size:2rem;border-radius:25px;padding:.3rem 1rem;cursor:pointer
+}
+.slider-controls button:hover{border:2px solid #06b8ee;background:rgba(0,0,0,.8)}
+
+/* ─── Generic Section Wrapper ───────────────────────────── */
+section{width:100%;padding:6rem 0 4rem;min-height:auto}
+
+/* ─── Attractions Grid ──────────────────────────────────── */
+.attractions{background:var(--color-surface)}
+.attractions-grid{
+  display:grid;gap:2rem;width:90%;margin:0 auto;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr))
+}
+.attraction-card{
+  border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-md);cursor:pointer;position:relative
+}
+.attraction-image{height:350px;overflow:hidden;position:relative}
+.attraction-image img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.attraction-card:hover img{transform:scale(1.08)}
+.attraction-overlay{
+  position:absolute;bottom:0;left:0;right:0;
+  background:linear-gradient(to top,#0009 0%,transparent 60%);
+  color:#fff;padding:1.3rem
+}
+.attraction-overlay h3{font-size:1.4rem;font-weight:600;margin-bottom:.2rem;color:#deb887}
+
+/* ─── Experiences Grid ───────────────────────────────────── */
+.experiences{background:linear-gradient(135deg,#f5deab,#f8cfcf)}
+.experiences-grid{
+  display:grid;gap:2rem;width:90%;margin:0 auto;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr))
+}
+.experience-card{
+  background:#fff;padding:2rem;border-radius:var(--radius-lg);
+  text-align:center;border:1px solid #ececec;transition:.3s;box-shadow:var(--shadow-md)
+}
+.experience-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg)}
+.experience-icon{font-size:3rem;margin-bottom:.7rem}
+.experience-category{color:var(--color-primary);font-weight:600;text-transform:uppercase;letter-spacing:1px;font-size:.85rem;margin-bottom:.5rem}
+
+/* ─── Culture Section ───────────────────────────────────── */
+.culture{position:relative;background:#8b4513}
+.culture-bg{position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,.5),rgba(0,0,0,.7));z-index:0}
+.culture .container{position:relative;z-index:1;width:90%;margin:0 auto}
+.crafts-grid{
+  display:grid;gap:2rem;margin-top:2rem;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr))
+}
+.craft-item{
+  background:rgba(255,255,255,.1);backdrop-filter:blur(8px);
+  padding:1.2rem;border-radius:var(--radius-lg);text-align:center;color:#fff;
+  transition:transform .3s
+}
+.craft-item:hover{transform:translateY(-4px);background:rgba(255,255,255,.15)}
+.craft-item img{width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:.8rem}
+
+/* ─── Food Grid ─────────────────────────────────────────── */
+.food{background:linear-gradient(135deg,#e9d3ff,#ffd4e3)}
+.food-grid{
+  display:grid;gap:2rem;width:90%;margin:0 auto;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr))
+}
+.food-item{
+  background:#fff;padding:2rem;border-radius:var(--radius-lg);
+  text-align:center;border:1px solid #ececec;box-shadow:var(--shadow-md);
+  transition:.3s
+}
+.food-item:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.food-icon{font-size:3rem;margin-bottom:1rem}
+
+/* ─── Trip Planner ─────────────────────────────────────── */
+.plan-trip{background:var(--color-surface)}
+.trip-planner{
+  display:grid;gap:3rem;width:90%;margin:0 auto;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr))
+}
+.planner-form{background:var(--color-background);padding:2rem;border:1px solid #eee;border-radius:var(--radius-lg);box-shadow:var(--shadow-md)}
+.plan-btn{background:#8b4513;color:#fff;padding:.8rem 1.2rem;border:none;border-radius:6px;width:100%;margin-top:1rem;font-weight:600;cursor:pointer}
+.plan-btn:hover{background:#a0522d}
+
+/* ─── Headings ─────────────────────────────────────────── */
+.section-title,.main-heading{font-family:var(--font-heading);font-size:clamp(2.5rem,6vw,4rem);text-align:center;margin-bottom:.5rem}
+.section-subtitle,.stories{font-size:clamp(1rem,1.5vw,1.4rem);text-align:center;color:var(--color-text-secondary)}
+
+/* ─── Media Queries ────────────────────────────────────── */
+@media (max-width:480px){
+  .nav{padding:0 1rem;height:60px}
+  .places h3{font-size:.9rem}
+  .slider-controls button{font-size:1.5rem}
+  .craft-item img{height:150px}
+}
+</style>
+</head>
+<body>
+
+<!-- ── Nav ───────────────────────── -->
+<nav class="nav">
+  <img class="logo" src="logo.png" alt="Logo">
+  <div class="places">
+    <h3>Destinations.</h3>
+    <h3>Experiences.</h3>
+    <h3>Plan Trip.</h3>
+  </div>
+</nav>
+
+<!-- ── Hero Video ─────────────────── -->
+<section id="hero-section">
+  <video muted autoplay loop class="hero-video" src="pakistan.mp4"></video>
+</section>
+
+<!-- ── Image Slider ───────────────── -->
+<section class="slider">
+  <div class="destination">
+    <h1 class="desti">DESTINATIONS</h1>
+    <h4 class="desti1">for every bucket list</h4>
+  </div>
+
+  <div class="image-container">
+    <img src="passu-valley-hunza-valley.jpg" class="hero-image active" alt="Hunza Valley">
+    <img src="Makli-sindh.jpg"               class="hero-image"        alt="Makli Necropolis">
+    <img src="Shahi-Qila-Lahore.jpg"         class="hero-image"        alt="Lahore Fort">
+    <img src="quaid-residency-2048x1365.jpg" class="hero-image"        alt="Quaid's Residency">
+  </div>
+
+  <div class="text-overlay">
+    <h1 class="destin">HUNZA VALLEY</h1>
+    <h4 class="destin1">Cultural Gem of Northern Pakistan</h4>
+  </div>
+
+  <div class="slider-controls">
+    <button id="prev">⟵</button>
+    <button id="next">⟶</button>
+  </div>
+</section>
+
+<!-- ── Attractions ────────────────── -->
+<section class="attractions" id="attractions">
+  <h2 class="section-title">ATTRACTIONS</h2>
+  <p  class="section-subtitle">worth a thousand stories</p>
+
+  <div class="attractions-grid">
+    <!-- Sample cards -->
+    <div class="attraction-card">
+      <div class="attraction-image">
+        <img src="https://images.unsplash.com/photo-1562164494-90b7a0d86a4f?auto=format&fit=crop&w=800&q=80" alt="Badshahi Mosque">
+        <div class="attraction-overlay">
+          <h3>Badshahi Mosque</h3>
+          <p>Lahore • 17th-century Mughal masterpiece</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="attraction-card">
+      <div class="attraction-image">
+        <img src="https://images.unsplash.com/photo-1584955705427-43c5c93442d2?auto=format&fit=crop&w=800&q=80" alt="Derawar Fort">
+        <div class="attraction-overlay">
+          <h3>Derawar Fort</h3>
+          <p>Cholistan Desert • 40-bastion fortress</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="attraction-card">
+      <div class="attraction-image">
+        <img src="https://images.unsplash.com/photo-1508673665645-15762db986af?auto=format&fit=crop&w=800&q=80" alt="K2">
+        <div class="attraction-overlay">
+          <h3>K2 Base Camp</h3>
+          <p>Karakoram • The Savage Mountain</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Experiences ────────────────── -->
+<section class="experiences" id="experiences">
+  <h2 class="section-title">EXPERIENCES</h2>
+  <p  class="section-subtitle">create unforgettable memories</p>
+
+  <div class="experiences-grid">
+    <div class="experience-card">
+      <div class="experience-icon">🏔️</div>
+      <h3>Mountain Trekking</h3>
+      <p class="experience-category">Adventure</p>
+      <p>Trek the world’s highest ranges including K2, Nanga Parbat and the Karakoram.</p>
+    </div>
+
+    <div class="experience-card">
+      <div class="experience-icon">🏛️</div>
+      <h3>Heritage Tours</h3>
+      <p class="experience-category">Culture</p>
+      <p>Discover centuries-old Islamic & Mughal architecture from Lahore to Thatta.</p>
+    </div>
+
+    <div class="experience-card">
+      <div class="experience-icon">🏜️</div>
+      <h3>Desert Safari</h3>
+      <p class="experience-category">Adventure</p>
+      <p>Ride camels across the vast Thar & Cholistan deserts; camp under starry skies.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Cultural Heritage ──────────── -->
+<section class="culture" id="culture">
+  <div class="culture-bg"></div>
+  <div class="container">
+    <h2 class="section-title" style="color:#fff">CULTURAL HERITAGE</h2>
+    <p  class="section-subtitle" style="color:#ffd">rich traditions spanning centuries</p>
+
+    <div class="crafts-grid">
+      <!-- Pottery -->
+      <div class="craft-item">
+        <img src="https://images.unsplash.com/photo-1616001905026-dca9fa344f9d?auto=format&fit=crop&w=800&q=80" alt="Blue Pottery">
+        <h4>Blue Pottery</h4>
+        <p>Hand-painted ceramic in vibrant blues from Multan.</p>
+      </div>
+
+      <!-- Carpets -->
+      <div class="craft-item">
+        <img src="https://images.unsplash.com/photo-1603368557228-7d01ade16070?auto=format&fit=crop&w=800&q=80" alt="Carpet Weaving">
+        <h4>Carpet Weaving</h4>
+        <p>Intricate hand-knotted Persian & Bokhara designs.</p>
+      </div>
+
+      <!-- Metalwork -->
+      <div class="craft-item">
+        <img src="https://images.unsplash.com/photo-1531910063091-b1837a40a0ac?auto=format&fit=crop&w=800&q=80" alt="Brass Ware">
+        <h4>Brass & Copper</h4>
+        <p>Exquisite metalware from the bazaars of Peshawar.</p>
+      </div>
+
+      <!-- Embroidery -->
+      <div class="craft-item">
+        <img src="https://images.unsplash.com/photo-1598970434795-0c54fe7c0642?auto=format&fit=crop&w=800&q=80" alt="Embroidery">
+        <h4>Mirrorwork Embroidery</h4>
+        <p>Vibrant needlework & mirrors from Sindh.</p>
+      </div>
+
+      <!-- Jewelry -->
+      <div class="craft-item">
+        <img src="https://images.unsplash.com/photo-1581349485842-0e205b4bdda6?auto=format&fit=crop&w=800&q=80" alt="Gemstone Jewelry">
+        <h4>Gemstone Jewelry</h4>
+        <p>Hand-crafted pieces featuring Hunza’s precious stones.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Culinary Delights ──────────── -->
+<section class="food" id="food">
+  <h2 class="section-title">CULINARY DELIGHTS</h2>
+  <p  class="section-subtitle">taste the flavors of Pakistan</p>
+
+  <div class="food-grid">
+    <div class="food-item">
+      <div class="food-icon">🍚</div>
+      <h3>Biryani</h3>
+      <p>Aromatic basmati rice layered with tender meat & spices.</p>
+    </div>
+    <div class="food-item">
+      <div class="food-icon">🍖</div>
+      <h3>Karahi</h3>
+      <p>Sizzling tomato-based curry cooked in a cast-iron wok.</p>
+    </div>
+    <div class="food-item">
+      <div class="food-icon">🍲</div>
+      <h3>Nihari</h3>
+      <p>Slow-cooked beef stew—breakfast of champions.</p>
+    </div>
+    <div class="food-item">
+      <div class="food-icon">🥩</div>
+      <h3>Chapli Kebab</h3>
+      <p>Flat, spiced meat patties from Peshawar.</p>
+    </div>
+    <div class="food-item">
+      <div class="food-icon">🥞</div>
+      <h3>Halwa Puri</h3>
+      <p>A sweet-savory brunch classic from Lahore.</p>
+    </div>
+    <div class="food-item">
+      <div class="food-icon">🥛</div>
+      <h3>Lassi</h3>
+      <p>Cooling yogurt drink—sweet or salted.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Plan Your Trip ─────────────── -->
+<section class="plan-trip" id="plan-trip">
+  <h2 class="section-title">PLAN YOUR TRIP</h2>
+  <p  class="section-subtitle">let us craft the perfect journey</p>
+
+  <div class="trip-planner">
+    <div class="planner-form">
+      <label>Choose Destination
+        <select id="destination" class="form-control" style="width:100%;padding:.6rem;margin-top:.3rem">
+          <option value="">--Select destination--</option>
+          <option>Northern Areas (Hunza, Skardu, K2)</option>
+          <option>Punjab Heritage (Lahore, Multan)</option>
+          <option>Sindh Culture (Karachi, Thatta)</option>
+          <option>Balochistan Adventure (Quetta, Gwadar)</option>
+          <option>Khyber Pakhtunkhwa (Peshawar, Swat)</option>
+        </select>
+      </label>
+
+      <label style="display:block;margin-top:1rem">Trip Duration
+        <select id="duration" class="form-control" style="width:100%;padding:.6rem;margin-top:.3rem">
+          <option value="">--Select duration--</option>
+          <option>3-5 days</option>
+          <option>7-10 days</option>
+          <option>14+ days</option>
+        </select>
+      </label>
+
+      <label style="display:block;margin-top:1rem">Experience Type
+        <select id="experience" class="form-control" style="width:100%;padding:.6rem;margin-top:.3rem">
+          <option value="">--Select experience--</option>
+          <option>Adventure</option>
+          <option>Culture</option>
+          <option>Nature</option>
+          <option>Luxury</option>
+        </select>
+      </label>
+
+      <button class="plan-btn">Plan My Trip</button>
+    </div>
+
+    <div class="trip-highlights">
+      <h3 style="color:#8b4513">Why Visit Pakistan?</h3>
+      <ul style="line-height:1.6;margin-top:1rem">
+        <li>Five of the world’s 14 eight-thousanders.</li>
+        <li>Six UNESCO World Heritage Sites.</li>
+        <li>Rich Mughal & Islamic architecture.</li>
+        <li>Diverse landscapes—glaciers, deserts, coasts.</li>
+        <li>Legendary hospitality & vibrant culture.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ── JavaScript for Slider ──────── -->
+<script>
+const images=document.querySelectorAll('.hero-image');
+const heading=document.querySelector('.destin');
+const subheading=document.querySelector('.destin1');
+const nextBtn=document.getElementById('next');
+const prevBtn=document.getElementById('prev');
+const titles=[
+  {title:"HUNZA VALLEY",subtitle:"Cultural Gem of Northern Pakistan"},
+  {title:"MOHENJO DARO",subtitle:"Lost City of the Indus Valley"},
+  {title:"SHAHI QILA",subtitle:"Mughal Majesty in Lahore"},
+  {title:"QUAID’S RESIDENCY",subtitle:"Home of the Nation’s Founder"}
+];
+let current=0;
+function updateSlide(i){
+  images.forEach(img=>img.classList.remove('active'));
+  images[i].classList.add('active');
+  heading.textContent=titles[i].title;
+  subheading.textContent=titles[i].subtitle;
+}
+nextBtn.onclick=()=>{current=(current+1)%images.length;updateSlide(current);}
+prevBtn.onclick=()=>{current=(current-1+images.length)%images.length;updateSlide(current);}
+updateSlide(current);
+</script>
+</body>
+</html>
