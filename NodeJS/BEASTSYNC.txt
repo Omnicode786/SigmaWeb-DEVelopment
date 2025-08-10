@@ -1,0 +1,1 @@
+Muzammil is the BEAST and this is synchronous write file function from fs
