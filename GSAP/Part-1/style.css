@@ -1,0 +1,75 @@
+
+:root{
+    --startColor1: #ff416c;
+    --endColor1: #ff4b2b;
+      --startColor2: #2193b0;
+    --endColor2: #6dd5ed;
+
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: gilroy, sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+body{
+    background-color: gray;
+}
+
+#box1{
+    margin: 10px;
+    background-color: crimson;
+    width: 400px;
+    height: 400px;
+    padding: 40px;
+ 
+
+}
+.heading-container{
+    margin-top: 80px;
+}
+.heading{
+       text-align: center;
+    font-size: 60px;
+    color: white;
+}
+#box2{
+    background-color:crimson;
+    width: 400px;
+    height: 400px;
+    padding: 40px;
+
+}
+
+
+ .circle {
+      width: 350px;
+      height: 350px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 22px;
+      font-weight: 600;
+      cursor: pointer;
+      user-select: none;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+      background: linear-gradient(135deg, var(--startColor1),var(--endColor1));
+    margin: 20px;
+    }
+
+    /* Different color for second circle */
+    #circle2 {
+      background: linear-gradient(135deg, var(--startColor1),var(--endColor1));
+      box-shadow: 0 8px 20px rgba(33, 147, 176, 0.6);
+    }
+
