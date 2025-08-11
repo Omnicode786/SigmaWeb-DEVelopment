@@ -1,0 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family:gilroy, 'Gill Sans', 'Gill Sans MT',  'Trebuchet MS', sans-serif, sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+body{
+  background-color: black;
+}
+
+h1{
+  color: white;
+}

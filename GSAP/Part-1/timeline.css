@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: gilroy, sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+
+#box1{
+
+    width: 230px;
+    height: 230px;
+    background-color: rgb(231, 99, 99);
+
+}
+#box2{
+
+    width: 230px;
+    height: 230px;
+    background-color: lightseagreen;
+
+}
+    #box3{
+
+    width: 230px;
+    height: 230px;
+    background-color: royalblue;
+
+    }

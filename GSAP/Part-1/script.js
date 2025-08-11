@@ -23,7 +23,7 @@ gsap.from("#box2", {
     duration: 3,
     delay: 1,
     rotate: 360,              /* 360 degree se spin karta hua */
-    backgroundColor: "crimson", /* background crimson se start */
+    backgroundColor: "rgb(29, 88, 216)", /* background crimson se start */
     borderRadius: "40px",
     scale: 0.5,
     yolo: true,
