@@ -1,0 +1,296 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{url}
+\usepackage{hyperref}
+
+% Define colors
+\definecolor{primaryblue}{RGB}{41, 128, 185}
+\definecolor{darkgray}{RGB}{52, 73, 94}
+\definecolor{lightgray}{RGB}{149, 165, 166}
+
+% Header and footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textcolor{primaryblue}{\textbf{Summer Projects Portfolio 2025}}}
+\fancyhead[R]{\textcolor{darkgray}{Muzammil Alam}}
+\fancyfoot[C]{\thepage}
+
+% Title formatting
+\titleformat{\section}{\Large\bfseries\color{primaryblue}}{}{0em}{}[\titlerule]
+\titleformat{\subsection}{\large\bfseries\color{darkgray}}{}{0em}{}
+
+\begin{document}
+
+% Title Page
+\begin{titlepage}
+\centering
+\vspace*{2cm}
+
+{\Huge\bfseries\color{primaryblue} Summer Projects Portfolio}
+
+\vspace{1cm}
+
+{\Large\color{darkgray} A Collection of Development Projects}
+
+\vspace{1.5cm}
+
+{\large\textbf{Muzammil Alam}}\\
+\vspace{0.5cm}
+{\textcolor{lightgray}{@Omnicode786}}
+
+\vspace{2cm}
+
+{\large Summer 2025}
+
+\vspace{3cm}
+
+\textcolor{darkgray}{\textit{Showcasing innovative web applications, AI-powered tools, and interactive dashboards developed during summer vacation.}}
+
+\end{titlepage}
+
+\newpage
+
+% Project 1: BEN 10 Secure Chat
+\section{BEN 10 Secure Chat Application}
+
+\subsection{Project Overview}
+A real-time encrypted chat application featuring secure communication channels with AES-256 encryption. The application allows users to create and join secure chat rooms with unique room IDs.
+
+\subsection{Key Features}
+\begin{itemize}[leftmargin=1.5cm]
+\item \textbf{Real-time Communication:} Instant messaging with WebSocket implementation
+\item \textbf{AES-256 Encryption:} End-to-end encryption for secure conversations
+\item \textbf{Room-based System:} Create and join private chat rooms with unique IDs
+\item \textbf{User Authentication:} Agent-based user identification system
+\item \textbf{Responsive Design:} Clean, modern interface optimized for all devices
+\end{itemize}
+
+\subsection{Technical Implementation}
+\begin{itemize}[leftmargin=1.5cm]
+\item \textbf{Frontend:} HTML5, CSS3, JavaScript (ES6+)
+\item \textbf{Backend:} Node.js with Socket.io for real-time communication
+\item \textbf{Encryption:} CryptoJS library for AES-256 implementation
+\item \textbf{Hosting:} Local development server (localhost:5000)
+\end{itemize}
+
+\subsection{Notable Achievements}
+Successfully implemented secure communication protocols with room-based chat functionality. The application demonstrates proficiency in real-time web technologies and cryptographic security measures.
+
+\newpage
+
+% Project 2: AI Code Reviewer
+\section{AI Code Reviewer Tool}
+
+\subsection{Project Overview}
+A professional code analysis platform powered by Google Gemini AI that provides comprehensive code reviews, bug detection, and optimization suggestions for developers.
+
+\subsection{Key Features}
+\begin{itemize}[leftmargin=1.5cm]
+\item \textbf{AI-Powered Analysis:} Integration with Google Gemini API for intelligent code review
+\item \textbf{Multi-Language Support:} JavaScript, Python, Java, and other popular languages
+\item \textbf{Comprehensive Reports:} Bug detection, security analysis, performance review
+\item \textbf{Code Quality Metrics:} Maintainability scoring and best practices evaluation
+\item \textbf{Export Functionality:} Results can be exported and copied for documentation
+\end{itemize}
+
+\subsection{Analysis Categories}
+\begin{itemize}[leftmargin=1.5cm]
+\item \textbf{Bug Detection:} Identifies potential runtime errors and logic issues
+\item \textbf{Security Analysis:} Scans for security vulnerabilities and threats
+\item \textbf{Performance Review:} Suggests optimizations for better performance
+\item \textbf{Code Quality:} Evaluates code structure and readability
+\item \textbf{Best Practices:} Recommends industry-standard coding practices
+\end{itemize}
+
+\subsection{Technical Implementation}
+\begin{itemize}[leftmargin=1.5cm]
+\item \textbf{Frontend:} React.js with modern UI components
+\item \textbf{API Integration:} Google Gemini AI API for code analysis
+\item \textbf{Code Processing:} Syntax highlighting and error detection
+\item \textbf{Export System:} PDF and text export functionality
+\end{itemize}
+
+\newpage
+
+% Project 3: GitHub Profile Search
+\section{GitHub Profile Search Tool}
+
+\subsection{Project Overview}
+A comprehensive GitHub profile search and analysis tool that provides detailed insights into developer profiles, repositories, and coding activity.
+
+\subsection{Key Features}
+\begin{itemize}[leftmargin=1.5cm]
+\item \textbf{Profile Search:} Search and display GitHub user profiles
+\item \textbf{Repository Analytics:} Detailed repository information and statistics
+\item \textbf{Activity Tracking:} Followers, following, and contribution analysis
+\item \textbf{Language Statistics:} Programming language usage breakdown
+\item \textbf{Recent Activity:} Latest repository updates and contributions
+\end{itemize}
+
+\subsection{Profile Information Displayed}
+\begin{itemize}[leftmargin=1.5cm]
+\item \textbf{Basic Info:} Username, bio, join date, location
+\item \textbf{Statistics:} Repository count, followers, following
+\item \textbf{Recent Repositories:} Latest projects with language breakdown
+\item \textbf{Activity Timeline:} Recent updates and contributions
+\end{itemize}
+
+\subsection{Technical Implementation}
+\begin{itemize}[leftmargin=1.5cm]
+\item \textbf{API Integration:} GitHub REST API v4 for data retrieval
+\item \textbf{Frontend:} Vanilla JavaScript with responsive design
+\item \textbf{Data Visualization:} Charts and graphs for statistics
+\item \textbf{Error Handling:} Robust error handling for API failures
+\end{itemize}
+
+\newpage
+
+% Project 4: Recipe Finder
+\section{Smart Recipe Finder Application}
+
+\subsection{Project Overview}
+An intelligent recipe discovery platform that helps users find recipes based on available ingredients, dietary preferences, and meal types with advanced filtering capabilities.
+
+\subsection{Key Features}
+\begin{itemize}[leftmargin=1.5cm]
+\item \textbf{Ingredient-Based Search:} Find recipes using available ingredients
+\item \textbf{Advanced Filtering:} Meal type, dietary restrictions, cuisine preferences
+\item \textbf{Smart Suggestions:} AI-powered recipe recommendations
+\item \textbf{Nutritional Information:} Calorie count and nutritional breakdown
+\item \textbf{Save Favorites:} Bookmark and organize favorite recipes
+\end{itemize}
+
+\subsection{Filter Options}
+\begin{itemize}[leftmargin=1.5cm]
+\item \textbf{Meal Types:} Breakfast, lunch, dinner, snacks, desserts
+\item \textbf{Dietary Preferences:} Vegetarian, vegan, gluten-free, keto
+\item \textbf{Cuisine Types:} Italian, Asian, Mexican, Mediterranean
+\item \textbf{Cooking Time:} Quick meals, standard prep, elaborate dishes
+\end{itemize}
+
+\subsection{Technical Implementation}
+\begin{itemize}[leftmargin=1.5cm]
+\item \textbf{Recipe API:} Integration with Spoonacular or similar recipe APIs
+\item \textbf{Frontend:} React.js with responsive material design
+\item \textbf{Search Algorithm:} Intelligent matching of ingredients to recipes
+\item \textbf{Local Storage:} Save user preferences and favorite recipes
+\end{itemize}
+
+\newpage
+
+% Project 5: Smart Budget Tracker
+\section{Smart Budget Tracker with AI Insights}
+
+\subsection{Project Overview}
+A comprehensive personal finance management tool featuring AI-powered insights, expense tracking, and financial advice using Google Gemini AI integration.
+
+\subsection{Key Features}
+\begin{itemize}[leftmargin=1.5cm]
+\item \textbf{Expense Tracking:} Add, categorize, and monitor expenses
+\item \textbf{AI Financial Insights:} Gemini AI-powered spending analysis
+\item \textbf{Visual Analytics:} Charts and graphs for spending patterns
+\item \textbf{Budget Planning:} Set and track budget goals
+\item \textbf{Export Reports:} Generate detailed financial reports
+\end{itemize}
+
+\subsection{Analytics Dashboard}
+\begin{itemize}[leftmargin=1.5cm]
+\item \textbf{Spending by Category:} Pie charts and breakdowns
+\item \textbf{Monthly Trends:} Time-based spending analysis
+\item \textbf{Expense Timeline:} Daily expense tracking
+\item \textbf{Budget vs Actual:} Compare planned vs actual spending
+\end{itemize}
+
+\subsection{AI Integration}
+The application features smart financial suggestions powered by Google Gemini AI, providing personalized advice on spending habits, budget optimization, and financial goal setting.
+
+\subsection{Technical Implementation}
+\begin{itemize}[leftmargin=1.5cm]
+\item \textbf{Frontend:} Vue.js with Chart.js for data visualization
+\item \textbf{AI Integration:} Google Gemini API for financial insights
+\item \textbf{Data Storage:} Local storage with export functionality
+\item \textbf{Security:} Encrypted storage for sensitive financial data
+\end{itemize}
+
+\newpage
+
+% Project 6: Personal Dashboard
+\section{Personal Dashboard Application}
+
+\subsection{Project Overview}
+A comprehensive personal productivity dashboard featuring weather updates, news headlines, task management, note-taking, and AI-powered suggestions in a unified interface.
+
+\subsection{Key Features}
+\begin{itemize}[leftmargin=1.5cm]
+\item \textbf{Weather Integration:} Real-time weather data with detailed metrics
+\item \textbf{News Headlines:} Curated news from multiple sources
+\item \textbf{Task Management:} Todo list with priority and completion tracking
+\item \textbf{Note Taking:} Quick notes and reminders system
+\item \textbf{AI Suggestions:} Intelligent recommendations and insights
+\item \textbf{Customizable Widgets:} Modular design with drag-and-drop functionality
+\end{itemize}
+
+\subsection{Widget Components}
+\begin{itemize}[leftmargin=1.5cm]
+\item \textbf{Weather Widget:} Temperature, humidity, feels-like temperature
+\item \textbf{News Widget:} Headlines from technology, finance, and science sources
+\item \textbf{Todo Widget:} Task creation, completion, and organization
+\item \textbf{Notes Widget:} Quick note-taking and storage
+\item \textbf{AI Widget:} Ben 10-themed AI assistant for general queries
+\end{itemize}
+
+\subsection{Data Sources}
+\begin{itemize}[leftmargin=1.5cm]
+\item \textbf{Weather API:} OpenWeatherMap or similar service
+\item \textbf{News API:} Multiple news sources aggregation
+\item \textbf{AI Integration:} Custom AI assistant with personality
+\end{itemize}
+
+\subsection{Technical Implementation}
+\begin{itemize}[leftmargin=1.5cm]
+\item \textbf{Frontend:} Modern JavaScript with CSS Grid layout
+\item \textbf{API Management:} Multiple external API integrations
+\item \textbf{Local Storage:} Persistent data for tasks and notes
+\item \textbf{Responsive Design:} Mobile-first approach with adaptive layout
+\end{itemize}
+
+\newpage
+
+% Summary Page
+\section{Project Portfolio Summary}
+
+\subsection{Technical Skills Demonstrated}
+\begin{itemize}[leftmargin=1.5cm]
+\item \textbf{Frontend Development:} HTML5, CSS3, JavaScript (ES6+), React.js, Vue.js
+\item \textbf{Backend Development:} Node.js, WebSocket implementation, API integration
+\item \textbf{AI Integration:} Google Gemini AI, intelligent data processing
+\item \textbf{Security:} AES-256 encryption, secure communication protocols
+\item \textbf{Data Visualization:} Chart.js, responsive analytics dashboards
+\item \textbf{API Development:} RESTful APIs, third-party service integration
+\end{itemize}
+
+\subsection{Project Themes}
+All projects demonstrate a focus on:
+\begin{itemize}[leftmargin=1.5cm]
+\item \textbf{User Experience:} Intuitive interfaces and responsive design
+\item \textbf{Security:} Implementation of encryption and secure practices
+\item \textbf{AI Integration:} Leveraging artificial intelligence for enhanced functionality
+\item \textbf{Real-time Features:} Live updates and dynamic content
+\item \textbf{Practical Applications:} Solutions for real-world problems
+\end{itemize}
+
+\subsection{Development Timeline}
+All projects were completed during Summer 2025 as part of intensive learning and development period, showcasing rapid skill acquisition and practical application of modern web technologies.
+
+\vspace{2cm}
+
+\begin{center}
+\textcolor{darkgray}{\textit{For more detailed information about any of these projects, feel free to reach out or check future LinkedIn posts for in-depth project breakdowns.}}
+\end{center}
+
+\end{document}
