@@ -1,0 +1,25 @@
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+
+  html, body {
+    height: 100%;
+    scroll-behavior: smooth; /* smooth scroll when jumping */
+  }
+
+body{
+background-color: #111;
+}
+
+  #main{
+    height: 200px;
+    width: 100%;
+    background-color: red;
+  }
+
+  svg{
+    background-color: wheat;
+  }
