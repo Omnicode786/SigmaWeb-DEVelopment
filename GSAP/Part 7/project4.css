@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: gilroy, sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+body{
+    background-color: #111;
+}
+#page1, #page2, #page3{
+    height: 100vh;
+    width: 100%;
+}
+#move{
+    background-color: #D8FF04;
+}
+.marque{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3vw;
+    padding: 0 1.4vw;
+}
+.marque h1{
+    font-size: 80px;
+    font-weight: 200;
+}
+.marque img{
+    height: 80px;
+}
