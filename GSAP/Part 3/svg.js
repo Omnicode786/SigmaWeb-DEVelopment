@@ -32,12 +32,35 @@ let main = document.querySelector("#main");
 
 // })
 
-main.addEventListener("mousemove", (dets) => {
+let isclicked = false;
+main.addEventListener("mousedown" // mouse down measn the click has been initiated
+    , 
+    () => {
+isclicked = true;
+    }
+)
+main.addEventListener("mouseup",()=>{
+isclicked= false;
+})
 
+
+main.addEventListener("mousemove", (dets) => {
+ if (!isclicked){ 
+     gsap.to("svg path", {
+             attr:{d:finalPath},
+               duration: 1.5,
+        ease: "elastic.out(1, 0.3)" 
+            
+            
+            })
+             
+    return; 
+   
+}
             console.log(dets);
             // this has x and y 
             //  let y = dets.offsetY;
-            initialPath = `M 10 100 Q 250 ${dets.y} 490 100`,
+            initialPath = `M 10 100 Q ${dets.x} ${dets.y} 490 100`,
             gsap.to("svg path", {
              attr:{d:initialPath},
              duration:0.3,
@@ -47,7 +70,11 @@ main.addEventListener("mousemove", (dets) => {
 
 });
 
+
+
+
 main.addEventListener("mouseleave", () => {
+     isclicked = false;
     console.log("mouse has left")
        gsap.to("svg path", {
         attr: { d: finalPath },
