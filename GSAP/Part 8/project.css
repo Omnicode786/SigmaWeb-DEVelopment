@@ -1,0 +1,156 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: gilroy, sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+
+.section1{
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+nav{
+    display: flex;
+    align-items: center;
+     justify-content: space-between;
+     padding: 30px 100px;
+}
+.part2{
+        display: flex;
+    align-items: center;
+     justify-content: center;
+     gap: 50px;
+}
+nav h1{
+    font-size: 40px;
+}
+nav h1 i{
+    rotate: 45deg;
+    display: inline-block;
+}
+nav h4{
+    font-size: 30px;
+    font-weight: 400;
+
+}
+nav button{
+    padding: 20px 40px;
+    font-size: 30px;
+    border-radius: 8px;
+    border: 2px solid black;
+    font-weight: 400;
+    background-color: transparent;
+}
+
+.center{
+    height: 80%;
+    width: 100%;
+    display: flex;
+    padding: 70px 100px;
+
+}
+.center-part1{
+    height: 100%;
+    width: 48%;
+}
+.center-part2{
+    height: 100%;
+    width: 52%;
+
+}
+
+.center-part1 h1 {
+    font-size: 110px;
+    font-family: monospace;
+    font-weight: 100;
+    line-height: 1.2;
+}
+.center-part1 p {
+    font-size: 30px;
+    font-family: monospace;
+    width: 95%;
+    font-weight: 100;
+    line-height: 1.2;
+    margin-top: 40px;
+      margin-bottom: 35px;
+}
+.center-part1 button{
+    background-color: black;
+    color: white;
+    padding: 22px 40px;
+    font-size: 25px;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    position: relative;
+}
+.center-part2 img{
+    position: absolute;
+    right: 3%;
+    height: 60%;
+}
+
+.section1-bottom{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 120px;
+}
+.section1-bottom img{
+    height: 60px;
+}
+
+.section2{
+    margin-top: 60px;
+    padding: 30px 80px;
+}
+.services{
+}
+.section2 .services{
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 40px;
+
+}
+.services h3{
+background-color: #9AE975;
+font-weight: 200;
+padding:8px 10px;
+border-radius: 5px;
+font-size: 60px;
+}
+.services p{
+    width: 40%;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.container{
+    height: 85%;
+    width: 100%;
+    padding: 40px 120px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+}
+.elem{
+    flex-shrink: 0;
+    margin: 20px;
+    height: 400px;
+    width: 48%;
+    border: 2px solid black;
+    border-radius: 20px;
+    box-shadow: 0px 10px 0px rgb(28, 28, 28);
+}
