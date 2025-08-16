@@ -238,12 +238,19 @@ object-fit: cover
   height: 100vh;
   overflow: hidden;
 }
+
 .slider {
   position: relative;
   width: 100%;
   height: 100vh;
-  overflow: hidden;
+  border-radius: 0;       /* ensure baseline */
+  overflow: hidden;       /* clip background */
+  background-size: cover; /* just to be safe */
+  background-position: center;
+  background-clip: padding-box;
 }
+
+
 
 .image-container {
   position: relative;
@@ -271,7 +278,7 @@ object-fit: cover
   bottom: 0%;
   width: 100%;
   text-align: center;
-  color: rgba(255, 255, 255, 0.797);
+  color: rgb(255, 255, 255);
   z-index: 10;
   padding: 2rem 0;
   border-radius: 20px;
@@ -340,6 +347,14 @@ object-fit: cover
     font-size: 40px;
   font-family: 'Playfair Display', serif;
 }
+.split {
+  display: inline-block;  /* allow transform animations */
+}
+.a{
+  display: inline-block;  /* allow transform animations */
+
+}
+
 .Attraction {
   position: relative;
   width: 100%;
@@ -414,7 +429,8 @@ height: 16vh;
 }
 
 .card {
-  display: flex;
+  display: inline-flex;
+
   justify-content: center;
   gap: 30px;
   flex-wrap: wrap; /* already helps responsiveness */
@@ -432,6 +448,7 @@ height: 16vh;
   width: 300px;
   height: 550px;
   cursor: pointer;
+  display: inline-flex;
   transition: transform 0.3s ease;
 }
 
@@ -439,11 +456,17 @@ height: 16vh;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.3s ease;
+
 }
 
 .imagecontainer:hover {
   transform: scale(1.05);
 }
+.imagecontainer img:hover{
+  transform: scale(1.15);
+
+} 
 
 .image-place {
   position: absolute;
@@ -457,420 +480,29 @@ height: 16vh;
   transition: all 0.3s ease;
 }
 
-/* ======================= */
-/*      RESPONSIVE FIXES   */
-/* ======================= */
-
-/* Tablets */
-@media (max-width: 1024px) {
-  .main-heading {
-    font-size: 60px;
-  }
-  .stories {
-    font-size: 28px;
-  }
-  .imagecontainer {
-    width: 400px;
-    height: 650px;
-  }
-}
-
-/* Small tablets & large phones */
-@media (max-width: 768px) {
-  .main-heading {
-    font-size: 45px;
-  }
-  .stories {
-    font-size: 22px;
-  }
-  .imagecontainer {
-    width: 90%;
-    height: auto;
-    max-width: 450px;
-  }
-  .image-place {
-    font-size: 20px;
-  }
-}
-
-/* Phones */
-@media (max-width: 480px) {
-  .main-heading {
-    font-size: 32px;
-  }
-  .stories {
-    font-size: 18px;
-  }
-  .imagecontainer {
-    width: 100%;
-    height: auto;
-  }
-  .image-place {
-    font-size: 16px;
-    padding: 8px;
-  }
-  
-}
-  
-  
-  /* Attractions Section */
-.attractions {
-  background: var(--color-surface);
-}
-
-.attractions-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.attraction-card {
-  position: relative;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-  box-shadow: var(--shadow-md);
-}
-
-.attraction-card:hover {
-  transform: scale(1.03);
-}
-
-.attraction-card.large {
-  grid-column: span 2;
-}
-
-.attraction-image {
-  position: relative;
-  height: 400px;
-  overflow: hidden;
-}
-
-.attraction-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.attraction-card:hover .attraction-image img {
-  transform: scale(1.1);
-}
-
-.attraction-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(transparent, rgba(0,0,0,0.9));
-  color: white;
-  padding: 2rem;
-  transform: translateY(10px);
-  opacity: 0.9;
-  transition: all 0.3s ease;
-}
-
-.attraction-card:hover .attraction-overlay {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-.attraction-overlay h3 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-}
-
-.attraction-overlay p {
-  color: #DEB887;
-  font-size: 0.9rem;
-  line-height: 1.4;
-}
-
-/* Experiences Section */
-.experiences {
-  background: linear-gradient(135deg, var(--color-bg-2), var(--color-bg-4));
-}
-
-.experiences-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.experience-card {
-  background: var(--color-surface);
-  padding: 2rem;
-  border-radius: var(--radius-lg);
-  text-align: center;
-  border: 1px solid var(--color-border);
-  transition: all 0.3s ease;
-  box-shadow: var(--shadow-sm);
-}
-
-.experience-card:hover {
-  transform: translateY(-10px);
-  box-shadow: var(--shadow-lg);
-}
-
-.experience-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
-
-.experience-card h3 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-  color: #8B4513;
-}
-
-.experience-category {
-  color: var(--color-primary);
-  font-weight: 600;
-  margin-bottom: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-size: 0.9rem;
-}
-
-.experience-card p {
-  margin-bottom: 1rem;
-  line-height: 1.6;
-}
-
-.experience-details {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1rem;
-  font-size: 0.9rem;
-  color: var(--color-text-secondary);
-  font-weight: 500;
-}
-
-/* Culture Section */
-.culture {
-  position: relative;
-  background: var(--color-background);
-}
-
-.culture-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, rgba(139, 69, 19, 0.9), rgba(222, 184, 135, 0.8));
-  z-index: 1;
-}
-
-.culture .container {
-  position: relative;
-  z-index: 2;
-}
-
-.culture .section-title {
-  color: white;
-}
-
-.culture .section-subtitle {
-  color: rgba(255, 255, 255, 0.8);
-}
-
-.culture-content {
-  color: white;
-}
-
-.culture-crafts h3 {
-  font-size: 2rem;
-  margin-bottom: 2rem;
-  text-align: center;
-  color: white;
-}
-
-.crafts-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-}
-
-.craft-item {
-  text-align: center;
-  padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-lg);
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
-}
-
-.craft-item:hover {
-  transform: translateY(-5px);
-  background: rgba(255, 255, 255, 0.15);
-}
-
-.craft-item img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: var(--radius-base);
-  margin-bottom: 1rem;
-}
-
-.craft-placeholder {
-  width: 100%;
-  height: 200px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-base);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
-
-.craft-item h4 {
-  font-size: 1.3rem;
-  margin-bottom: 0.5rem;
-  color: white;
-}
-
-.craft-item p {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.8);
-  line-height: 1.4;
-}
-
-/* Food Section */
-.food {
-  background: linear-gradient(135deg, var(--color-bg-5), var(--color-bg-7));
-}
-
-.food-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.food-item {
-  background: var(--color-surface);
-  padding: 2rem;
-  border-radius: var(--radius-lg);
-  text-align: center;
-  border: 1px solid var(--color-border);
-  transition: all 0.3s ease;
-  box-shadow: var(--shadow-sm);
-}
-
-.food-item:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-md);
-}
-
-.food-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  transition: all 0.3s ease;
-}
-
-.food-item h3 {
-  font-size: 1.3rem;
-  color: #8B4513;
-  margin-bottom: 0.5rem;
-}
-
-.food-item p {
-  font-size: 0.9rem;
-  color: var(--color-text-secondary);
-  line-height: 1.4;
-}
-
-/* Plan Trip Section */
-.plan-trip {
-  background: var(--color-surface);
-}
-
-.trip-planner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.planner-form {
-  background: var(--color-background);
-  padding: 2rem;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--color-border);
-  box-shadow: var(--shadow-md);
-}
-
-.form-group {
-  margin-bottom: 1.5rem;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-  color: #8B4513;
-}
-
-.plan-btn {
-  background: #8B4513;
-  margin-top: 1rem;
-  transition: all 0.3s ease;
-}
-
-.plan-btn:hover {
-  background: #A0522D;
-  transform: translateY(-2px);
-}
-
-.trip-highlights {
-  padding: 2rem;
-}
-
-.trip-highlights h3 {
-  font-size: 1.8rem;
-  margin-bottom: 1.5rem;
-  color: #8B4513;
-}
-
-.trip-highlights ul {
-  list-style: none;
-}
-
-.trip-highlights li {
-  padding: 0.5rem 0;
-  position: relative;
-  padding-left: 1.5rem;
-  line-height: 1.5;
-}
-
-.trip-highlights li::before {
-  content: '✓';
-  position: absolute;
-  left: 0;
-  color: var(--color-primary);
-  font-weight: bold;
-  font-size: 1.1rem;
-}
-
 
   
-  
+  .mouse{
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(201, 248, 201);
+    z-index:10;
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    box-shadow: 0px 0px 20px 5px lime;
+    font-size: 5px;
+    text-align: center;
+    text-wrap: nowrap;
+  }
   
   
   </style>
 </head>
 <body>
+  <div class="mouse"></div>
     <div class="nav">
         <div class="icon">
             <img class="logo" src="logo.png" alt="">
@@ -904,7 +536,7 @@ height: 16vh;
   </div>
 
   <div class="text-overlay">
-    <h1 class="destin">DESTINATIONS</h1>
+    <h1 class="destin"></h1>
     <h4 class="destin1">for every bucket list</h4>
   </div>
 
@@ -916,7 +548,9 @@ height: 16vh;
 
 <section class="Attraction">
   <div class="main-heading">
-    <h1>ATTRACTIONS</h1>
+    <h1>
+      
+    </h1>
     <p class="stories">worth a thousand stories</p>
   </div>
 
@@ -938,272 +572,20 @@ height: 16vh;
       <div class="image-place">Derawar Fort</div>
     </div>
   </div>
-   <div class="attractions-grid">
-                <div class="attraction-card">
-                    <div class="attraction-image">
-                        <img src="https://pplx-res.cloudinary.com/image/upload/v1754778022/pplx_project_search_images/5e07449a651eed0f17d132c5337db45590377b20.png" alt="Lahore Fort" loading="lazy">
-                        <div class="attraction-overlay">
-                            <h3>Lahore Fort</h3>
-                            <p>Lahore • Mughal era fortress and UNESCO World Heritage</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="attraction-card">
-                    <div class="attraction-image">
-                        <img src="https://pplx-res.cloudinary.com/image/upload/v1754778038/pplx_project_search_images/5b94578a58d84c622da8f567211bcd4aa4cb2ce9.png" alt="Badshahi Mosque" loading="lazy">
-                        <div class="attraction-overlay">
-                            <h3>Badshahi Mosque</h3>
-                            <p>Lahore • 17th century Mughal architectural marvel</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="attraction-card">
-                    <div class="attraction-image">
-                        <img src="https://pplx-res.cloudinary.com/image/upload/v1754778038/pplx_project_search_images/ee1bfebdc659d12296350919edb10f3fbf9c2801.png" alt="Minar-e-Pakistan" loading="lazy">
-                        <div class="attraction-overlay">
-                            <h3>Minar-e-Pakistan</h3>
-                            <p>Lahore • National monument symbolizing independence</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="attraction-card large">
-                    <div class="attraction-image">
-                        <img src="https://pplx-res.cloudinary.com/image/upload/v1754778022/pplx_project_search_images/a04a3e4a298fd13a5e84e0b6b00f12e9568c69b4.png" alt="K2 Mountain" loading="lazy">
-                        <div class="attraction-overlay">
-                            <h3>K2 Mountain</h3>
-                            <p>Karakoram Range • The Savage Mountain</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="attraction-card">
-                    <div class="attraction-image">
-                        <img src="https://pplx-res.cloudinary.com/image/upload/v1754778022/pplx_project_search_images/e1be3d7e920d78941db56d72084661c11d6d09e3.png" alt="Skardu" loading="lazy">
-                        <div class="attraction-overlay">
-                            <h3>Skardu Valley</h3>
-                            <p>Gilgit-Baltistan • Gateway to mighty peaks</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
 </section>
 
- <section class="attractions" id="attractions">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">ATTRACTIONS</h2>
-                <p class="section-subtitle">worth a thousand stories</p>
-            </div>
-            
-           
-    </section>
 
-     <!-- Experiences Section -->
-    <section class="experiences" id="experiences">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">EXPERIENCES</h2>
-                <p class="section-subtitle">create unforgettable memories</p>
-            </div>
-            
-            <div class="experiences-grid">
-                <div class="experience-card">
-                    <div class="experience-icon">🏔️</div>
-                    <h3>Mountain Trekking</h3>
-                    <p class="experience-category">Adventure</p>
-                    <p>Trek through the world's highest mountain ranges including K2, Nanga Parbat, and the Karakoram</p>
-                    <div class="experience-details">
-                        <span>7-14 days</span>
-                        <span>Moderate to Challenging</span>
-                    </div>
-                </div>
-                
-                <div class="experience-card">
-                    <div class="experience-icon">🏛️</div>
-                    <h3>Cultural Heritage Tours</h3>
-                    <p class="experience-category">Culture</p>
-                    <p>Explore centuries of Islamic and Mughal architecture from Lahore to Thatta</p>
-                    <div class="experience-details">
-                        <span>3-7 days</span>
-                        <span>Easy</span>
-                    </div>
-                </div>
-                
-                <div class="experience-card">
-                    <div class="experience-icon">🏜️</div>
-                    <h3>Desert Safari</h3>
-                    <p class="experience-category">Adventure</p>
-                    <p>Experience the vast Cholistan and Thar deserts with camel treks and fort visits</p>
-                    <div class="experience-details">
-                        <span>2-3 days</span>
-                        <span>Easy to Moderate</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <!-- Cultural Heritage Section -->
-    <section class="culture" id="culture">
-        <div class="culture-bg"></div>
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">CULTURAL HERITAGE</h2>
-                <p class="section-subtitle">rich traditions spanning centuries</p>
-            </div>
-            
-            <div class="culture-content">
-                <div class="culture-crafts">
-                    <h3>Traditional Crafts & Arts</h3>
-                    <div class="crafts-grid">
-                        <div class="craft-item">
-                            <img src="https://pplx-res.cloudinary.com/image/upload/v1754778038/pplx_project_search_images/638e19d4c45bd1f54a1ae47aa3ac38eceeba8df2.png" alt="Traditional Pottery" loading="lazy">
-                            <h4>Ceramic Pottery</h4>
-                            <p>Hand-painted traditional vessels with vibrant colors</p>
-                        </div>
-                        <div class="craft-item">
-                            <div class="craft-placeholder">🧵</div>
-                            <h4>Traditional Carpets</h4>
-                            <p>Intricate hand-woven Persian and Bokhara style carpets</p>
-                        </div>
-                        <div class="craft-item">
-                            <div class="craft-placeholder">⚒️</div>
-                            <h4>Metalwork</h4>
-                            <p>Exquisite brass and copper work from Moradabad</p>
-                        </div>
-                        <div class="craft-item">
-                            <div class="craft-placeholder">🧶</div>
-                            <h4>Textile Arts</h4>
-                            <p>Traditional embroidery and mirror work fabrics</p>
-                        </div>
-                        <div class="craft-item">
-                            <div class="craft-placeholder">🪵</div>
-                            <h4>Wood Carving</h4>
-                            <p>Intricate wooden furniture and decorative pieces</p>
-                        </div>
-                        <div class="craft-item">
-                            <div class="craft-placeholder">💎</div>
-                            <h4>Gemstone Jewelry</h4>
-                            <p>Beautiful jewelry featuring local precious stones</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Food Section -->
-    <section class="food" id="food">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">CULINARY DELIGHTS</h2>
-                <p class="section-subtitle">taste the flavors of Pakistan</p>
-            </div>
-            
-            <div class="food-grid">
-                <div class="food-item">
-                    <div class="food-icon">🍚</div>
-                    <h3>Biryani</h3>
-                    <p>Aromatic basmati rice with tender meat and spices</p>
-                </div>
-                <div class="food-item">
-                    <div class="food-icon">🍖</div>
-                    <h3>Karahi</h3>
-                    <p>Sizzling meat curry cooked in a traditional wok</p>
-                </div>
-                <div class="food-item">
-                    <div class="food-icon">🍲</div>
-                    <h3>Nihari</h3>
-                    <p>Rich, slow-cooked stew perfect for breakfast</p>
-                </div>
-                <div class="food-item">
-                    <div class="food-icon">🥩</div>
-                    <h3>Chapli Kebab</h3>
-                    <p>Spiced ground meat patties from Peshawar</p>
-                </div>
-                <div class="food-item">
-                    <div class="food-icon">🥞</div>
-                    <h3>Halwa Puri</h3>
-                    <p>Traditional breakfast with sweet semolina and bread</p>
-                </div>
-                <div class="food-item">
-                    <div class="food-icon">🥛</div>
-                    <h3>Lassi</h3>
-                    <p>Refreshing yogurt drink with sweet or salty flavors</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Plan Your Trip Section -->
-    <section class="plan-trip" id="plan-trip">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">PLAN YOUR TRIP</h2>
-                <p class="section-subtitle">let us help you create the perfect journey</p>
-            </div>
-            
-            <div class="trip-planner">
-                <div class="planner-form">
-                    <div class="form-group">
-                        <label for="destination">Choose Destination</label>
-                        <select id="destination" class="form-control">
-                            <option value="">Select a destination</option>
-                            <option value="northern">Northern Areas (Hunza, Skardu, K2)</option>
-                            <option value="punjab">Punjab Heritage (Lahore, Multan)</option>
-                            <option value="sindh">Sindh Culture (Karachi, Thatta)</option>
-                            <option value="balochistan">Balochistan Adventure (Quetta, Gwadar)</option>
-                            <option value="kpk">Khyber Pakhtunkhwa (Peshawar, Swat)</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="duration">Trip Duration</label>
-                        <select id="duration" class="form-control">
-                            <option value="">Select duration</option>
-                            <option value="3-5">3-5 days (Short Break)</option>
-                            <option value="7-10">7-10 days (Extended Tour)</option>
-                            <option value="14+">14+ days (Complete Experience)</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="experience">Experience Type</label>
-                        <select id="experience" class="form-control">
-                            <option value="">Select experience</option>
-                            <option value="adventure">Adventure (Trekking, Mountaineering)</option>
-                            <option value="culture">Cultural (Heritage, Architecture)</option>
-                            <option value="nature">Nature (Lakes, Valleys, Wildlife)</option>
-                            <option value="luxury">Luxury (Premium Hotels, Fine Dining)</option>
-                        </select>
-                    </div>
-                    
-                    <button class="btn--primary btn--full-width plan-btn">Plan My Trip</button>
-                </div>
-                
-                <div class="trip-highlights">
-                    <h3>Why Visit Pakistan?</h3>
-                    <ul>
-                        <li>Home to 5 of the world's 14 eight-thousander peaks</li>
-                        <li>6 UNESCO World Heritage Sites</li>
-                        <li>Rich Mughal and Islamic architecture spanning centuries</li>
-                        <li>Diverse landscapes from glaciers to deserts to coastlines</li>
-                        <li>Warm hospitality and vibrant culture</li>
-                        <li>Authentic cuisine with regional specialties</li>
-                        <li>Adventure activities from K2 base camp to river rafting</li>
-                        <li>Ancient civilizations including Gandhara and Indus Valley</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
 
 
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" integrity="sha512-NcZdtrT77bJr4STcmsGAESr06BYGE8woZdSdEgqnpyqac7sugNO+Tr4bGwGF3MsnEkGKhU2KL2xh6Ec+BqsaHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js" integrity="sha512-P2IDYZfqSwjcSjX0BKeNhwRUH8zRPGlgcWl5n6gBLzdi4Y5/0O4zaXrtO4K9TZK6Hn1BenYpKowuCavNandERg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
 
     const images = document.querySelectorAll('.hero-image');
@@ -1213,10 +595,10 @@ const nextBtn = document.getElementById('next');
 const prevBtn = document.getElementById('prev');
 
 const titles = [
-  { title: "HUNZA VALLEY", subtitle: "Cultural Gem of Northern Pakistan" },
-  { title: "MOHENJO DARO", subtitle: "Lost City of the Indus Valley" },
-  { title: "SHAHI QILA", subtitle: "Mughal Majesty in the Heart of Lahore" },
-  { title: "QUAID'S RESIDENCY", subtitle: "Final Abode of the Father of the Nation" }
+  { title: ["H","U","N","Z","A"," ","V","A","L","L","E","Y"], subtitle: "Cultural Gem of Northern Pakistan" },
+  { title: ["M","O","H","E","N","J","O" ,"D","A","R","O"], subtitle: "Lost City of the Indus Valley" },
+  { title: ["S","H","A","H","I"," ","Q","I","L","A"], subtitle: "Mughal Majesty in the Heart of Lahore" },
+  { title: ["Q","U","A","I","D","'","S"," ","R","E","S","I","D","E","N","C","Y"], subtitle: "Final Abode of the Father of the Nation" }
 ];
 
 let current = 0;
@@ -1243,23 +625,208 @@ function updateSlide(index) {
         heading.classList.remove('bright-flash');
     subheading.classList.remove('bright-flash');
   }, 400); // Match your CSS transition duration
+  let clutter = [];
+  titles[index].title.forEach((elem) => {
+    clutter += `<span class="split">${elem}</span>`; 
+  });
+  heading.innerHTML = clutter;
 
-  heading.textContent = titles[index].title;
+  // Update subtitle
   subheading.textContent = titles[index].subtitle;
+
+  // ✅ Animate letters AFTER inserting them
+  gsap.from(heading.querySelectorAll(".split"), {
+    y: 50,          // float upwards
+    duration: 0.4,
+    delay: 0.05,
+    stagger: 0.1,       // each letter comes after the other
+    opacity: 0,
+    ease: "power3.out",
+    scrollTrigger: {
+      trigger:".slider",
+      scroller:"body",
+      start:"top 20%",
+      end:"top 70%",
+      scrub:2
+    }
+  });
 }
+
 nextBtn.onclick = () => {
   current = (current + 1) % images.length;
   updateSlide(current);
+    gsap.from(heading.querySelectorAll(".split"), {
+    y: 50,          // float upwards
+    duration: 0.4,
+    delay: 0.05,
+    stagger: 0.1,       // each letter comes after the other
+    opacity: 0,
+    ease: "power3.out",
+
+  });
+  gsap.from(subheading,{
+    y:30,
+    duration:0.6,
+    delay:0.1,
+    ease:"power2.out",
+    opacity:0
+  })
+
 };
 
 prevBtn.onclick = () => {
   current = (current - 1 + images.length) % images.length;
   updateSlide(current);
+      gsap.from(heading.querySelectorAll(".split"), {
+    y: 50,          // float upwards
+    duration: 0.3,
+    delay: 0.05,
+    stagger: -0.1,       // each letter comes after the other
+    opacity: 0,
+    ease: "power3.out",
+
+  });
+  gsap.from(subheading,{
+    y:30,
+    duration:0.6,
+    delay:0.1,
+    ease:"power2.out",
+    opacity:0
+  })
 };
 
 
 // Initial update
 updateSlide(current);
+
+gsap.from(".destination",{
+  y:60,
+  duration:1,
+  delay:0.5,
+  opacity:0,
+  ease:"power2.out"
+})
+ 
+function addattractionheading(){
+let AttractionHeading = "Attraction";
+let splitheading = AttractionHeading.split("");
+let attrhead = document.querySelector(".main-heading h1");
+clutter = [];
+splitheading.forEach((elem) => {
+clutter+= `<span class="a">${elem}</span>`;
+})
+attrhead.innerHTML = clutter;
+}
+addattractionheading();
+gsap.from(".a",{
+  y:30,
+  duration:0.8,
+  delay:0.1,
+  ease:"power2.out",
+  opacity:0,
+  stagger:0.15,
+  scrollTrigger:{
+    trigger:".main-heading",
+    scroller:"body",
+    scrub:2,
+    start:"top 30%",
+    end:"top 20%",
+    markers:true
+  }
+})
+gsap.from(".imagecontainer", {
+  y: 60,
+  duration: 1,
+  delay: 0.5,
+  ease: "power2.out",
+  opacity: 0,
+  stagger: 0.5,   // now it will apply one by one
+  scrollTrigger: {
+    trigger: ".main-heading",
+    scroller: "body",
+    scrub: 2,
+    start: "top 30%",
+    end: "top 20%",
+    markers: true
+  }
+});
+
+
+let cursor = document.querySelector(".mouse");
+window.addEventListener("mousemove", (event) => {
+  gsap.to(cursor,{
+    x:event.x,
+    y:event.y,
+        duration:1,
+    ease:"back.out"
+  })
+})
+let cards = document.querySelectorAll(".card");
+
+cards.forEach((card) => {
+card.addEventListener("mouseenter", (event) => {
+ cursor.innerHTML  = "View More";
+    gsap.to(cursor, {
+        scale:3,
+        duration:0.1,
+        backgroundColor: "#ffffffe4",
+       
+    })
+})
+card.addEventListener("mouseleave", (event) => {
+ cursor.innerHTML  = "";
+    gsap.to(cursor, {
+        scale:1,
+        duration:0.1,
+        backgroundColor: "#ffffffe4",
+       
+    })
+})
+})
+
+
+gsap.fromTo(".image-container",
+  {
+    scale: 1.1, // start zoomed in (covering a bit above)
+    borderTopLeftRadius: "90px",
+    borderTopRightRadius: "90px"
+  },
+  {
+    scale: 1, // back to normal
+    borderTopLeftRadius: "0px",
+    borderTopRightRadius: "0px",
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: ".slider",
+      scroller: "body",
+      markers: true,
+      scrub: 2,
+      start: "top 100%",  // when section enters viewport
+      end: "top 0%"       // until section reaches top
+    }
+  }
+);
+gsap.fromTo(".slider",
+  {
+    scale: 1.2, // start zoomed in (covering a bit above)
+    borderTopLeftRadius: "90px",
+    borderTopRightRadius: "90px"
+  },
+  {
+    scale: 1.01, // back to normal
+    borderTopLeftRadius: "0px",
+    borderTopRightRadius: "0px",
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: ".slider",
+      scroller: "body",
+      markers: true,
+      scrub: 2,
+      start: "top 100%",  // when section enters viewport
+      end: "top 0%"       // until section reaches top
+    }
+  }
+);
 
 </script>
 </body>
