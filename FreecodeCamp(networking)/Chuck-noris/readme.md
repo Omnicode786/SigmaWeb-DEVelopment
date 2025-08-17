@@ -27,20 +27,20 @@ Styled with **Glassmorphism UI** for a modern and sleek look.
 ---
 
 ## 📜 Code Overview
-### HTML Structure
+## HTML Structure
 
-<!-- <div class="container">
-    <div class="image">
-        <img class="chuck-noris" src="https://api.chucknorris.io/img/avatar/chuck-norris.png" alt="Chuck Norris">
-    </div>
-    <div class="title">
-        <h1>Chuck Norris Jokes</h1>
-    </div>
-    <div class="jokes">Loading joke...</div>
-    <button class="refresh">Refresh Joke</button>
-</div> -->
+<div class="container">
+   - <div class="image">
+ -       <img class="chuck-noris" src="https://api.chucknorris.io/img/avatar/chuck-norris.png" alt="Chuck Norris">
+  -  </div>
+  -  <div class="title">
+  -      <h1>Chuck Norris Jokes</h1>
+  -  </div>
+  -  <div class="jokes">Loading joke...</div>
+  -  <button class="refresh">Refresh Joke</button>
+-</div>
 
-###CSS Styling (Glassmorphism)
+## CSS Styling (Glassmorphism)
 
 .container {
     background: rgba(255, 255, 255, 0.12);
@@ -50,7 +50,7 @@ Styled with **Glassmorphism UI** for a modern and sleek look.
     text-align: center;
     color: white;
 }
-JavaScript Logic
+## JavaScript Logic
 
 async function JokeGen() {
     let response = await fetch('https://api.chucknorris.io/jokes/random');
