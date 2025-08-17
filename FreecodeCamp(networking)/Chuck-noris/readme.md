@@ -21,9 +21,6 @@ Styled with **Glassmorphism UI** for a modern and sleek look.
 
 ## 📂 Project Structure
 
-index.html # Main HTML file with structure
-style.css # Glassmorphism styling
-script.js # Joke fetch & voice logic
 
 
 
@@ -31,8 +28,8 @@ script.js # Joke fetch & voice logic
 
 ## 📜 Code Overview
 ### HTML Structure
-```html
-<div class="container">
+
+<!-- <div class="container">
     <div class="image">
         <img class="chuck-noris" src="https://api.chucknorris.io/img/avatar/chuck-norris.png" alt="Chuck Norris">
     </div>
@@ -41,8 +38,9 @@ script.js # Joke fetch & voice logic
     </div>
     <div class="jokes">Loading joke...</div>
     <button class="refresh">Refresh Joke</button>
-</div>
-CSS Styling (Glassmorphism)
+</div> -->
+
+###CSS Styling (Glassmorphism)
 
 .container {
     background: rgba(255, 255, 255, 0.12);
