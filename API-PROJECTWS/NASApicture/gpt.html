@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NASA APOD Viewer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0b0f29;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    #apod-img {
+      max-width: 90%;
+      margin-top: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.3);
+    }
+    #info {
+      margin-top: 20px;
+      font-size: 1.1em;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <h1>🚀 NASA Astronomy Picture of the Day</h1>
+  <button onclick="loadAPOD()">Get Today’s APOD</button>
+
+  <h2 id="title"></h2>
+  <img id="apod-img" alt="NASA APOD will appear here">
+  <div id="info"></div>
+
+  <script>
+    const API_KEY = "247OA0KcEBUcVYk5XgNWacrWxh61DbKHU1VqqxPJ";
+
+    async function loadAPOD() {
+      const res = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`);
+      const data = await res.json();
+
+      document.getElementById("title").innerText = data.title;
+
+      if (data.media_type === "image") {
+        document.getElementById("apod-img").src = data.url;
+        document.getElementById("apod-img").style.display = "block";
+      } else {
+        // sometimes APOD is a video (like YouTube)
+        document.getElementById("apod-img").style.display = "none";
+        document.getElementById("info").innerHTML = `<iframe width="560" height="315" src="${data.url}" frameborder="0" allowfullscreen></iframe>`;
+      }
+
+      document.getElementById("info").innerHTML += `<p>${data.explanation}</p>`;
+    }
+  </script>
+</body>
+</html>

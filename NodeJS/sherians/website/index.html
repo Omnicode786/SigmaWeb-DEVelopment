@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Basic meta setup -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>EXKO INC — Your Trusted Apparel Sourcing & Manufacturing Partner</title>
+  <meta name="description" content="We connect fashion brands, designers, and retailers with ethical manufacturers across Asia for hassle-free production.">
+
+  <!-- GSAP for gentle, non-intrusive animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+
+  <!-- Shared styles -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Shared behavior -->
+  <script src="app.js" defer></script>
+</head>
+<body class="page page--home">
+  <!-- Top utility bar from PDF (email + phone) -->
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <span class="topbar__item">info@exko.ca</span>
+      <span class="topbar__sep"></span>
+      <span class="topbar__item">647-609-0241</span>
+    </div>
+  </div>
+
+  <!-- Header & navigation (labels exactly as in PDFs) -->
+  <header class="header">
+    <div class="container header__inner">
+      <div class="brand">EXKO INC</div>
+      <nav class="nav" aria-label="Main navigation">
+        <button class="nav__toggle" aria-expanded="false" aria-controls="navMenu" aria-label="Open menu">
+          <span class="nav__toggle-line"></span>
+          <span class="nav__toggle-line"></span>
+          <span class="nav__toggle-line"></span>
+        </button>
+        <ul id="navMenu" class="nav__list">
+          <li><a class="nav__link nav__link--active" href="index.html">Home</a></li>
+          <li><a class="nav__link" href="about.html">About Us</a></li>
+          <li><a class="nav__link" href="services.html">Services</a></li>
+          <li><a class="nav__link" href="products.html">Products</a></li>
+          <li><a class="button button--ghost" href="#quote">Get a Quote</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero area: mirrors PDF headings, line breaks, and CTAs -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <!-- Left: text stack -->
+      <div class="hero__content">
+        <h1 class="hero__brand">EXKO INC</h1>
+        <h2 class="hero__title">
+          Your Trusted<br />
+          Apparel Sourcing &amp;<br />
+          Manufacturing Partner
+        </h2>
+        <p class="hero__subtitle">From Concept to Delivery</p>
+        <p class="hero__desc">
+          We connect fashion brands, designers, and retailers with<br />
+          ethical manufacturers across Asia for hassle-free production.
+        </p>
+        <div class="hero__actions">
+          <a class="button button--primary" href="#quote">Request a Quote</a>
+          <a class="button button--secondary" href="tel:6476090241">Call Now</a>
+        </div>
+        <!-- Location badges exactly as in PDF -->
+        <div class="hero__badges">
+          <span class="badge">TORONTO</span>
+          <span class="badge">NYC</span>
+        </div>
+      </div>
+
+      <!-- Right: style-matching placeholder image (replace later) -->
+      <div class="hero__media">
+        <!-- This image is just a neutral, clean factory/product vibe -->
+        <img
+          src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1200&auto=format&fit=crop"
+          alt="Manufacturing visual"
+          class="hero__img"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO We Are (copy preserved exactly) -->
+  <section class="section section--who">
+    <div class="container">
+      <h3 class="section__eyebrow">WHO</h3>
+      <h2 class="section__title">We Are</h2>
+
+      <p class="section__lead">
+        We're a Canada-based full-service apparel sourcing and<br />
+        manufacturing company with production teams in Pakistan, China,<br />
+        Vietnam and Bangladesh. Whether you're launching a fashion line<br />
+        or scaling your retail operation, we manage everything from design<br />
+        and development to final delivery.
+      </p>
+      <p class="section__lead">Giving you time to focus on growing your brand.</p>
+    </div>
+  </section>
+
+  <!-- What We Offer: 3 columns with exact lists and bullets -->
+  <section class="section section--offer">
+    <div class="container">
+      <h2 class="section__title">What We Offer</h2>
+      <p class="section__subtitle">
+        We provide end-to-end solutions to turn your apparel ideas into premium products
+      </p>
+
+      <div class="offer__cols">
+        <!-- Column 1 -->
+        <div class="offer__col">
+          <h4 class="offer__col-title">Product Development</h4>
+          <ul class="offer__list">
+            <li>Trend Research</li>
+            <li>Sample Development</li>
+            <li>Fabric &amp; Trim Sourcing</li>
+          </ul>
+          <ul class="offer__bullets">
+            <li>• Verified Partner Network in Asia</li>
+            <li>Ethical &amp; Sustainable Factories</li>
+            <li>Flexible MOQs</li>
+          </ul>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="offer__col">
+          <h4 class="offer__col-title">Factory Sourcing</h4>
+          <ul class="offer__list">
+            <li>Production &amp; Merchandising</li>
+            <li>Costing &amp; Order Planning</li>
+            <li>Timeline Management</li>
+            <li>• Daily Order Follow-ups</li>
+          </ul>
+        </div>
+
+        <!-- Column 3 -->
+        <div class="offer__col">
+          <h4 class="offer__col-title">Quality Control &amp; Compliance</h4>
+          <ul class="offer__list">
+            <li>Logistics &amp; Delivery</li>
+            <li>Inline &amp; Final QC Inspections</li>
+            <li>AQL Standards</li>
+            <li>• Lab Testing Support</li>
+            <li>Freight Booking</li>
+            <li>Documentation</li>
+            <li>Global Doorstep Shipping</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section__actions">
+        <a class="button button--primary" href="#quote">Request a Quote</a>
+        <a class="button button--secondary" href="tel:6476090241">Call Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who We Work With: numbered grid 1–7 -->
+  <section class="section section--workwith">
+    <div class="container">
+      <h2 class="section__title">Who We Work With</h2>
+      <p class="section__subtitle">
+        From streetwear startups to licensed merchandisers - our sourcing model adapts to your business goals
+      </p>
+
+      <div class="grid grid--workwith">
+        <div class="card card--workwith"><span class="card__num">1</span> Fashion &amp; Streetwear Brands</div>
+        <div class="card card--workwith"><span class="card__num">2</span> Uniform &amp; Workwear Buyers</div>
+        <div class="card card--workwith"><span class="card__num">3</span> Sportswear &amp; Athleisure Labels</div>
+        <div class="card card--workwith"><span class="card__num">4</span> E-Commerce Retailers</div>
+        <div class="card card--workwith"><span class="card__num">5</span> Designers &amp; Private Labels</div>
+        <div class="card card--workwith"><span class="card__num">6</span> Promotional &amp; Licensing Companies</div>
+        <div class="card card--workwith"><span class="card__num">7</span> Importers &amp; Wholesalers</div>
+      </div>
+
+      <div class="section__actions">
+        <a class="button button--primary" href="#quote">Request a Quote</a>
+        <a class="button button--secondary" href="tel:6476090241">Call Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stress-Free checklist -->
+  <section class="section section--stressfree">
+    <div class="container">
+      <h2 class="section__title">Stress-Free!</h2>
+      <p class="section__subtitle">Apparel Manufacturing Starts Here</p>
+
+      <ul class="checklist">
+        <li>✔ Low Minimum for Startups</li>
+        <li>✔ End-to-End Sourcing Support</li>
+        <li>✔ One Point of Contact, Zero Hassle</li>
+        <li>✔ Ethical, Compliant &amp; Reliable Partners</li>
+        <li>✔ Transparent Process &amp; Weekly Updates</li>
+        <li>✔ Custom Development &amp; Sampling Support</li>
+        <li>✔ Dedicated Merchandisers &amp; QC Teams in Asia</li>
+        <li>✔ Competitive Pricing Without Quality Compromises</li>
+        <li>✔ On-Ground Teams in Pakistan, China, Vietnam and Bangladesh for Real-Time Production Status &amp; Quality Inspections.</li>
+      </ul>
+
+      <div class="section__actions">
+        <a class="button button--primary" href="#quote">Request a Quote</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products we help you manufacture -->
+  <section class="section section--products">
+    <div class="container">
+      <h2 class="section__title">Products</h2>
+      <p class="section__subtitle">We Help You Manufacture</p>
+
+      <div class="grid grid--products">
+        <div class="card card--product">
+          <h4 class="card__title">UPPERWEAR</h4>
+          <p class="card__desc">T-Shirts, Hoodies, Polos</p>
+        </div>
+        <div class="card card--product">
+          <h4 class="card__title">SPORTSWEAR</h4>
+          <p class="card__desc">Jerseys, Bottoms, Socks</p>
+        </div>
+        <div class="card card--product">
+          <h4 class="card__title">STREETWEAR</h4>
+          <p class="card__desc">Denim, Tee's, Shirts</p>
+        </div>
+        <div class="card card--product">
+          <h4 class="card__title">ACCESSORIES</h4>
+          <p class="card__desc">Caps, Beanies, Socks</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial -->
+  <section class="section section--testimonial">
+    <div class="container">
+      <h2 class="section__title">What Our<br />Clients Say</h2>
+
+      <div class="stars" aria-label="5 stars">★★★★★</div>
+
+      <blockquote class="quote">
+        Switching to this team was a game-changer for us. The improvement in our quality and
+        communication has been drastic and immediately noticeable. Previously, we faced
+        challenges that often led to delays and inconsistencies, but since partnering
+        with them, those issues have effectively been eliminated.
+      </blockquote>
+      <div class="quote__author">- JOHN DOE</div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="section section--finalcta" id="quote">
+    <div class="container">
+      <h2 class="section__title">Let's Bring Your Next Collection to Life</h2>
+      <p class="section__subtitle">
+        From initial sketches to doorstep delivery, we handle sourcing, sampling, and quality
+        checks so you can focus on what matters: growing your brand.
+      </p>
+
+      <div class="section__actions">
+        <a class="button button--primary" href="mailto:info@exko.ca?subject=Quote%20Request">Request a Quote</a>
+        <a class="button button--secondary" href="tel:6476090241">Call Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer (copy and structure match PDF) -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__col">
+        <div class="footer__brand">Exko</div>
+        <p class="footer__desc">
+          At Exko, we specialize in high-quality<br />
+          gloves, safety gear kits, sportswear, and<br />
+          bags designed for professionals who<br />
+          prioritize protection, durability, and comfort.
+        </p>
+      </div>
+
+      <div class="footer__col">
+        <h4 class="footer__title">Useful Links</h4>
+        <ul class="footer__links">
+          <li><a href="about.html">About us</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+
+        <h4 class="footer__title">Contact</h4>
+        <address class="footer__contact">
+          45 Gill Cove, Cambridge, ON,<br />
+          N3E 1A1, CANADA<br />
+          info@exko.ca<br />
+          647-609-0241
+        </address>
+      </div>
+
+      <div class="footer__col">
+        <h4 class="footer__title">Newsletter</h4>
+        <p class="footer__note">
+          Signup our newsletter to get update information<br />
+          or insight.
+        </p>
+        <form class="newsletter" id="newsletterForm" novalidate>
+          <label class="sr-only" for="newsletterEmail">Email</label>
+          <input id="newsletterEmail" name="email" type="email" placeholder="Email" required />
+          <button class="button button--primary" type="submit">SIGN UP</button>
+          <div class="form__msg" id="newsletterMsg" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="container">
+        <p>Copyright © 2025 Exko, All rights reserved by Bulls Orbit</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

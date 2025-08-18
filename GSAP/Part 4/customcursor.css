@@ -1,0 +1,63 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: gilroy, sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+body{
+    background-color: darkolivegreen;
+}
+#main{
+    height: 100%;
+    width: 100%;
+    /* background-color: #111; */
+      display: flex;
+   align-items: center;
+   justify-content: center;
+}
+#cursor{
+height: 30px;
+width: 30px;
+background-color: white;
+border-radius: 50%;
+position: fixed;
+box-shadow: 2px 2px 20px 2px rgb(7, 179, 107);
+display: flex;
+align-items: center;
+justify-content: center;
+text-align: center;
+font-size: 5px;
+/* agar absolute denge to khali or khali pehle page pr reh jayega */
+z-index: 9;
+}
+
+#image-container{
+    height: 30vw;
+    width: 60vw;
+   position: relative;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+#image-container img{
+        height: 100%;
+        width: 100%;
+        color: #e0d6d6a2;
+}
+#overlay{
+    background-color: transparent;
+     height: 100%;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}

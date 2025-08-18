@@ -12,7 +12,7 @@ async function headers() {
 body: JSON.stringify({
     name: "Muzammil",
 
-    age: 24
+    age: 18
 })
 
     }

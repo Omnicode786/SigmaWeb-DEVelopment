@@ -1,0 +1,274 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: gilroy, sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+body{
+    overflow-x: hidden;
+}
+.section1{
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+.topbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+.topbar h1{
+    display: flex;
+    gap: 10px;
+}
+nav{
+    display: flex;
+    align-items: center;
+     justify-content: space-between;
+     padding: 30px 100px;
+}
+.part2{
+        display: flex;
+    align-items: center;
+     justify-content: center;
+     gap: 50px;
+    
+}
+.section1 h1{
+    font-size: 40px;
+padding: 10px;
+}
+nav h1 i{
+    rotate: 45deg;
+    display: inline-block;
+}
+nav h4{
+    font-size: 30px;
+    font-weight: 400;
+
+}
+nav button{
+    padding: 20px 40px;
+    font-size: 30px;
+    border-radius: 8px;
+    border: 2px solid black;
+    font-weight: 400;
+    background-color: transparent;
+}
+
+.center{
+    height: 80%;
+    width: 100%;
+    display: flex;
+    padding: 70px 100px;
+    justify-content: space-between;
+
+}
+.center-part1{
+    height: 100%;
+    width: 48%;
+}
+.center-part2{
+    height: 80%;
+    width: 42%;
+    border: 2px solid black;
+    border-radius: 40px;
+    object-fit: contain;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.center-part2 img{
+    height: 80%;
+    object-fit: contain;
+}
+
+.center-part1 h1 {
+    font-size: clamp(28px, 4vw, 120px);
+    font-family: monospace;
+    font-weight: 100;
+    line-height: 1.2;
+}
+.center-part1 p {
+    font-size: 30px;
+    font-family: monospace;
+    width: 95%;
+    font-weight: 100;
+    line-height: 1.2;
+    margin-top: 40px;
+      margin-bottom: 35px;
+}
+.center-part1 button{
+    background-color: black;
+    color: white;
+    padding: 22px 40px;
+    font-size: 25px;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    position: relative;
+}
+
+
+.section1-bottom{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 120px;
+}
+.section1-bottom img{
+    height: 60px;
+}
+.marque{
+        display: flex;      /* activates gap support */
+    align-items: center; /* optional, vertically centers images */
+    gap: 10px;
+    justify-content: space-between;
+    width: 100%;
+}
+.section2{
+    margin-top: 120px;
+    padding: 30px 80px;
+}
+.services{
+}
+.section2 .services{
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 40px;
+
+}
+.services h3{
+background-color: #9AE975;
+font-weight: 200;
+padding:8px 10px;
+border-radius: 5px;
+font-size: 60px;
+}
+.services p{
+    width: 40%;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.container{
+    height: 85%;
+    width: 100%;
+    padding: 40px 8px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+}
+.elem{
+    flex-shrink: 0;
+    margin: 20px;
+    height: 300px;
+    width: 45%;
+    border: 2px solid black;
+    border-radius: 20px;
+    box-shadow: 0px 10px 0px rgb(28, 28, 28);
+    padding: 60px;
+    display: flex;
+}
+.elem-part1{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.elem-part2
+{
+    height: 100%;
+    width: 50%;
+}
+.elem-part2 img{
+    height: 100%;
+
+}
+.elem-part1 h2{
+    font-size: 45px;
+    padding: 0px 5px;
+    font-weight: 500;
+    width: fit-content;
+background-color: #9AE975;
+border-radius: 5px;
+    padding: 5px 3px;
+
+}
+.elem-part1 h4{
+    font-size: 50px;
+    padding: 0px 5px;
+    font-weight: 500;
+    width: fit-content;
+border-radius: 5px;
+}
+.black{
+    background-color: black;
+    box-shadow: 0px 10px 0px rgb(72, 72, 72);
+    color: whitesmoke;
+    
+}
+.black h2{
+    background-color: rgb(232, 230, 230);
+    color: #111;
+    padding: 5px 3px;
+    
+}
+
+.section1-bottom {
+    overflow: hidden;
+    white-space: nowrap;
+    display: flex;
+}
+
+
+
+.marque img {
+    height: 80px;
+    object-fit: contain;
+}
+.arrow{
+    width: 40px;
+}
+
+@media (max-width: 950px){
+    nav{
+        display: none;
+    }
+   .center{
+    display: block;
+   }
+   .center-part1{
+    width: 90%;
+   }
+   
+   .center-part2{
+    width: 90%;
+   }
+   .container{
+    display: block;
+   }
+   .elem{
+    width: 95%;
+
+   }
+
+}
+
+
+

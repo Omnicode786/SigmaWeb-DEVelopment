@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>All Blogs — EXKO INC</title>
+  <meta name="description" content="Explore blog categories and articles.">
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body class="page page--blog">
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <span class="topbar__item">info@exko.ca</span>
+      <span class="topbar__sep"></span>
+      <span class="topbar__item">647-609-0241</span>
+    </div>
+  </div>
+
+  <header class="header">
+    <div class="container header__inner">
+      <div class="brand">EXKO INC</div>
+      <nav class="nav" aria-label="Main navigation">
+        <button class="nav__toggle" aria-expanded="false" aria-controls="navMenu" aria-label="Open menu">
+          <span class="nav__toggle-line"></span>
+          <span class="nav__toggle-line"></span>
+          <span class="nav__toggle-line"></span>
+        </button>
+        <ul id="navMenu" class="nav__list">
+          <li><a class="nav__link" href="index.html">Home</a></li>
+          <li><a class="nav__link" href="about.html">About Us</a></li>
+          <li><a class="nav__link" href="services.html">Services</a></li>
+          <li><a class="nav__link" href="products.html">Products</a></li>
+          <li><a class="button button--ghost" href="index.html#quote">Get a Quote</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="section section--hero-min">
+      <div class="container">
+        <h1 class="page__title">All Blogs</h1>
+        <p class="section__subtitle">Explore by Categories</p>
+
+        <!-- Categories as pills (in the same order as PDF) -->
+        <div class="grid grid--pills">
+          <div class="pill">DTF Print</div>
+          <div class="pill">Product Insights</div>
+          <div class="pill">Gloves</div>
+          <div class="pill">Safety Kits</div>
+          <div class="pill">Supply Chain</div>
+          <div class="pill">Sports</div>
+          <div class="pill">Screen Print</div>
+          <div class="pill">Bags</div>
+          <div class="pill">Custom Apparel</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog cards reflecting your titles and short copy -->
+    <section class="section">
+      <div class="container grid grid--blog">
+        <article class="post">
+          <h3 class="post__title">Behind the Seams: How We Engineer<br />Our Core Styles</h3>
+          <p class="post__desc">
+            A deep dive into how Exko designs product foundations—focusing on construction, fit accuracy,
+            material testing, and user intent behind each product line (hoodies, tees, uniforms, etc.).
+          </p>
+          <div class="post__meta">
+            <span>Product Insights</span>
+            <span>May 17, 2025</span>
+          </div>
+          <a class="post__link" href="#">Learn More</a>
+        </article>
+
+        <article class="post">
+          <h3 class="post__title">How We Support Brands at Every<br />Stage—from Samples to Scale</h3>
+          <p class="post__desc">
+            Explains your flexibility—from low minimums to full-scale production. Include case studies of a new
+            brand and a growing one, to speak to both audiences.
+          </p>
+          <div class="post__meta">
+            <span>Process &amp; Quality</span>
+            <span>June 07, 2025</span>
+          </div>
+          <a class="post__link" href="#">Learn More</a>
+        </article>
+
+        <article class="post">
+          <h3 class="post__title">Why Fabric Choice Matters: Cotton,<br />Poly, and Everything In Between</h3>
+          <p class="post__desc">
+            Educates B2B buyers on how to choose the ideal fabric based on use case, climate, wearability, and
+            branding goals. Could include swatch photos and comparison charts.
+          </p>
+          <div class="post__meta">
+            <span>Product Insights</span>
+            <span>August 25, 2025</span>
+          </div>
+          <a class="post__link" href="#">Learn More</a>
+        </article>
+
+        <article class="post">
+          <h3 class="post__title">Your Brand, Your Cut: Understanding<br />Fit Customization</h3>
+          <p class="post__desc">
+            Highlights how fit affects perception, customer loyalty, and resale value. Includes examples of fit
+            options and why brands customize them for different demographics.
+          </p>
+          <div class="post__meta">
+            <span>Custom Apparel</span>
+            <span>November 18, 2024</span>
+          </div>
+          <a class="post__link" href="#">Learn More</a>
+        </article>
+
+        <article class="post">
+          <h3 class="post__title">From Blank to Branded: How We Bring<br />Your Vision to Life</h3>
+          <p class="post__desc">
+            Step-by-step walkthrough of the product customization process, from receiving design files to
+            sampling, label application, packaging, and delivery.
+          </p>
+          <div class="post__meta">
+            <span>Private Labeling</span>
+            <span>February 20, 2025</span>
+          </div>
+          <a class="post__link" href="#">Learn More</a>
+        </article>
+
+        <article class="post">
+          <h3 class="post__title">Top Apparel Trends B2B Buyers Are<br />Asking For in 2025</h3>
+          <p class="post__desc">
+            A trend-forward article showing what cuts, colors, materials, or sustainability features buyers are
+            sourcing. Position your current products or services in line with these trends.
+          </p>
+          <div class="post__meta">
+            <span>Industry &amp; Trends</span>
+            <span>March 12, 2025</span>
+          </div>
+          <a class="post__link" href="#">Learn More</a>
+        </article>
+
+        <article class="post">
+          <h3 class="post__title">From Factory to Fulfillment: Our<br />End-to-End Production Workflow</h3>
+          <p class="post__desc">
+            A transparency post outlining the full process—from sourcing and sampling to inline QC, packing, and
+            global delivery. Build trust by showing professionalism and scale.
+          </p>
+          <div class="post__meta">
+            <span>Process &amp; Quality</span>
+            <span>July 10, 2025</span>
+          </div>
+          <a class="post__link" href="#">Learn More</a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__col">
+        <div class="footer__brand">Exko</div>
+        <p class="footer__desc">
+          At Exko, we specialize in high-quality<br />
+          gloves, safety gear kits, sportswear, and<br />
+          bags designed for professionals who<br />
+          prioritize protection, durability, and comfort.
+        </p>
+      </div>
+      <div class="footer__col">
+        <h4 class="footer__title">Useful Links</h4>
+        <ul class="footer__links">
+          <li><a href="about.html">About us</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+        <h4 class="footer__title">Contact</h4>
+        <address class="footer__contact">
+          45 Gill Cove, Cambridge, ON,<br />
+          N3E 1A1, CANADA<br />
+          info@exko.ca<br />
+          647-609-0241
+        </address>
+      </div>
+      <div class="footer__col">
+        <h4 class="footer__title">Newsletter</h4>
+        <p class="footer__note">
+          Signup our newsletter to get update information<br />
+          or insight.
+        </p>
+        <form class="newsletter" id="newsletterFormBlog" novalidate>
+          <label class="sr-only" for="newsletterEmailBlog">Email</label>
+          <input id="newsletterEmailBlog" name="email" type="email" placeholder="Email" required />
+          <button class="button button--primary" type="submit">SIGN UP</button>
+          <div class="form__msg" id="newsletterMsgBlog" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="container">
+        <p>Copyright © 2025 Exko, All rights reserved by Bulls Orbit</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

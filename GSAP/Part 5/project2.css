@@ -1,0 +1,63 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: gilroy, sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+body{
+    overflow-x: hidden;
+}
+#main{
+    height: 100%;
+    width: 100%;
+   background-image: url('clouds.jpg');
+   background-size: cover;
+   background-position: center;
+}
+#nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 50px;
+    font-size: 30px;
+    color: #fff;
+}
+#nav i{font-size: 40px;
+cursor: pointer;
+}
+
+#full{
+    height: 100%;
+    width: 40%;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.39);
+    top: 0;
+    right: -40%;
+    backdrop-filter: blur(40px);
+    padding: 150px 60px;
+}
+#full h4{
+    font-weight: 500;
+    font-size: 60px;
+    margin-bottom: 5px;
+}
+#full i{
+    position: absolute;
+    top: 5%;
+    right: 10%;
+    padding: 5px;
+    background-color: white;
+    border-radius: 50%;
+    font-weight: 600;
+    font-size: 20px;
+cursor: pointer;
+
+}
+
+/* timeline has properties like pause reverse resume etc */
