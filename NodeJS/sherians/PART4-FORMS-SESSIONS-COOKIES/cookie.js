@@ -7,3 +7,12 @@
 
 // jab ham user se data lekr bhejte hen to wo data hamen in a blob format as in stream me milta he which is not 
 // directly readble
+
+
+// in simpler terms to explain how we send form data etc
+
+const express = require('express');
+const app = express();
+
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));

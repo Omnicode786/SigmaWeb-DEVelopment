@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PNG Cursor</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+
+    /* Set your PNG as the cursor, hotspot at (2,2) */
+    body {
+      cursor: url("purple_cursor_nib_32.png") 2 2, auto;
+    }
+
+    /* Keep I-beam in text fields */
+    input, textarea, [contenteditable="true"] {
+      cursor: text;
+    }
+  </style>
+</head>
+<body>
+  <h1>PNG Cursor Demo</h1>
+  <p>When your mouse is over this page, the cursor will be your PNG.</p>
+</body>
+</html>
