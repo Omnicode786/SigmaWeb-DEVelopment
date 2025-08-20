@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ejs html file</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
     <h1>Setting up ejs index</h1>
@@ -12,23 +13,11 @@
     <h2>Jokes</h2>
     <div class="noofjokes"></div>
     <div class="jokecontent"></div>
-    <script>
-        let number = document.querySelector(".noofjokes");
-        let joke_content = document.querySelector(".jokecontent");
-
-        async function getJoke(){
-            let response  = await fetch('/jokes');
-            let data = await response.json();
-                number.innerHTML = `Total Jokes: ${data.length}`;
-            console.log(data);
-            joke_content.innerHTML = ""
-            joke_content.innerHTML = data.map((joke,index) => {
-                    return `The id is:${joke.id} and the joke is that ${joke.content}`
-            }).join(" ");
-        }
+ 
 
 
-        getJoke();
-    </script>
+    
+<script src="/javascripts/script.js"></script>
+
 </body>
 </html>

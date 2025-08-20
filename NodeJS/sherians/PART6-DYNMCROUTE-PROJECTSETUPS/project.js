@@ -54,4 +54,23 @@ res.send(jokes);
 })
 
 
+
+// now we will learn about dynamic routing
+
+app.get('/profile/:username', (req,res) => {
+    // whenever we use : after a path that thng after it becomes a variable and is available in req.params
+
+
+        // req.params is an Object 
+    const user = req.params.username;
+    res.send(`This is ${user} profile page`);
+
+})
+app.get('/author/:username/:age', (req,res) => {
+    const user = req.params.username;
+    const age = req.params.age;
+    res.send(`This is ${user} author page who is ${age} years old`);
+
+})
+
 app.listen(3000);
