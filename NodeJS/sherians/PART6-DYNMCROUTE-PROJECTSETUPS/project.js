@@ -12,6 +12,9 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 // now y this we have given the browser or our backend to handle forms
 
+
+app.use(express.static(path.join(__dirname,'public')))
+
 app.set('view engine', 'ejs');
 
 
@@ -25,6 +28,29 @@ app.get('/',function(req,res){
 
     res.render('index')
 
+})
+
+app.get('/jokes',(req,res) => {
+    const jokes = [{
+        id:1,
+        content:"Your mama is bald"
+    },
+    {
+        id:2,
+        content:"Your mama is bald"
+    },
+    {
+        id:3,
+        content:"Your mama is bald"
+    },
+    {
+        id:4,
+    content:"Your mama is bald"
+    }
+];
+
+res.send(jokes);
+        
 })
 
 
