@@ -4,10 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>to do list</title>
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
 </head>
 <body>
     
-    <h1>Hat teri aisi ki tesi</h1>
+    <div class="main w-full min-h-screen bg-zinc-900 flex-wrap">
+        <div class="form  p-10 text-white">
+            <form action="">
+                <input class="block w-full rounded-lg outline-none   px-5 py-2 bg-zinc-800" type="text" placeholder="Title goes here" name="" id="">
+                <textarea class="block w-full rounded-lg mt-2 px-5 py-2 bg-zinc-800 resize-none" name=""  placeholder="Write you task details here"></textarea>
+                <input class="mt-2 bg-blue-600 px-2 py-2 rounded-md" type="submit" value="Create task" name="" id="">
+            </form>
+        </div>
+        <div class="tasks text-white p-10 rounded-md flex gap-3">
+            <div class="task w-72 px-3 py-4 bg-zinc-800 rounded-md  hidden" >
+                <h1 class="text-white text-3xl tracking-tighter">Some task goes here</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, alias.</p>
+                <a href="text-blue-500 inline-block mt-3">Read More</a>
+            </div>
+             <div class="task w-72 px-3 py-4 bg-zinc-800 rounded-md hidden" >
+                <h1 class="text-white text-3xl tracking-tighter">Some task goes here</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, alias.</p>
+                <a href="text-blue-500 inline-block mt-3">Read More</a>
+            </div>
+             <div class="task w-72 px-3 py-4 bg-zinc-800 rounded-md hidden">
+                <h1 class="text-white text-3xl tracking-tighter">Some task goes here</h1>
+                <p class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, alias.</p>
+                <a href="text-blue-500 inline-block mt-3">Read More</a>
+            </div>
+        </div>
+    </div>
 
 
 </body>
