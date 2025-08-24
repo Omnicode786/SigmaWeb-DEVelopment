@@ -11,15 +11,25 @@ app.set('view engine', 'ejs');
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname,'public')));
-
+  fs.readdir('PArt7-rivise\\files',(error,files)=>{
+        console.log(files);})
 
 app.get('/', (req,res) => {
 
-    fs.readdir('./files',(error,files)=>{
+    fs.readdir('PArt7-rivise\\files',(error,files)=>{
+        console.log(files);
         res.render('index', {files:files});
 
     })
 
+
+})
+
+app.post('/create',function(req,res){
+console.log(req.body);
+fs.writeFile(`PArt7-rivise\\files\\${req.body.title.split(" ").join("")}.txt`,req.body.details, function(err){
+    res.redirect('/')
+})
 
 })
 
