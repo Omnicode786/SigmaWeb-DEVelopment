@@ -1,6 +1,7 @@
+const { error } = require('console');
 const express = require('express');
-
-const path = require('path')
+const fs = require('fs');
+const path = require('path');
 
 const app  = express();
 
@@ -13,7 +14,11 @@ app.use(express.static(path.join(__dirname,'public')));
 
 
 app.get('/', (req,res) => {
-    res.render('index');
+
+    fs.readdir('./files',(error,files)=>{
+        res.render('index', {files:files});
+
+    })
 
 
 })
