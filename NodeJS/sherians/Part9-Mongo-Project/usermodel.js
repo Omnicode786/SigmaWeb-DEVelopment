@@ -13,5 +13,6 @@ const userSchema = mongoose.Schema({
 
 // model ke basis pr hi crud chalta he 
 
-mongoose.model("user", userSchema);
 
+
+module.exports = mongoose.model("user", userSchema);
