@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body class="bg-zinc-900 text-white flex items-center justify-center min-h-screen">
+
+  <div class="bg-zinc-800 rounded-2xl shadow-xl p-8 w-full max-w-md text-center">
+    <h1 class="text-2xl font-bold mb-6">✅ Logged In</h1>
+
+    <p class="mb-3"><span class="font-semibold">Username:</span> <%= user.username %></p>
+    <p class="mb-3"><span class="font-semibold">Email:</span> <%= user.email %></p>
+    <p class="mb-6"><span class="font-semibold">Age:</span> <%= user.age %></p>
+
+    <form action="/logout" method="POST">
+      <button type="submit" class="bg-red-600 hover:bg-red-700 px-6 py-2 rounded-lg font-medium">
+        Logout
+      </button>
+    </form>
+  </div>
+
+</body>
+</html>
