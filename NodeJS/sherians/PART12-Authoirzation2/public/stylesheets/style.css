@@ -1,5 +1,5 @@
 * {
-
+  
   box-sizing: border-box;
   font-family: gilroy, sans-serif;
 }
@@ -7,7 +7,11 @@
 html,
 body {
   height: 100%;
+ 
   width: 100%;
-  color: white; 
 }   
+body{
+  color: white; 
+
+}
 

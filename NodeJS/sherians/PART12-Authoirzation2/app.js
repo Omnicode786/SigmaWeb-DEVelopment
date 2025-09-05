@@ -46,14 +46,54 @@ app.post('/create', async (req, res) => {
       httpOnly: true,
       secure: false // true in production (HTTPS)
     });
-    res.redirect('/profile');
+    res.redirect('/login');
   } catch (err) {
     console.error(err);
     res.status(500).send("Error creating user");
   }
 });
 
-// Profile (protected route)
+
+app.get('/login',(req,res)=>{
+
+  res.render('login');
+
+})
+app.post('/login',async (req,res)=>{
+try{
+  let {email, password} = req.body;
+
+
+  const user =await userModel.findOne({email}); 
+    if (!user) {
+      return res.status(404).send("invalid email or password");
+    }
+    const isMatch =await bcrypt.compare(password,user.password);
+    if (!isMatch){
+       return res.status(401).send("Invalid email or password");
+    }
+    
+    // now that the user has logged in create a new token now for this login session 
+    const token = jwt.sign({email:user.email},"secret", {expiresIn:"1h"});
+    res.cookie(
+      "token",token,
+    {
+       httpOnly: true,
+      secure: false 
+    })
+
+
+
+  res.redirect('/profile');
+  }
+  catch(err){
+    console.log(err);
+    res.send("Error loggin in ");
+  }
+})
+
+
+// Profile
 app.get('/profile', async (req, res) => {
     console.log("Cookei on request: ", req.cookies.token);
   try {
@@ -96,3 +136,13 @@ app.listen(3000, () => console.log("Server running on http://localhost:3000"));
 // because cookies are only available on the *next request*,
 // not in the same one where I just set them.
 // 👉 If I want to see the cookie value, check it inside /profile or the next request.
+
+
+// 👉 jwt.verify() + findOne() are not really "login" steps 😅
+// this is actually *token verification* (checking if user already has a valid cookie)
+// it works here only because I already had a token from signup
+// but in real login I should:
+//   1. find user by email
+//   2. check password with bcrypt.compare
+//   3. then make a new token + cookie
+// ⚠️ Keep this logic for protected routes like /profile, not /login
