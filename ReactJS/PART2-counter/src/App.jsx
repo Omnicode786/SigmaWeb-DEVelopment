@@ -13,19 +13,21 @@ function App() {
 // now we dont need i t
 
   const addValue = () => {
+    if (counter < 20){
     counter = counter + 1;
     console.log("Value added");
     console.log(counter)
     setCounter(counter);
-
+    }
   }
   
   const RemoveValue = () => {
+    if (counter > 0){
     counter =counter - 1;
     console.log("Value removed");
     console.log(counter)
     setCounter(counter);
-
+    }
   }
 
   return (
