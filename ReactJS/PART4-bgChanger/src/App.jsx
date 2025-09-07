@@ -10,12 +10,12 @@ function App() {
 
   return (
 
-<>
+
     
-    <div className='w-'></div>
+    <div className='w-full h-screen duration-200' style={{backgroundColor:color}}> HELLo </div>
 
 
-    </>
+  
   )
 }
 
