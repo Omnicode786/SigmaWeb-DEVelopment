@@ -45,7 +45,7 @@ const passwordRef = useRef(null);
     }
 
     // Loop → pick random chars up to 'length'
-    for (let index = 1; index <= length; index++) {
+    for (let index = 0; index <= length; index++) {
       let char = Math.floor(Math.random() * str.length + 1);
       pass += str.charAt(char);
     }
