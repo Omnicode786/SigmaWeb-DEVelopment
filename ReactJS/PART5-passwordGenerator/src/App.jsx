@@ -36,7 +36,17 @@ setPassword(pass);
   return (
     <>
 
-      <div className='w-full'></div>
+      <div className='w-full max-w-md mx-auto shadow-md px-4 my-8 rounded-lg text-orange-600 bg-gray-500 text-center'>test</div>
+      <div className='w-full max-w-md mx-auto shadow-md px-4 my-8 rounded-lg text-orange-600 bg-gray-500 text-center'>
+      <input type="text"
+      value = {Password} 
+      className='outline-none w-full py-1 px-3' />
+
+
+
+
+      </div>
+
 
 
     </>
