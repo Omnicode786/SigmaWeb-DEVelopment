@@ -1,6 +1,11 @@
 
+import { Route, Routes } from 'react-router-dom'
 import Card from './components/Card'
 import Nav from './components/Nav'
+import Home from './components/Home'
+import Product from './components/Product'
+import About from './components/About'
+import Contact from './components/Contact'
 
 const props = [
   {
@@ -40,11 +45,22 @@ for (let i = 4; i <= 50; i++) {
   })
 }
 
+
 function App() {
 
+
+
   return (
-    <>
-       <Nav/>
+<>
+    <Nav/>
+
+<Routes>
+  <Route path='/' element={<Home/>}/>
+  <Route path='/product' element={<Product/>}/>
+  <Route path='/about' element={<About/>}/>
+  <Route path='/contact' element={<Contact/>}/>
+
+ </Routes>
 
         <div className='w-full flex mt-22 items-center min-h-80 flex-wrap bg-gray-100'>
         {props.map((elem,index)=>(
@@ -55,7 +71,9 @@ function App() {
 
 
 
-    </>
+   
+   
+     </>
   )
 }
 

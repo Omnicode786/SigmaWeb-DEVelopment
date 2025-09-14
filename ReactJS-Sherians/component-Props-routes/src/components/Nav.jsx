@@ -1,3 +1,6 @@
+
+import { Link } from "react-router-dom";
+
 function Nav() {
   return (
     <>
@@ -8,16 +11,29 @@ function Nav() {
             Muzammil Alam
           </h2>
 
+
+
+{/* if we are routing and we add a tags then it will show us a reload instead use links */}
+
           {/* Nav Links */}
           <ul className="flex gap-8 text-gray-700 font-medium">
             <li className="hover:text-amber-500 transition-colors duration-300 cursor-pointer">
-              Home
+              {/* <a href="/">Home</a> */}
+              <Link to='/'>Home</Link>
             </li>
             <li className="hover:text-amber-500 transition-colors duration-300 cursor-pointer">
-              About
+                          {/* <a href="/about">About us</a> */}
+              <Link to='/about'>About us</Link>
+
             </li>
             <li className="hover:text-amber-500 transition-colors duration-300 cursor-pointer">
-              Contact
+                            {/* <a href="/contact">Contact us</a> */}
+              <Link to='/contact'>Contact us</Link>
+
+            </li> <li className="hover:text-amber-500 transition-colors duration-300 cursor-pointer">
+                            {/* <a href="/product">Products</a> */}
+              <Link to='/product'>Products</Link>
+
             </li>
           </ul>
         </div>
