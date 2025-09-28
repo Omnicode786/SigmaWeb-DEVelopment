@@ -9,7 +9,6 @@ function requireAuthJSON(req, res, next){
   next();
 }
 
-// add comment to a thread
 router.post('/threads/:id/comments', requireAuthJSON, async (req, res) => {
   const thread = await Thread.findById(req.params.id);
   if (!thread) return res.status(404).json({ error: 'Thread not found' });
@@ -23,7 +22,6 @@ router.post('/threads/:id/comments', requireAuthJSON, async (req, res) => {
   res.json({ success: true, comment: populated });
 });
 
-// add reply to a comment
 router.post('/comments/:id/replies', requireAuthJSON, async (req, res) => {
   const comment = await Comment.findById(req.params.id);
   if (!comment) return res.status(404).json({ error: 'Comment not found' });
@@ -37,7 +35,7 @@ router.post('/comments/:id/replies', requireAuthJSON, async (req, res) => {
   res.json({ success: true, reply: populated });
 });
 
-// toggle upvote for comment
+// enable upvote for comment
 router.post('/comments/:id/upvote', requireAuthJSON, async (req, res) => {
   const comment = await Comment.findById(req.params.id);
   if (!comment) return res.status(404).json({ error: 'Comment not found' });
@@ -54,7 +52,7 @@ router.post('/comments/:id/upvote', requireAuthJSON, async (req, res) => {
   res.json({ success: true, upvotes: comment.upvotes });
 });
 
-// toggle upvote for reply
+// enable upvote for reply
 router.post('/replies/:id/upvote', requireAuthJSON, async (req, res) => {
   const reply = await Reply.findById(req.params.id);
   if (!reply) return res.status(404).json({ error: 'Reply not found' });

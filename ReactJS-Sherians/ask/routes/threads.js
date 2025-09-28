@@ -10,24 +10,22 @@ function requireAuth(req, res, next){
   next();
 }
 
-// home - list threads
 router.get('/', async (req, res) => {
   const threads = await Thread.find().sort({ createdAt: -1 }).populate('author', 'username role');
   res.render('index', { threads });
 });
 
-// create thread (from form)
 router.post('/create_thread', requireAuth, async (req, res) => {
   const { title, content } = req.body;
   await new Thread({ title, content, author: req.session.user._id }).save();
   res.redirect('/');
 });
 
-// view single thread with comments + replies
+//  single thread with comments and   replies
 router.get('/thread/:id', requireAuth, async (req, res) => {
   const thread = await Thread.findById(req.params.id).populate('author', 'username role');
   if (!thread) return res.redirect('/');
-  // fetch comments and replies, then sort by upvotes
+  // get  comments and replies then sort by upvotes
   let comments = await Comment.find({ thread: thread._id })
     .populate('author', 'username role')
     .lean();
@@ -40,7 +38,7 @@ router.get('/thread/:id', requireAuth, async (req, res) => {
     const adminReplies = replies.filter(r => r.author && r.author.role === 'admin').sort((a,b)=> b.upvotes - a.upvotes);
     const normalReplies = replies.filter(r => !(r.author && r.author.role === 'admin')).sort((a,b)=> b.upvotes - a.upvotes);
 
-    // admin replies always on top
+    // admin replies will  always on top
     c.replies = [...adminReplies, ...normalReplies];
   }
 

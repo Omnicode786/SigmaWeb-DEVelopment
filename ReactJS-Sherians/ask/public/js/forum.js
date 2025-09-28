@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       const j = await res.json();
       if (!j.success) return alert(j.error || 'Error');
-      // reload page to show sorted comments (simpler)
       location.reload();
     });
   }
@@ -25,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // submit reply
+  // submitthethethe reply
   document.querySelectorAll('.submit-reply').forEach(btn => {
     btn.addEventListener('click', async () => {
       const commentId = btn.dataset.id;
@@ -41,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // upvote comment
+  // upvotethe comment
   document.querySelectorAll('.upvote-comment').forEach(btn => {
     btn.addEventListener('click', async () => {
       const id = btn.dataset.id;
@@ -49,7 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const j = await res.json();
       if (!j.success) return alert(j.error || 'Error');
       btn.nextElementSibling.textContent = j.upvotes;
-      // reload sorting
       location.reload();
     });
   });

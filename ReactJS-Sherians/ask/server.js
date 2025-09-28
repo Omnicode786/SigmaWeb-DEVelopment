@@ -40,7 +40,6 @@ app.use(session({
   cookie: { maxAge: 1000 * 60 * 60 * 24 } // 1 day
 }));
 
-// make user available in views
 app.use((req, res, next) => {
   res.locals.currentUser = req.session.user || null;
   next();

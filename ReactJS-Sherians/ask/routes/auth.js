@@ -13,7 +13,6 @@ router.post('/register', async (req, res) => {
   try {
     const hash = await bcrypt.hash(password, 10);
     const role = (adminCode === 'ADMIN_SECRET_CODE') ? 'admin' : 'user';
-    // change ADMIN_SECRET_CODE to something secure or remove for production
     const user = new User({ username, passwordHash: hash, role });
     await user.save();
     req.session.user = { _id: user._id, username: user.username, role: user.role };
