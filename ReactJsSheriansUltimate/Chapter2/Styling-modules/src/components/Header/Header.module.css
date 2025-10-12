@@ -1,0 +1,29 @@
+
+
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.part1{
+    font-size: 20px;
+    
+}
+.part2{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 30%;
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none;
+    list-style: none;
+}
+.part2>li:hover{
+  text-decoration: underline solid red 3px; 
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+
+}
