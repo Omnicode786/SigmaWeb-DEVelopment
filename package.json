@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Omnicode786/SigmaWeb-DEVelopment#readme",
   "dependencies": {
+    "@remixicon/react": "^4.6.0",
     "@tailwindcss/vite": "^4.1.14",
     "chokidar": "^4.0.3",
     "tailwindcss": "^4.1.14"
