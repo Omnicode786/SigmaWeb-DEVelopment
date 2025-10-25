@@ -20,7 +20,7 @@
           </div>
         </div>
 
-        <div class="replies">
+        <div class="replies"> 
           <% comment.replies.forEach(reply => { %>
             <div class="reply" data-id="<%= reply._id %>">
               <strong><%= reply.author ? reply.author.username : 'Unknown' %>

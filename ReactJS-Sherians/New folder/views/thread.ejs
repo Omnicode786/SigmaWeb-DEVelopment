@@ -1,0 +1,39 @@
+<section class="thread-page card text-light bg-dark p-4 border border-secondary">
+  <h2><%= thread.title %></h2>
+  <p><%= thread.content %></p>
+  <small>by <%= thread.author_username || 'Unknown' %></small>
+  <hr />
+
+  <h3>Comments</h3>
+  <% comments.forEach(comment => { %>
+    <div class="mb-3 p-3 border border-secondary rounded">
+      <strong><%= comment.author_username || 'Unknown' %></strong>
+      <p><%= comment.content %></p>
+      <div class="replies ms-4 mt-2">
+        <% comment.replies.forEach(reply => { %>
+          <div class="border-start border-secondary ps-3 mb-2">
+            <strong><%= reply.author_username %> <% if (reply.role === 'admin') { %><span class="badge bg-danger">ADMIN</span><% } %></strong>
+            <p><%= reply.content %></p>
+          </div>
+        <% }) %>
+      </div>
+
+      <% if (currentUser) { %>
+        <form method="post" action="/comments/<%= comment.id %>/replies">
+          <textarea name="content" class="form-control bg-dark text-light border-secondary mb-2" placeholder="Reply..." rows="2" required></textarea>
+          <button class="btn btn-outline-light btn-sm">Reply</button>
+        </form>
+      <% } %>
+    </div>
+  <% }) %>
+
+  <% if (currentUser) { %>
+    <hr />
+    <form method="post" action="/threads/<%= thread.id %>/comments">
+      <textarea name="content" class="form-control bg-dark text-light border-secondary mb-2" placeholder="Add a comment..." rows="3" required></textarea>
+      <button class="btn btn-outline-light w-100">Post Comment</button>
+    </form>
+  <% } else { %>
+    <p><a href="/login" class="btn btn-primary">Login</a> to comment.</p>
+  <% } %>
+</section>
