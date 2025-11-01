@@ -1,7 +1,10 @@
+
+
 <section class="thread-page card text-light">
   <h2><%= thread.title %></h2>
   <p><%= thread.content %></p>
   <small>by <%= thread.author ? thread.author.username : 'Unknown' %></small>
+  <small><%= thread.timeAgo %></small>
 
   <hr />
   <h3>Comments</h3>
@@ -13,7 +16,7 @@
           <strong><%= comment.author ? comment.author.username : 'Unknown' %></strong>
           <p><%= comment.content %></p>
           <div class="meta">
-            <button class="upvote-comment" data-id="<%= comment._id %>">▲</button>
+            <button class="upvote-comment" data-id="<%= comment._id %>"> <i class="bi bi-hand-thumbs-up"></i> </button>
             <span class="upvote-count"><%= comment.upvotes %></span>
             <button class="show-reply-form" data-id="<%= comment._id %>">Reply</button>
           </div>
@@ -29,7 +32,7 @@
               </strong>
               <p><%= reply.content %></p>
               <div class="meta">
-                <button class="upvote-reply" data-id="<%= reply._id %>">▲</button>
+                <button class="upvote-reply" data-id="<%= reply._id %>"><i class="bi bi-hand-thumbs-up"></i></button>
                 <span class="upvote-count"><%= reply.upvotes %></span>
               </div>
             </div>

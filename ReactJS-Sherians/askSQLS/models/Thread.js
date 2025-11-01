@@ -10,6 +10,7 @@ async function createThread({ title, content, authorId }) {
   return getThreadById(insertId);
 }
 
+
 async function getAllThreads() {
   const [rows] = await pool.execute(
     `SELECT t.id AS _id, t.title, t.content, t.created_at AS createdAt,
@@ -18,6 +19,8 @@ async function getAllThreads() {
      LEFT JOIN users u ON u.id = t.author_id
      ORDER BY t.created_at DESC`
   );
+
+
   return rows.map(r => ({
     _id: r._id,
     title: r.title,
@@ -25,7 +28,9 @@ async function getAllThreads() {
     createdAt: r.createdAt,
     author: r.author_id ? { username: r.username } : null
   }));
+  
 }
+
 
 async function getThreadById(id) {
   const [rows] = await pool.execute(
@@ -46,5 +51,7 @@ async function getThreadById(id) {
     author: r.author_id ? { username: r.username, role: r.role } : null
   };
 }
+
+
 
 module.exports = { createThread, getAllThreads, getThreadById };

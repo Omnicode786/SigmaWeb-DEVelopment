@@ -1,3 +1,4 @@
+
 <section class="ask-section bg-dark">
   <h2 class="mb-4 text-center fw-bold">
     <i class="bi bi-chat-dots"></i> Ask Community
@@ -26,10 +27,12 @@
 
   <h3 class="fw-bold mb-3 bg-dark">Threads</h3>
   <div class="threads d-flex flex-column gap-3">
+   
     <% threads.forEach(t => { %>
+<% console.log('THREAD DATA:', JSON.stringify(t, null, 2)); %>
       <div class="thread-card card bg-dark text-light border border-secondary p-3">
         <a href="/thread/<%= t._id %>" class="text-decoration-none text-light">
-          <h4 class="fw-bold"><%= t.title %></h4>
+          <h4 class="fw-bold d-flex justify-content-between align-items-center"><%= t.title %> <p class="text-secondary fw-light fs-6 "><%= t.timeAgo %> </p></h4>
         </a>
         <p class="text-secondary">
           <%= t.content.length > 200 ? t.content.slice(0,200)+'...' : t.content %>
