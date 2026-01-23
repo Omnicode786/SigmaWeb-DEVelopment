@@ -1,0 +1,10 @@
+
+@import "tailwindcss";
+
+
+.nav-list{
+  background-color: rgba(0, 255, 255, 0.082);
+  padding: 10px 40px;
+  border-radius: 40px;
+
+}

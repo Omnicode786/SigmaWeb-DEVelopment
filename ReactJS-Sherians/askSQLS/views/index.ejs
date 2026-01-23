@@ -1,43 +1,88 @@
+<section id="ask" class="ask-section container-fluid py-5" style="max-width: 90%;">
 
-<section class="ask-section bg-dark">
-  <h2 class="mb-4 text-center fw-bold">
-    <i class="bi bi-chat-dots"></i> Ask Community
-  </h2>
-
-  <% if (currentUser) { %>
-    <form id="create-thread-form" method="post" action="/create_thread" 
-          class="card bg-dark text-light border border-secondary p-4 mb-5">
-      <div class="mb-3">
-        <input class="form-control bg-dark text-light border-secondary" 
-               name="title" placeholder="Title" required />
-      </div>
-      <div class="mb-3">
-        <textarea class="form-control bg-dark text-light border-secondary" 
-                  name="content" placeholder="Details..." rows="5" required></textarea>
-      </div>
-      <button type="submit" class="btn btn-outline-light w-100">
-        <i class="bi bi-send"></i> Post Question
-      </button>
-    </form>
-  <% } else { %>
-    <p class="text-center">
-      <a href="/login" class="btn btn-primary">Login</a> to ask a question.
+  <!-- Section Title -->
+  <div class="text-center mb-5" data-aos="fade-down" data-aos-duration="800">
+    <p class="fw-bold mb-2 text-light stylish-font">
+      <i class="bi bi-chat-dots"></i> ASK COMMUNITY
     </p>
+    <h1 class="fs-1 stylish-italic-text text-light">Ask your question and start the discussion</h1>
+    <p class="text-secondary stylish-font">Be clear, concise, and provide enough detail so others can help you better.</p>
+  </div>
+
+  <!-- Ask Form -->
+  <% if (currentUser) { %>
+    <div class="col-12 col-md-12 mx-auto mb-5" data-aos="zoom-in-up" data-aos-duration="1000">
+      <form id="create-thread-form" method="post" action="/create_thread" 
+            class="p-4 rounded bg-dark border border-secondary shadow-sm stylish-font">
+
+        <!-- Title Field -->
+        <div class="mb-4">
+          <label for="title" class="form-label fw-bold text-light">Title</label>
+          <input type="text" name="title" id="title"
+                 class="form-control bg-dark text-light border-secondary placeholder-light"
+                 placeholder="Enter a short, clear title for your question"
+                 required>
+        </div>
+
+        <!-- Details Field -->
+        <div class="mb-4">
+          <label for="content" class="form-label fw-bold text-light">Details</label>
+          <textarea name="content" id="content" rows="6"
+                    class="form-control bg-dark text-light border-secondary placeholder-light"
+                    placeholder="Describe your question in detail... Include what you’ve tried or where you’re stuck."
+                    required></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="text-center">
+          <button type="submit" class="btn btn-lg w-100 stylish-font postButton"
+                  style="background-color: transparent; color: white; border: 2px solid white; transition: all 0.3s;">
+            <i class="bi bi-send"></i> Post Question
+          </button>
+        </div>
+      </form>
+    </div>
+    <style>
+       .placeholder-light::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+    opacity: 1;
+  }
+  .postButton:hover{
+      color:  black !important; 
+      background-color: white !important;
+
+  }
+.stylish-italic-text {
+   font-family: 'Dancing Script', cursive;
+  font-style: italic;
+}
+</style>
+    
+  <% } else { %>
+    <div class="text-center my-5 stylish-font">
+      <p class="text-light fs-5 mb-3">You need to log in to ask a question.</p>
+      <a href="/login" class="btn btn-outline-light btn-lg px-5">
+        <i class="bi bi-box-arrow-in-right"></i> Login
+      </a>
+    </div>
   <% } %>
 
-  <h3 class="fw-bold mb-3 bg-dark">Threads</h3>
+  <!-- Threads Section -->
+  <h3 class="fw-bold mb-3 text-light stylish-font">Recent Threads</h3>
   <div class="threads d-flex flex-column gap-3">
-   
     <% threads.forEach(t => { %>
-<% console.log('THREAD DATA:', JSON.stringify(t, null, 2)); %>
-      <div class="thread-card card bg-dark text-light border border-secondary p-3">
+      <div class="thread-card card bg-dark text-light border border-secondary p-4 rounded-3 shadow-sm" 
+           data-aos="fade-up" data-aos-duration="700">
         <a href="/thread/<%= t._id %>" class="text-decoration-none text-light">
-          <h4 class="fw-bold d-flex justify-content-between align-items-center"><%= t.title %> <p class="text-secondary fw-light fs-6 "><%= t.timeAgo %> </p></h4>
+          <h4 class="fw-bold stylish-font mb-2 d-flex justify-content-between align-items-center">
+            <%= t.title %>
+            <span class="text-secondary fw-light fs-6"><%= t.timeAgo %></span>
+          </h4>
         </a>
-        <p class="text-secondary">
+        <p class="text-secondary stylish-font mb-3">
           <%= t.content.length > 200 ? t.content.slice(0,200)+'...' : t.content %>
         </p>
-        <small class="text-muted">
+        <small class="text-muted stylish-font">
           by <%= t.author ? t.author.username : 'Unknown' %> • 
           <%= new Date(t.createdAt).toLocaleString() %>
         </small>

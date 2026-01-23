@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>FSM - Flowchart Diagram (3D light theme)</title>
+<style>
+  :root{
+    --bg:#f7fbff;
+    --card:#ffffff;
+    --stroke:#0b3b5c;
+    --muted:#5b6b76;
+    --accent:#69b7ff;
+    --shadow: 0 18px 40px rgba(11,59,92,0.08);
+  }
+  body{
+    margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
+    font-family:"Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: linear-gradient(180deg,#f0f7ff 0%, #ffffff 100%);
+    color:var(--stroke);
+  }
+  .frame{
+    width:880px; background:var(--card); border-radius:14px; padding:28px;
+    box-shadow:var(--shadow); border:1px solid rgba(11,59,92,0.04);
+  }
+  h2{margin:0 0 12px 0; font-size:18px; font-weight:700; color:var(--stroke)}
+  p{margin:0 0 18px 0;color:var(--muted);font-size:13px}
+  /* SVG container for responsiveness */
+  .svg-wrap{width:100%; height:420px; display:flex; align-items:center; justify-content:center}
+  svg{width:100%; height:100%}
+  /* small caption */
+  .caption{font-size:12px;color:var(--muted);margin-top:12px}
+</style>
+</head>
+<body>
+  <div class="frame">
+    <h2>Sequence Detector — State Transition Diagram (Mealy, non-overlapping)</h2>
+    <p>States: S0 = 00, S1 = 01, S2 = 10. Arrows show transitions; labels show input / output (Mealy).</p>
+
+    <div class="svg-wrap">
+      <!-- Inline SVG: copy/save as .svg if you need vector output -->
+      <svg viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="FSM state transition diagram">
+        <defs>
+          <!-- subtle drop shadow filter -->
+          <filter id="softShadow" x="-50%" y="-50%" width="200%" height="200%">
+            <feDropShadow dx="0" dy="8" stdDeviation="18" flood-color="#0b3b5c" flood-opacity="0.06"/>
+          </filter>
+
+          <!-- arrowhead -->
+          <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+            <path d="M0,0 L10,5 L0,10 z" fill="#0b3b5c" opacity="0.9"/>
+          </marker>
+
+          <!-- accent arrowhead -->
+          <marker id="arrowAccent" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+            <path d="M0,0 L12,6 L0,12 z" fill="#69b7ff"/>
+          </marker>
+
+          <!-- gentle glow for nodes -->
+          <radialGradient id="nodeGrad" cx="35%" cy="25%">
+            <stop offset="0%" stop-color="#ffffff"/>
+            <stop offset="100%" stop-color="#e9f6ff"/>
+          </radialGradient>
+
+          <style type="text/css"><![CDATA[
+            .node { cursor:default; filter:url(#softShadow); }
+            .node-circle { fill: url(#nodeGrad); stroke:#cde9ff; stroke-width:1.6; }
+            .node-label { font-weight:700; font-size:16px; fill:#083047; font-family:"Times New Roman",serif; }
+            .node-code { font-size:12px; fill:#4f6a73; font-family: "Times New Roman", serif; }
+            .edge { stroke:#0b3b5c; stroke-width:2; fill:none; marker-end:url(#arrow); opacity:0.92; }
+            .edge-accent { stroke:#69b7ff; stroke-width:2.4; fill:none; marker-end:url(#arrowAccent); opacity:1; }
+            .edge-label { font-size:13px; fill:#083047; font-family:"Times New Roman", serif; font-weight:700; }
+          ]]></style>
+        </defs>
+
+        <!-- positions: three nodes arranged triangularly -->
+        <!-- S1 (left-top) -->
+        <g id="S1" transform="translate(180,110)" class="node">
+          <circle class="node-circle" cx="0" cy="0" r="58" />
+          <text class="node-label" x="-12" y="-6">S1</text>
+          <text class="node-code" x="-18" y="14">01</text>
+        </g>
+
+        <!-- S2 (right-top) -->
+        <g id="S2" transform="translate(720,110)" class="node">
+          <circle class="node-circle" cx="0" cy="0" r="58" />
+          <text class="node-label" x="-12" y="-6">S2</text>
+          <text class="node-code" x="-18" y="14">10</text>
+        </g>
+
+        <!-- S0 (bottom-center) -->
+        <g id="S0" transform="translate(450,320)" class="node">
+          <circle class="node-circle" cx="0" cy="0" r="68" />
+          <text class="node-label" x="-18" y="-10">S0</text>
+          <text class="node-code" x="-20" y="14">00</text>
+        </g>
+
+        <!-- Static transition paths (curved, labeled) -->
+        <!-- S0 -> S1 (both inputs) -->
+        <path class="edge" d="M450,260 Q320,220 220,140" />
+        <text class="edge-label" x="300" y="200" >x = 0 / x = 1</text>
+
+        <!-- S1 -> S1 self-loop (x=1) -->
+        <path class="edge" d="M120,80 C80,20 260,20 220,80" />
+        <text class="edge-label" x="150" y="45">x = 1</text>
+
+        <!-- S1 -> S2 (x=0) -->
+        <path class="edge" d="M240,140 Q450,70 660,140" />
+        <text class="edge-label" x="450" y="100">x = 0</text>
+
+        <!-- S2 -> S0 (x=0, y=1) - accent because output produced -->
+        <path class="edge-accent" d="M720,170 Q600,250 480,290" />
+        <text class="edge-label" x="600" y="230">x = 0 / y = 1</text>
+
+        <!-- S2 -> S1 (x=1) -->
+        <path class="edge" d="M650,120 Q500,80 240,80" />
+        <text class="edge-label" x="430" y="60">x = 1</text>
+
+        <!-- small note in lower area -->
+        <text x="18" y="390" font-family="Times New Roman" font-size="12" fill="#4b636b">Mealy, non-overlapping detector — labels show transition input / output (y shown when produced on the transition).</text>
+      </svg>
+    </div>
+
+    <div class="caption">Copy the SVG block into a vector editor or save this page as an SVG/PNG for your report.</div>
+  </div>
+</body>
+</html>

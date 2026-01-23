@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
+// load the animation on scroller
+  AOS.init();
+
   // submit comment
   const submitBtn = document.getElementById('submit-comment');
   if (submitBtn) {
