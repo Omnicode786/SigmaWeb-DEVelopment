@@ -2,13 +2,16 @@ import React from 'react'
 
 const HeroText = () => {
   return (
-    <div className="p-5">
-        <h3 className="text-5xl leading-[1.1] font-medium mb-6">
-          Prospective <br />
-          <span className="text-6xl px-3 font-bold bg-gradient-to-r from-emerald-300 via-green-400 to-lime-300 bg-clip-text text-transparent inline-block drop-shadow-[0_5px_10px_rgba(34,197,94,0.7)] "> Customer </span> <br /> Segmentation
-        </h3>
-        <p className="font-medium text-gray-400">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, asperiores dolores in accusantium omnis tempore debitis. Ratione explicabo ducimus optio exercitationem qui voluptatum beatae repellendus quod, cum eius mollitia necessitatibus!</p>
-      </div>
+    <div className="p-5 md:p-10">
+      <h1 className="text-4xl md:text-5xl lg:text-6xl leading-tight font-extrabold mb-6">
+        Prospective <br />
+        <span className="bg-gradient-to-r from-emerald-400 via-green-500 to-lime-400 bg-clip-text text-transparent drop-shadow-lg">Customer</span> <br />
+        Segmentation
+      </h1>
+      <p className="text-gray-600 md:text-lg lg:text-xl leading-relaxed">
+        Empower your business by understanding and segmenting your audience. Create meaningful experiences that connect, engage, and convert.
+      </p>
+    </div>
   )
 }
 

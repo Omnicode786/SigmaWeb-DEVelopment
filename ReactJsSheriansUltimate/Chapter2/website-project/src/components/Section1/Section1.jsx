@@ -1,13 +1,13 @@
 import React from 'react'
-import NavBar from './NavBar';
-import Page1Content from './Page1Content';
+import NavBar from './NavBar'
+import Page1Content from './Page1Content'
 
-const Section1 = () => {
+const Section1 = ({ users }) => {
   return (
-    <div className='h-screen w-full '>
-        <NavBar></NavBar>
-        <Page1Content></Page1Content>
-    </div>
+    <section className='h-screen w-full bg-gradient-to-b from-green-100 to-blue-50'>
+      <NavBar />
+      <Page1Content users={users} />
+    </section>
   )
 }
 
