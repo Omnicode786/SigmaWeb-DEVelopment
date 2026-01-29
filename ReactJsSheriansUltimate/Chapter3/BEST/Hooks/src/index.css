@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+/* Bhai, v4 mein humein seedha @import "tailwindcss" karna hota hai.
+   Agar aap v4 use kar rahe hain, to purane @tailwind base/components/utilities ki zaroorat nahi.
+*/
+
+@layer base {
+  body {
+    /* @apply use karte waqt ensure karein ke syntax v4 compatible ho */
+    @apply m-0 overflow-hidden font-sans text-slate-800;
+    background: radial-gradient(circle at 50% 50%, #fdfbfb, #ebedee);
+    height: 100vh;
+    width: 100vw;
+  }
+}
+
+/* Custom Glass Class */
+.glass-panel {
+  @apply bg-white/30 backdrop-blur-xl border border-white/50 shadow-2xl;
+}
+
+.glass-dock {
+  @apply bg-black/5 backdrop-blur-2xl border border-white/20 shadow-lg;
+}
+
+/* Floating Animation baki sab same rahega */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+.float-animation {
+  animation: float 6s ease-in-out infinite;
+}
