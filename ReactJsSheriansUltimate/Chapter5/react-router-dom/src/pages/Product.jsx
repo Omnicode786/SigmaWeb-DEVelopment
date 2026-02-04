@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom';
 
-export default function Product() {
+function Product() {
   const { id } = useParams(); // URL se ID nikalne ka magic
   const navigate = useNavigate();
 
@@ -18,3 +18,5 @@ export default function Product() {
     </div>
   )
 }
+
+export default Product
