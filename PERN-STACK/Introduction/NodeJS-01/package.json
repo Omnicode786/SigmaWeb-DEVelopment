@@ -1,0 +1,20 @@
+{
+  "name": "nodejs-01",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.2.1",
+    "https": "^1.0.0",
+    "nodemon": "^3.1.11"
+  },
+  "keywords": [],
+  "description": "",
+  "type": "module"
+}
