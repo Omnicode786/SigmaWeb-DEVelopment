@@ -1,0 +1,25 @@
+.car-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  width: 280px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.car-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 25px rgba(0,0,0,0.15);
+}
+
+.car-header h2 {
+  margin: 0;
+  font-size: 20px;
+  color: #333;
+}
+
+.car-body {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #555;
+}
