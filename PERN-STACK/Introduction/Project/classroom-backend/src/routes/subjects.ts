@@ -9,12 +9,16 @@ const router = express.Router();
 router.get("/", async (req: express.Request, res: express.Response) => {
   try {
     const { search, department, page = 1, limit = 10 } = req.query;
+    // this data is from the link of the website
+    
     const currentPage = Math.max(1, +page);
     const LimitPerPage = Math.max(1, +limit);
     const offset = LimitPerPage * (currentPage - 1);
     const filterConditions = [];
 
     // if the subject filter exists then filter by name or the code
+
+
 
     if (search) {
       filterConditions.push(
