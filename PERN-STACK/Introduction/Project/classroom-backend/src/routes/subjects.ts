@@ -10,15 +10,15 @@ router.get("/", async (req: express.Request, res: express.Response) => {
   try {
     const { search, department, page = 1, limit = 10 } = req.query;
     // this data is from the link of the website
-    
-    const currentPage = Math.max(1, +page);
-    const LimitPerPage = Math.max(1, +limit);
+
+    // the below was parsed to int cas if the thing was a string then it would make max return nan which in turn canmake sql query un predictable
+
+    const currentPage = Math.max(1, parseInt(String(page)));
+    const LimitPerPage = Math.max(1, parseInt(String(limit)));
     const offset = LimitPerPage * (currentPage - 1);
     const filterConditions = [];
 
     // if the subject filter exists then filter by name or the code
-
-
 
     if (search) {
       filterConditions.push(
@@ -32,13 +32,17 @@ router.get("/", async (req: express.Request, res: express.Response) => {
     // department  = query params and departments is the tab;e
 
     if (department) {
-      filterConditions.push(
-        or(
-          ilike(departments.name, `${department}`),
-          ilike(departments.code, `${department}`),
-        ),
-      );
+      // so this can lead to sql injections better way to this is
+      // simply cas user input is directly interpolated into the sql pattern without proper escaping
+
+// later we will also implement arcjet which protect us even more from such vulnerability ig
+
+
+      filterConditions.push(ilike(departments.name, `${department}`));
+      const deptPattern = `%${String(department).replace(/[%_]/g, "\\$&")}%`;
+      filterConditions.push(ilike(departments.name, deptPattern));
     }
+
 
     // combine all filters exist using and if any exist
 

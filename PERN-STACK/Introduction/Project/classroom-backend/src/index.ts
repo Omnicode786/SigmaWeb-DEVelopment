@@ -1,10 +1,35 @@
 import express from "express";
 import SubjectsRouter from './routes/subjects';
-// import cors from 'cors';
+import cors from 'cors';
 const app = express();
 const PORT = 8000;
 
+// the cors is like a middle ware
+// cors = Cross-Origin Resource Sharing (CORS)
+//  is a browser-based security mechanism that allows
+//  a web application on one domain to access resources
+//  (like APIs or images) from a different domain.
+
+
 // if (!process)
+
+
+if (!process.env.FRONTEND_URL) throw new Error('FrontEND_URL is not set in the env file you provided with.')
+app.use(cors({
+    origin: process.env.FRONTEND_URL,
+
+    // if the above is without validation and this 
+    // env file is undefined  then the origin will be undefined
+    // which may result in permissive cors behavior 
+    // depneding onhow  the cors lib handles it cobined with credentials - true this could create a security vulnerability
+
+    methods: ['GET', 'POST', 'PUT', "DELETE"],
+    credentials: true
+    // this simply allows for cookies
+
+}))
+
+
 
 app.use('/api/subjects', SubjectsRouter);
 
