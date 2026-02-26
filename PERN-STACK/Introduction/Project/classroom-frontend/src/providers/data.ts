@@ -96,8 +96,11 @@
 import type { ListResponse } from "@/types"
 import { createDataProvider, type CreateDataProviderOptions } from "@refinedev/rest"
 import { BACKEND_BASE_URL } from './../constants/index';
-import { current } from '@reduxjs/toolkit';
-import { filter, param } from "framer-motion/client";
+
+if (!BACKEND_BASE_URL) throw new Error('BACKEND_BASE_URL is not configured please set vite backend base url .env file')
+
+
+    
 console.log("BASE URL:", BACKEND_BASE_URL);
 const options: CreateDataProviderOptions = {
     getList: {
