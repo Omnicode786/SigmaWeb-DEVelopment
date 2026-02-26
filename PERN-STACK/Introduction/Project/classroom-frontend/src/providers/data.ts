@@ -96,10 +96,42 @@
 import type { ListResponse } from "@/types"
 import { createDataProvider, type CreateDataProviderOptions } from "@refinedev/rest"
 import { BACKEND_BASE_URL } from './../constants/index';
+import { current } from '@reduxjs/toolkit';
+import { filter, param } from "framer-motion/client";
 console.log("BASE URL:", BACKEND_BASE_URL);
 const options: CreateDataProviderOptions = {
     getList: {
         getEndPoint: ({ resource } ) => resource,
+
+
+    buildQueryParams: async ({ resource, pagination, filters }) => {
+      const page = pagination?.currentPage ?? 1;
+      const pageSize = pagination?.pageSize ?? 10;
+
+      // ❌ you forgot "=" here previously
+      const params: Record<string, string | number> = {
+        page,
+        limit: pageSize,
+      };
+
+      filters?.forEach((filter) => {
+        const field = "field" in filter ? filter.field : "";
+        const value = String(filter.value ?? "");
+
+        if (resource === "subjects") {
+          if (field === "department") {
+            params.department = value;
+          }
+
+          if (field === "name" || field === "code") {
+            params.search = value;
+          }
+        }
+      });
+
+      return params;
+    },
+
     mapResponse: async (response) => {
     const payload: ListResponse = await response.clone().json();
     return payload.data ?? [];
