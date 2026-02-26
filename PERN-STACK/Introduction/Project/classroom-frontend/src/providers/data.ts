@@ -26,11 +26,11 @@
 //   // FILTERING
 //   // ----------------------------
 //   if (filters) {
-//     filters.forEach((filter) => {
-//       if (!("field" in filter)) return;
-
-//       const { field, operator, value } = filter;
-
+    //     filters.forEach((filter) => {
+        //       if (!("field" in filter)) return;
+        
+        //       const { field, operator, value } = filter;
+        
 //       if (operator === "eq") {
 //         data = data.filter(
 //           (item) => String(item[field as keyof typeof item]) === String(value)
@@ -38,8 +38,8 @@
 //       }
 
 //       if (operator === "contains") {
-//         data = data.filter((item) =>
-//           String(item[field as keyof typeof item])
+    //         data = data.filter((item) =>
+    //           String(item[field as keyof typeof item])
 //             .toLowerCase()
 //             .includes(String(value).toLowerCase())
 //         );
@@ -93,5 +93,32 @@
 
 
 // the idea is same but let's do it again to get more hands on
+import type { ListResponse } from "@/types"
+import { createDataProvider, type CreateDataProviderOptions } from "@refinedev/rest"
+import { BACKEND_BASE_URL } from './../constants/index';
+console.log("BASE URL:", BACKEND_BASE_URL);
+const options: CreateDataProviderOptions = {
+    getList: {
+        getEndPoint: ({ resource } ) => resource,
+    mapResponse: async (response) => {
+    const payload: ListResponse = await response.clone().json();
+    return payload.data ?? [];
+},
 
-const options: CreateDa
+getTotalCount: async (response) => {
+  const payload: ListResponse = await response.clone().json();
+
+  return Number(
+    payload.pagination?.total ??
+    payload.data?.length ??
+    0
+  );
+}
+    }
+}
+
+
+
+const { dataProvider } = createDataProvider(BACKEND_BASE_URL, options);
+
+export {dataProvider}
