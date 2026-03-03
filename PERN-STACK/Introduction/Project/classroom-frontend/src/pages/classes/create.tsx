@@ -33,17 +33,17 @@ import z from "zod";
 
 // sample data arrays
 const teachers: { id: number; name: string }[] = [
-    { id: 1, name: "Alice Johnson" },
-    { id: 2, name: "Bob Smith" },
+  { id: 1, name: "Alice Johnson" },
+  { id: 2, name: "Bob Smith" },
 ];
 
 const subjects: { id: number; name: string; code: string }[] = [
-    { id: 1, name: "Mathematics", code: "MATH" },
-    { id: 2, name: "Biology", code: "BIO" },
+  { id: 1, name: "Mathematics", code: "MATH" },
+  { id: 2, name: "Biology", code: "BIO" },
 ];
 
 const create = () => {
-    const back = useBack();
+  const back = useBack();
   const form = useForm({
     resolver: zodResolver(classSchema),
     refineCoreProps: {
@@ -55,61 +55,54 @@ const create = () => {
     },
   });
 
-const {handleSubmit, formState: {isSubmitting, control}}= form; 
+  const {
+    handleSubmit,
+    formState: { isSubmitting, control },
+  } = form;
 
-const onSubmit = (values: z.infer<typeof classSchema>) => {
-  try {
-  console.log(values)
-
-  }catch(e){
-console.log(e);
-  }
-}
-
+  const onSubmit = (values: z.infer<typeof classSchema>) => {
+    try {
+      console.log(values);
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   return (
-    <CreateView className='class-view'>
-        <Breadcrumb/>
+    <CreateView className="class-view">
+      <Breadcrumb />
 
-        <h1 className='page-title'> Create a Class</h1>
+      <h1 className="page-title"> Create a Class</h1>
 
-        <div className='intro-row'>
-            <p>Provide the required information below to add a class.</p>
-            <Button onClick={back} >Go Back</Button>
-             </div>
-            
-            <Separator/>
-        
-<div className='my-4 w-full flex items-center'>
-<Card
-className='class-form-card w-full'>
-    <CardHeader
-     className='z-10 '
-     >
-        <CardTitle  className='text-2xl p-0 font-bold'>Fill out the form</CardTitle>
-     </CardHeader>
-     <Separator/>
+      <div className="intro-row">
+        <p>Provide the required information below to add a class.</p>
+        <Button onClick={back}>Go Back</Button>
+      </div>
 
-     <CardContent
-     className='mt-7 w-full '
-     >
+      <Separator />
 
-<Form {...form}>
+      <div className="my-4 w-full flex items-center">
+        <Card className="class-form-card w-full">
+          <CardHeader className="z-10 ">
+            <CardTitle className="text-2xl p-0 font-bold">
+              Fill out the form
+            </CardTitle>
+          </CardHeader>
+          <Separator />
+
+          <CardContent className="mt-7 w-full ">
+            <Form {...form}>
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
                 <FormField
                   control={control}
                   name="bannerUrl"
                   render={({ field }) => (
-                    
                     <FormItem>
                       <FormLabel>
                         Banner Image <span className="text-orange-600">*</span>
                       </FormLabel>
-                      <FormControl>
-                      
-                      </FormControl>
+                      <FormControl></FormControl>
                       <FormMessage />
-                   
                     </FormItem>
                   )}
                 />
@@ -133,96 +126,173 @@ className='class-form-card w-full'>
                   )}
                 />
 
-    
-                  <div className="grid sm:grid-cols-2 gap-4">
-   {/* subject field */}
-   
-   <FormField
-                  control={control} 
-                  name="subjectId"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>
-                        Subject <span className="text-orange-600">*</span>
-                      </FormLabel>
-                       <Select onValueChange={(value) => field.onChange(Number(value))} value = {field?.value?.toString()}>
-                      <FormControl>
-                      <SelectTrigger className="w-full ">
-                  <SelectValue
-                  placeholder= "Select Subject"
+                <div className="grid sm:grid-cols-2 gap-4">
+                  {/* subject field */}
+
+                  <FormField
+                    control={control}
+                    name="subjectId"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>
+                          Subject <span className="text-orange-600">*</span>
+                        </FormLabel>
+                        <Select
+                          onValueChange={(value) =>
+                            field.onChange(Number(value))
+                          }
+                          value={field?.value?.toString()}
+                        >
+                          <FormControl>
+                            <SelectTrigger className="w-full ">
+                              <SelectValue placeholder="Select Subject" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            {subjects.map((subject) => (
+                              <SelectItem
+                                value={subject.id.toString()}
+                                key={subject.id}
+                              >
+                                {subject.name} ({subject.code})
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                        <FormMessage />
+                      </FormItem>
+                    )}
                   />
 
-                      </SelectTrigger>
-
-
-                      </FormControl>
-                      <SelectContent>
-                        {subjects.map((subject) => (
-                          <SelectItem value={subject.id.toString()} key = {subject.id}>
-                            {subject.name} ({subject.code})
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                       </Select>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-{/* teacher field */}
-  <FormField
-                  control={control} 
-                  name="teacherId"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>
-                        Teacher <span className="text-orange-600">*</span>
-                      </FormLabel>
-                       <Select onValueChange={(value) => field.onChange(Number(value))} value = {field?.value?.toString()}>
-                      <FormControl>
-                      <SelectTrigger className="w-full ">
-                  <SelectValue
-                  placeholder= "Select a Teacher"
+                  {/* teacher field */}
+                  <FormField
+                    control={control}
+                    name="teacherId"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>
+                          Teacher <span className="text-orange-600">*</span>
+                        </FormLabel>
+                        <Select
+                          onValueChange={(value) =>
+                            field.onChange((value))
+                          }
+                          value={field?.value?.toString()}
+                        >
+                          <FormControl>
+                            <SelectTrigger className="w-full ">
+                              <SelectValue placeholder="Select a Teacher" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            {teachers.map((teacher) => (
+                              <SelectItem
+                                value={teacher.id.toString()}
+                                key={teacher.id}
+                              >
+                                {teacher.name}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                        <FormMessage />
+                      </FormItem>
+                    )}
                   />
 
-                      </SelectTrigger>
+                  {/* capacity */}
+                  <FormField
+                    control={control}
+                    name="capacity"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>
+                          Capacity <span className="text-orange-600">*</span>
+                        </FormLabel>
+                        <Input
+                          type="number"
+                       
+                          {...field}
+                          onChange={(e) =>
+                            field.onChange(Number(e.target.value))
+                          }
+                        />
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
 
 
-                      </FormControl>
-                      <SelectContent>
-                        {teachers.map((teacher) => (
-                          <SelectItem value={teacher.id.toString()} key = {teacher.id}>
-                            {teacher.name}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                       </Select>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+{/* status */}
+<FormField
 
-                  </div>
-          
+  control={control}
+  name="status"
+  render={({ field }) => (
+    <FormItem>
+      <FormLabel>
+        Status <span className="text-orange-600">*</span>
+      </FormLabel>
 
+      <Select
+        onValueChange={field.onChange}
+        value={field.value}
+        defaultValue={field.value}
+      >
+        <FormControl>
+          <SelectTrigger className="w-full">
+            <SelectValue placeholder="Select status" />
+          </SelectTrigger>
+        </FormControl>
+
+        <SelectContent>
+          <SelectItem value="active">Active</SelectItem>
+          <SelectItem value="inactive">Inactive</SelectItem>
+        </SelectContent>
+      </Select>
+
+      <FormMessage />
+    </FormItem>
+  )}
+/>
+
+
+
+                </div>
+
+{/* description */}
+
+<FormField
+  control={control}
+  name="description"
+  render={({ field }) => (
+    <FormItem>
+      <FormLabel>
+        Description <span className="text-orange-600">*</span>
+      </FormLabel>
+    <Textarea  
+            placeholder="Enter class description..."
+          className="min-h-[120px] w-full"
+    {...field}
+
+    />
+
+      <FormMessage />
+    </FormItem>
+  )}
+/>
                 <Separator />
 
                 <Button type="submit" size="lg" className="w-full">
-                 Submit
+                  Submit
                 </Button>
               </form>
             </Form>
-
-     </CardContent>
-</Card>
-
-</div>
-
-
-  
-
+          </CardContent>
+        </Card>
+      </div>
     </CreateView>
-  )
-}
+  );
+};
 
-export default create
+export default create;
