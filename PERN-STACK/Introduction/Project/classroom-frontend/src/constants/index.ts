@@ -56,8 +56,28 @@ export const ALLOWED_TYPES = [
   "image/webp",
 ];
 
-// export const CLOUDINARY_UPLOAD_URL = import.meta.env.VITE_CLOUDINARY_UPLOAD_URL;
-// export const CLOUDINARY_CLOUD_NAME = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
+function ensureEnvVar(name: string, value: unknown): string {
+  if (typeof value !== "string" || value.trim() === "") {
+    throw new Error(`Missing or invalid environment variable: ${name}`);
+  }
+  return value;
+}
+
+export const CLOUDINARY_UPLOAD_URL = ensureEnvVar(
+  "VITE_CLOUDINARY_UPLOAD_URL",
+  import.meta.env.VITE_CLOUDINARY_UPLOAD_URL
+);
+export const CLOUDINARY_CLOUD_NAME = ensureEnvVar(
+  "VITE_CLOUDINARY_CLOUD_NAME",
+  import.meta.env.VITE_CLOUDINARY_CLOUD_NAME
+);
+export const CLOUDINARY_UPLOAD_PRESET = ensureEnvVar(
+  "VITE_CLOUDINARY_UPLOAD_PRESET",
+  import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET
+);
+
+
+  
 export const BACKEND_BASE_URL = import.meta.env.VITE_BACKEND_BASE_URL;
 
 
@@ -67,6 +87,3 @@ export const BACKEND_BASE_URL = import.meta.env.VITE_BACKEND_BASE_URL;
 // export const REFRESH_TOKEN_KEY = import.meta.env.VITE_REFRESH_TOKEN_KEY;
 
 // export const REFRESH_TOKEN_URL = `${BASE_URL}/refresh-token`;
-
-// export const CLOUDINARY_UPLOAD_PRESET = import.meta.env
-//   .VITE_CLOUDINARY_UPLOAD_PRESET;
