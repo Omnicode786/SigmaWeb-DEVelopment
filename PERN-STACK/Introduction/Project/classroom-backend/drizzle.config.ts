@@ -6,7 +6,8 @@ if (!process.env.DATABASE_URL) {
 }
 
 export default defineConfig({
-    schema: "./src/db/schema/app.ts",
+    // use the index that exports all schema files so Drizzle sees `user` and related tables
+    schema: "./src/db/schema/index.ts",
     out: "./drizzle",
     dialect: "postgresql",
     dbCredentials: {
