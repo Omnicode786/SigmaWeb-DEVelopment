@@ -9,6 +9,8 @@ import 'dotenv/config';
 import express from "express";
 import SubjectsRouter from './routes/subjects.js';
 import UsersRouter from './routes/users.js';
+import classesRouter from './routes/classses.js';
+
 import cors from 'cors';
 import securityMiddleware from './middleware/security.js';
 
@@ -50,6 +52,7 @@ app.use(securityMiddleware);
 
 app.use('/api/subjects', SubjectsRouter);
 app.use('/api/users', UsersRouter);
+app.use('/api/classes', classesRouter)
 
 // ok great the data is coming out to be great
 

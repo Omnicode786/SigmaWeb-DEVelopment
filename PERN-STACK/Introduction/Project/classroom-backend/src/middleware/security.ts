@@ -27,7 +27,7 @@ try {
         message= 'User request exceded (10 per minute). Please wait';
         break;
         default: 
-        limit = 5
+        limit = 500
         message = 'Guest request limit. please signup for more limits'
     }
 

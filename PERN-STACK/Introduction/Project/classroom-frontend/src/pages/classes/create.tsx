@@ -34,15 +34,18 @@ import errorsToRecord from "@hookform/resolvers/io-ts/dist/errorsToRecord.js";
 import UploadWidget from './../../components/upload-widget';
 
 // sample data arrays
-const teachers: { id: number; name: string }[] = [
-  { id: 1, name: "Alice Johnson" },
-  { id: 2, name: "Bob Smith" },
-];
+// const teachers: { id: number; name: string }[] = [
+//   { id: 1, name: "Alice Johnson" },
+//   { id: 2, name: "Bob Smith" },
+// ];
 
-const subjects: { id: number; name: string; code: string }[] = [
-  { id: 1, name: "Mathematics", code: "MATH" },
-  { id: 2, name: "Biology", code: "BIO" },
-];
+// const subjects: { id: number; name: string; code: string }[] = [
+//   { id: 1, name: "Mathematics", code: "MATH" },
+//   { id: 2, name: "Biology", code: "BIO" },
+// ];
+
+
+
 
 const create = () => {
   const back = useBack();
@@ -56,6 +59,36 @@ const create = () => {
       status: "active",
     },
   });
+// now the above is no longer needed now lets get the data from the backend
+
+
+// for subjects
+const {query: subjectsQuery} = useList<Subject>({
+  resource: 'subjects',
+  pagination: {
+    pageSize: 100
+  }
+})
+// fotr teachers
+
+const {query: teachersQuery} = useList<User>({
+  resource: 'users',
+  filters: [
+    {field: 'role', operator: 'eq', value: 'teachers'},
+  ],
+  pagination: {
+    pageSize: 100
+  }
+})
+
+
+const subjects = subjectsQuery?.data?.data ||[];
+
+const subjectsLoading= subjectsQuery.isLoading;
+
+const teachers = teachersQuery?.data?.data ||[];
+
+const teachersLoading= teachersQuery.isLoading;
 
 
     const bannerPublicId = form.watch('bannerCldPubId');
@@ -180,6 +213,7 @@ const setBannerImage = (file: any, field: any) => {
                             field.onChange(Number(value))
                           }
                           value={field?.value?.toString()}
+                          disabled = {subjectsLoading}
                         >
                           <FormControl>
                             <SelectTrigger className="w-full ">
@@ -216,6 +250,7 @@ const setBannerImage = (file: any, field: any) => {
                             field.onChange((value))
                           }
                           value={field?.value?.toString()}
+                          disabled={teachersLoading}
                         >
                           <FormControl>
                             <SelectTrigger className="w-full ">
