@@ -1,9 +1,7 @@
 // were creating a middleware for security right now
 
 import type {Request,Response, NextFunction } from "express";
-import { number } from "framer-motion";
-import { error } from "node:console";
-import aj from '../config/arcjet';
+import aj from '../config/arcjet.js';
 import { slidingWindow, type ArcjetNodeRequest } from "@arcjet/node";
 
 const securityMiddleware = async (req: Request, res: Response, next: NextFunction) => {
@@ -25,7 +23,7 @@ try {
         case 'teacher': 
         case 'student': 
         
-        limit = 0;
+        limit = 10;
         message= 'User request exceded (10 per minute). Please wait';
         break;
         default: 
@@ -42,7 +40,8 @@ try {
         }),
 
     )
-
+console.log(message);
+console.log("hello");
     const arcjetRequest: ArcjetNodeRequest = {
 headers: req.headers,
 method: req.method,
@@ -58,12 +57,12 @@ socket: {remoteAddress: req.socket.remoteAddress ??  req.ip ?? '0.0.0.0'}
                 return res.status(403).json({error: 'Forbidden', message: 'Automated requests are not allowed'});
 
             }
-                if(decision.isDenied() && decision.reason.Sheild() ) {
+                if(decision.isDenied() && decision.reason.isShield() ) {
             return res.status(403).json({error: 'Forbidden', message: 'Request Blocked by Security policy'});
             
         }
              if(decision.isDenied() && decision.reason.isRateLimit() ) {
-                return res.status(403).json({error: 'Too many requests', message: message});
+                return res.status(429).json({error: 'Too many requests', message: message});
                 
             }
                 next();
@@ -76,5 +75,4 @@ socket: {remoteAddress: req.socket.remoteAddress ??  req.ip ?? '0.0.0.0'}
 
 
 }
-
 export default securityMiddleware;

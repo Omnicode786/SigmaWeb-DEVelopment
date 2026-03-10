@@ -1,6 +1,22 @@
+
+
+import AgentAPI from 'apminsight';
+AgentAPI.config();
+// the above will configure the agent that will run / configure our performance monitor apm
+
+import 'dotenv/config';
+
 import express from "express";
-import SubjectsRouter from './routes/subjects';
+import SubjectsRouter from './routes/subjects.js';
+import UsersRouter from './routes/users.js';
 import cors from 'cors';
+import securityMiddleware from './middleware/security.js';
+
+
+import {auth} from "./lib/auth.js";
+import {toNodeHandler} from "better-auth/node";
+
+
 const app = express();
 const PORT = 8000;
 
@@ -28,12 +44,15 @@ app.use(cors({
     // this simply allows for cookies
 
 }))
+app.all('/api/auth/*splat', toNodeHandler(auth));
 
-
+app.use(securityMiddleware);
 
 app.use('/api/subjects', SubjectsRouter);
+app.use('/api/users', UsersRouter);
 
 // ok great the data is coming out to be great
+
 
 app.use(express.json());
 app.get('/', (req, res) => {

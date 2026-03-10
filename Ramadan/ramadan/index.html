@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Ultra-Detailed 3D Kiyomizu-dera Style</title>
+<style>
+  :root {
+    --bg-top: #89b4e9; --bg-bottom: #f8d7e4;
+    --wood-dark: #2d1b14; --wood-mid: #4a2c21; --wood-light: #704a3a;
+    --plaster: #fff9f2; --roof-tile: #2c3e50; --stone: #8e7d73;
+    --sakura: #ffc1d1; --sakura-dark: #f06292;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { height: 100vh; overflow: hidden; background: linear-gradient(180deg, var(--bg-top), var(--bg-bottom)); font-family: sans-serif; }
+  #app { position: fixed; inset: 0; perspective: 1200px; }
+  #stage { position: absolute; inset: 0; transform-style: preserve-3d; }
+  #camera { 
+    position: absolute; left: 50%; top: 48%; 
+    transform-style: preserve-3d; 
+    transform: translate3d(-50%,-50%,0) rotateX(72deg) rotateZ(-22deg); 
+  }
+  #world { transform-style: preserve-3d; }
+  .obj, .face { position: absolute; transform-style: preserve-3d; }
+  .face { backface-visibility: hidden; }
+
+  /* Detailed Textures */
+  .roof-seg {
+    background: repeating-linear-gradient(90deg, #1a252f 0, #1a252f 2px, transparent 2px, transparent 14px),
+                repeating-linear-gradient(0deg, var(--roof-tile), #34495e 12px, #1a252f 13px);
+  }
+  .stone-face {
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.1), transparent), var(--stone);
+    border: 1px solid rgba(0,0,0,0.3); border-radius: 6px;
+  }
+  .shoji {
+    background: repeating-linear-gradient(90deg, #3e2723 0, #3e2723 2px, transparent 2px, transparent 12px),
+                repeating-linear-gradient(0deg, #3e2723 0, #3e2723 2px, #fff 2px, #fff 12px);
+    opacity: 0.9;
+  }
+
+  .hud {
+    position: absolute; top: 20px; left: 20px; color: #222; background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(8px); padding: 15px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.4);
+    font-size: 13px; line-height: 1.5; pointer-events: none;
+  }
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="stage"><div id="camera"><div id="world"></div></div></div>
+  <div class="hud">
+    <b>3D Temple Reconstruction</b><br>
+    • 140+ Individual Stone Primitives<br>
+    • Multi-tiered Curved Roof Geometry<br>
+    • Exposed Under-eave Rafter System<br>
+    • High-density Sakura Billboards
+  </div>
+</div>
+
+<script>
+const world = document.getElementById('world');
+const state = { rx: 72, rz: -22, zoom: 0.75, drag: false, px: 0, py: 0 };
+
+function create(tag, cls, parent) {
+  const el = document.createElement(tag); if(cls) el.className = cls;
+  if(parent) parent.appendChild(el); return el;
+}
+
+function setT(el, x=0, y=0, z=0, rx=0, ry=0, rz=0, scale=1) {
+  el.style.transform = `translate3d(${x}px,${y}px,${z}px) rotateX(${rx}deg) rotateY(${ry}deg) rotateZ(${rz}deg) scale(${scale})`;
+}
+
+function makeBox(parent, w, h, d, x, y, z, color, cls='', rx=0, ry=0, rz=0) {
+  const b = create('div', 'obj', parent); setT(b, x, y, z, rx, ry, rz);
+  const faces = [
+    [w, h, 0, 0, d/2, 0, 0, 0, 1],       // front
+    [w, h, 0, 0, -d/2, 0, 180, 0, 0.7],  // back
+    [d, h, w/2, 0, 0, 0, 90, 0, 0.8],    // right
+    [d, h, -w/2, 0, 0, 0, -90, 0, 0.9],  // left
+    [w, d, 0, -h/2, 0, 90, 0, 0, 1.2],   // top
+    [w, d, 0, h/2, 0, -90, 0, 0, 0.5]    // bottom
+  ];
+  faces.forEach(f => {
+    const face = create('div', 'face ' + cls, b);
+    face.style.width = f[0]+'px'; face.style.height = f[1]+'px';
+    face.style.backgroundColor = color;
+    face.style.filter = `brightness(${f[8]})`;
+    setT(face, f[2]-f[0]/2, f[3]-f[1]/2, f[4], f[5], f[6], f[7]);
+  });
+  return b;
+}
+
+// 1. COMPLEX FOUNDATION
+function buildBase() {
+  const container = create('div', 'obj', world);
+  // Layered stones to create a thick, non-flat wall
+  for(let i=0; i<140; i++) {
+    const sw = 35+Math.random()*40, sh = 25+Math.random()*25, sd = 40+Math.random()*30;
+    const sx = (Math.random()-0.5)*550, sy = (Math.random()-0.5)*400;
+    // Taper foundation inward for realism
+    const sz = -sh/2 - 20;
+    makeBox(container, sw, sh, sd, sx, sy, sz, 'var(--stone)', 'stone-face', (Math.random()-0.5)*8, 0, (Math.random()-0.5)*10);
+  }
+  // Main floor slab
+  makeBox(world, 480, 25, 340, 0, 0, 5, 'var(--wood-dark)');
+}
+
+// 2. DETAILED STAIRS
+function buildStairs() {
+  for(let i=0; i<18; i++) {
+    const w = 220 - (i*3);
+    makeBox(world, w, 14, 45, 0, 220 + (i*32), -i*12, '#998a82', 'stone-face');
+    if(i%5 === 0) { // Lanterns on stairs
+      makeBox(world, 15, 45, 15, w/2+15, 220+(i*32), -i*12+30, 'var(--wood-dark)');
+    }
+  }
+}
+
+// 3. THE HOUSE (Temple Structure)
+function buildHouse() {
+  const house = create('div', 'obj', world); setT(house, 0, 0, 30);
+  
+  // Pillars (Extreme density)
+  const pillars = [[-180,-130],[180,-130],[-180,130],[180,130],[-90,130],[90,130],[0,130],[-180,0],[180,0]];
+  pillars.forEach(p => makeBox(house, 18, 160, 18, p[0], p[1], 80, 'var(--wood-dark)'));
+
+  // Shoji Walls (Inset for depth)
+  makeBox(house, 340, 130, 240, 0, 0, 80, 'var(--plaster)');
+  const win = create('div', 'face shoji', house);
+  win.style.width = '120px'; win.style.height = '100px';
+  setT(win, -60, 121, 50, 0, 0, 0);
+
+  // CURVED ROOFS (Built using segments to avoid "Flatness")
+  function curvedRoof(z, baseW, baseD, tiers) {
+    const roofGroup = create('div', 'obj', house); setT(roofGroup, 0,0,z);
+    for(let i=0; i<tiers; i++) {
+      const tierW = baseW - (i*15), tierD = baseD - (i*10);
+      const tz = i*8;
+      // Main tile layers
+      makeBox(roofGroup, tierW, 12, tierD, 0, 0, tz, 'var(--roof-tile)', 'roof-seg');
+      // Exposed Rafter Beams (The Taruki)
+      if(i===0) {
+        for(let r=-tierW/2; r<tierW/2; r+=25) {
+          makeBox(roofGroup, 6, 8, tierD+40, r, 0, -10, 'var(--wood-mid)');
+        }
+      }
+    }
+    // Ridge cap
+    makeBox(roofGroup, baseW-40, 25, 25, 0, 0, tiers*8+10, '#1a252f');
+  }
+
+  curvedRoof(170, 520, 380, 6); // Lower heavy roof
+  curvedRoof(280, 340, 260, 5); // Upper secondary roof
+}
+
+// 4. GNARLED CHERRY TREES
+function buildTree(x, y, scale) {
+  const tree = create('div', 'obj', world); setT(tree, x, y, 0);
+  
+  function branch(bx, by, bz, bw, bh, rx, rz, d) {
+    if(d > 5) return;
+    const b = makeBox(tree, bw, bh, bw, bx, by, bz+bh/2, 'var(--wood-dark)', '', rx, 0, rz);
+    
+    // Foliage (Hundreds of tiny pink clouds)
+    if(d > 2) {
+      for(let i=0; i<6; i++) {
+        const leaf = create('div', 'obj', tree);
+        const ls = (25+Math.random()*40)*scale;
+        leaf.style.width = ls+'px'; leaf.style.height = ls+'px';
+        leaf.style.background = 'radial-gradient(circle, var(--sakura), transparent 70%)';
+        leaf.style.borderRadius = '50%'; leaf.style.opacity = '0.7';
+        setT(leaf, bx+(Math.random()-0.5)*80, by+(Math.random()-0.5)*80, bz+bh+(Math.random()*40), 90, 0, 0);
+      }
+    }
+    branch(bx, by, bz+bh-5, bw*0.75, bh*0.75, rx+25, rz+45, d+1);
+    branch(bx, by, bz+bh-5, bw*0.75, bh*0.75, rx-20, rz-40, d+1);
+  }
+  branch(0, 0, 0, 20*scale, 110*scale, 0, 0, 0);
+}
+
+// EXECUTION
+buildBase(); buildStairs(); buildHouse();
+buildTree(-320, -120, 1.2); buildTree(300, -80, 1.1); buildTree(-250, 280, 0.9);
+
+// Interaction
+window.addEventListener('pointerdown', e => { state.drag = true; state.px = e.clientX; state.py = e.clientY; });
+window.addEventListener('pointerup', () => state.drag = false);
+window.addEventListener('pointermove', e => {
+  if(!state.drag) return;
+  state.rz += (e.clientX - state.px)*0.3;
+  state.rx -= (e.clientY - state.py)*0.3;
+  state.rx = Math.max(30, Math.min(85, state.rx));
+  state.px = e.clientX; state.py = e.clientY;
+  const cam = document.getElementById('camera');
+  cam.style.transform = `translate3d(-50%,-50%,0) scale(${state.zoom}) rotateX(${state.rx}deg) rotateZ(${state.rz}deg)`;
+});
+window.addEventListener('wheel', e => {
+  state.zoom -= e.deltaY * 0.001; state.zoom = Math.max(0.4, Math.min(2, state.zoom));
+  document.getElementById('camera').style.transform = `translate3d(-50%,-50%,0) scale(${state.zoom}) rotateX(${state.rx}deg) rotateZ(${state.rz}deg)`;
+});
+
+// Particle Petals
+const petals = [];
+for(let i=0; i<80; i++) {
+  const p = create('div', 'obj', world);
+  p.style.width = '10px'; p.style.height = '12px'; p.style.background = 'var(--sakura)';
+  p.style.borderRadius = '100% 10% 100% 100%';
+  const d = { el: p, x:(Math.random()-0.5)*900, y:(Math.random()-0.5)*800, z:300+Math.random()*300, r:Math.random()*360 };
+  petals.push(d);
+}
+
+function loop() {
+  petals.forEach(p => {
+    p.z -= 1.5; p.r += 2; p.x += Math.sin(p.z*0.02)*2;
+    if(p.z < -20) p.z = 500;
+    setT(p.el, p.x, p.y, p.z, 45, 45, p.r);
+  });
+  requestAnimationFrame(loop);
+}
+loop();
+</script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 import arcjet, {shield, detectBot, slidingWindow} from "@arcjet/node";
 
-if (process.env.ARCJET_KEY && process.env.NODE_ENV === 'test') {
+if (!process.env.ARCJET_KEY && process.env.NODE_ENV === 'test') {
     throw new Error('Arcjet_key env is required');
 }
 
@@ -45,7 +45,7 @@ const aj = arcjet({
     // }),
     slidingWindow({
         mode:'LIVE',
-        interval: '2',
+        interval: '2s',
         max: 5,
         // max of 5 req per interval in 2 seconds 
 
