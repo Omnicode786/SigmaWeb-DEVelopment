@@ -158,7 +158,11 @@ router.get("/", async (req: express.Request, res: express.Response) => {
       .orderBy(desc(classes.createdAt))
       .limit(LimitPerPage)
       .offset(offset);
-console.log(classesList);
+
+
+
+
+      // console.log(classesList);
     res.status(200).json({
       data: classesList,
       pagination: {
