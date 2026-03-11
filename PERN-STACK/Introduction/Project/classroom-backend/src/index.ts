@@ -21,6 +21,8 @@ import {toNodeHandler} from "better-auth/node";
 
 const app = express();
 const PORT = 8000;
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // the cors is like a middle ware
 // cors = Cross-Origin Resource Sharing (CORS)
@@ -57,7 +59,6 @@ app.use('/api/classes', classesRouter)
 // ok great the data is coming out to be great
 
 
-app.use(express.json());
 app.get('/', (req, res) => {
     res.send("Hello welcome to the classroom api");
 })

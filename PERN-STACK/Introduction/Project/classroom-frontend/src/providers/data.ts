@@ -96,6 +96,7 @@
 import type { ListResponse } from "@/types"
 import { createDataProvider, type CreateDataProviderOptions } from "@refinedev/rest"
 import { BACKEND_BASE_URL } from './../constants/index';
+import type { CreateResponse } from "@refinedev/core";
 
 if (!BACKEND_BASE_URL) throw new Error('BACKEND_BASE_URL is not configured please set vite backend base url .env file')
 
@@ -139,20 +140,32 @@ const options: CreateDataProviderOptions = {
         limit: pageSize,
       };
 
-      filters?.forEach((filter) => {
-        const field = "field" in filter ? filter.field : "";
-        const value = String(filter.value ?? "");
+filters?.forEach((filter) => {
+  const field = "field" in filter ? filter.field : "";
+  const value = String(filter.value ?? "");
 
-        if (resource === "subjects") {
-          if (field === "department") {
-            params.department = value;
-          }
+  // subjects filters
+  if (resource === "subjects") {
+    if (field === "department") {
+      params.department = value;
+    }
 
-          if (field === "name" || field === "code") {
-            params.search = value;
-          }
-        }
-      });
+    if (field === "name" || field === "code") {
+      params.search = value;
+    }
+  }
+
+  // users filters
+  if (resource === "users") {
+    if (field === "role") {
+      params.role = value;
+    }
+
+    if (field === "name" || field === "email") {
+      params.search = value;
+    }
+  }
+});
 
       return params;
     },
@@ -175,6 +188,17 @@ getTotalCount: async (response) => {
     0
   );
 }
+    },
+    create: {
+      getEndpoint: ({resource}) => resource,
+
+      buildBodyParams: async ({variables}) => variables,
+
+      mapResponse: async (response) => {
+        const json: CreateResponse = await response.json();
+
+        return json.data ?? [];
+      }
     }
 }
 

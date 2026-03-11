@@ -74,7 +74,7 @@ const {query: subjectsQuery} = useList<Subject>({
 const {query: teachersQuery} = useList<User>({
   resource: 'users',
   filters: [
-    {field: 'role', operator: 'eq', value: 'teachers'},
+    {field: 'role', operator: 'eq', value: 'teacher'},
   ],
   pagination: {
     pageSize: 100
@@ -93,15 +93,18 @@ const teachersLoading= teachersQuery.isLoading;
 
     const bannerPublicId = form.watch('bannerCldPubId');
 const {
+  refineCore: {onFinish},
   handleSubmit,
   control,
   setValue,
   watch,
   formState: { isSubmitting, errors },
 } = form;
-  const onSubmit = (values: z.infer<typeof classSchema>) => {
+  const onSubmit =async (values: z.infer<typeof classSchema>) => {
     try {
-      console.log(values);
+     
+      await onFinish(values);
+
     } catch (e) {
       console.log(e);
     }
