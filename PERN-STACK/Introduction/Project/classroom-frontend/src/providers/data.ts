@@ -134,7 +134,6 @@ const options: CreateDataProviderOptions = {
       const page = pagination?.currentPage ?? 1;
       const pageSize = pagination?.pageSize ?? 10;
 
-      // ❌ you forgot "=" here previously
       const params: Record<string, string | number> = {
         page,
         limit: pageSize,
@@ -209,6 +208,17 @@ getTotalCount: async (response) => {
   );
 }
     },
+    getOne: {
+    getEndpoint: ({ resource, id }) => `${resource}/${id}`,
+
+    mapResponse: async (response) => {
+      if (!response.ok) throw await buildHttpError(response)
+
+      const payload = await response.json()
+      // console.log(payload)
+      return payload.data
+    },
+  },
     create: {
       getEndpoint: ({resource}) => resource,
 

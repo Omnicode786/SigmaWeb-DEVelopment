@@ -183,4 +183,41 @@ router.get("/", async (req: express.Request, res: express.Response) => {
 });
 
 
+
+router.get("/:id", async (req: express.Request, res: express.Response) => {
+  try {
+    const { id } = req.params;
+
+    const classId = Number(id);
+
+    if (!Number.isInteger(classId) || classId <= 0) {
+      return res.status(400).json({ error: "Invalid class id" });
+    }
+
+    const classRecord = await db
+      .select({
+        ...getTableColumns(classes),
+        subject: { ...getTableColumns(subjects) },
+        teacher: { ...getTableColumns(user) },
+      })
+      .from(classes)
+      .leftJoin(subjects, eq(classes.subjectId, subjects.id))
+      .leftJoin(user, eq(classes.teacherId, user.id))
+      .where(eq(classes.id, classId))
+      .limit(1);
+
+    const record = classRecord[0];
+
+    if (!record) {
+      return res.status(404).json({ error: "Class not found" });
+    }
+
+    console.log(record);
+    res.status(200).json({ data: record });
+  } catch (e) {
+    console.error("GET /classes/:id error:", e);
+    res.status(500).json({ error: "Failed to get class" });
+  }
+});
+
 export default router;
