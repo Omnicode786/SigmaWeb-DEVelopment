@@ -192,7 +192,12 @@ getTotalCount: async (response) => {
     create: {
       getEndpoint: ({resource}) => resource,
 
-      buildBodyParams: async ({variables}) => variables,
+      buildBodyParams: async ({variables}) => {
+        // Refine may pass create variables wrapped as { values: {...} } or { data: {...} }
+        // Ensure we send the raw values object to the backend so req.body.subjectId is present
+        if (!variables) return {};
+        return (variables as any).values ?? (variables as any).data ?? variables;
+      },
 
       mapResponse: async (response) => {
         const json: CreateResponse = await response.json();
