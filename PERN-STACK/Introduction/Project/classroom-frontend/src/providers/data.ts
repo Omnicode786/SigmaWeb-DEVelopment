@@ -165,6 +165,26 @@ filters?.forEach((filter) => {
       params.search = value;
     }
   }
+
+  // classes filters (generic mapping used by backend)
+  if (resource === "classes") {
+    filters?.forEach((filter) => {
+      const field = "field" in filter ? filter.field : "";
+      const value = String(filter.value ?? "");
+
+      if (field === "name") {
+        params.search = value;
+      }
+
+      if (field === "subject") {
+        params.subject = value;
+      }
+
+      if (field === "teacher") {
+        params.teacher = value;
+      }
+    });
+  }
 });
 
       return params;
