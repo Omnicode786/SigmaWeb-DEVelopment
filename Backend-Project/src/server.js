@@ -1,18 +1,23 @@
 import express from "express";
 import movieRoutes from "./routes/movieRoutes.js";
-import { config } from "dotenv";
-
-import { connectDB, disconnectDB } from "./config/db.js";
+import authRoutes from "./routes/authRoutes.js";
+import { connectDB, disconnectDB, prisma } from "./config/db.js";
 
 const app = express();
 
-config();
+// body parsing middlewares
+
+app.use(express.json());
+
+app.use(express.urlencoded({extended: true}));
+
 connectDB();
 
 
 // API routes 
 
 app.use("/movies", movieRoutes);
+app.use("/auth", authRoutes);
 
 
 // so basically now we use the router as a variable
