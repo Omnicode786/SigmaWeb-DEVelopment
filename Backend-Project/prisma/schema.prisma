@@ -6,13 +6,12 @@
 
 
 generator client {
-  provider = "prisma-client"
+  provider = "prisma-client-js"
   output   = "../src/generated/prisma"
 }
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
 }
 
 model User {
@@ -69,13 +68,18 @@ model WatchListItem {
   rating Int?
   notes String?
   createdAt DateTime @default(now())
-  updatedAt DateTime @default(now())
+
+  // I noticed you have updatedAt DateTime @default(now()). In Prisma, you can make this automatically update whenever the record changes by using @updatedAt:
+  updatedAt DateTime @updatedAt
+  // updatedAt DateTime @default(now())
 
 
 // RELATIONS
 user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 movie Movie @relation(fields: [movieId], references: [id], onDelete: Cascade)
 
+
+@@unique([userId, movieId])
 
 }
 

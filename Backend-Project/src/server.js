@@ -1,5 +1,6 @@
 import express from "express";
 import movieRoutes from "./routes/movieRoutes.js";
+import watchListRoutes from "./routes/watchListRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
 import { connectDB, disconnectDB, prisma } from "./config/db.js";
 
@@ -18,6 +19,7 @@ connectDB();
 
 app.use("/movies", movieRoutes);
 app.use("/auth", authRoutes);
+app.use("/watchlist",watchListRoutes);
 
 
 // so basically now we use the router as a variable

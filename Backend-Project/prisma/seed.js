@@ -1,6 +1,4 @@
-import { PrismaClient } from "@prisma/client";
-import { Prisma } from "../src/generated/prisma/client";
-
+import { prisma } from '../src/config/db.js';
 
 // seed files are basically used to create new mock data for developer
 // like me to test their application out
@@ -11,7 +9,6 @@ import { Prisma } from "../src/generated/prisma/client";
 // that we run when we want to add mroe stuff to our database
 
 
-const prisma = new PrismaClient()
 
 const creatorId = "e3e27ade-d0e3-43cb-b245-85b434208417";
 
@@ -90,3 +87,25 @@ const movies = [
     createdBy: creatorId,
   }
 ];
+
+
+const main = async () => {
+  console.log("Seeding the movies");
+
+  for (const movie of movies) {
+    await prisma.movie.create({
+      data: movie,
+
+    });
+    console.log("Created movie: ", movie.title);
+  }
+
+  console.log("Seeding completed");
+}
+
+main().catch(e => {
+  console.error(e);
+  process.exit(1);
+}).finally(async () => {
+  await prisma.$disconnect();
+})
