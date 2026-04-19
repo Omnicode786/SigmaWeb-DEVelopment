@@ -21,7 +21,6 @@ const STATUS_OPTIONS = [
   { value: 'PLANNED', label: 'Planned' },
   { value: 'WATCHING', label: 'Watching' },
   { value: 'COMPLETED', label: 'Completed' },
-  { value: 'ON_HOLD', label: 'On Hold' },
   { value: 'DROPPED', label: 'Dropped' },
 ];
 
