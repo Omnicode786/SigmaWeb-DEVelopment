@@ -6,6 +6,7 @@ import Login from './auth/Login';
 import Register from './auth/Register';
 import ProtectedRoute from './components/ProtectedRoute';
 import Watchlist from './pages/WatchList';
+import HomePage from './pages/HomePage';
 function App() {
   return (
     <BrowserRouter>
@@ -21,7 +22,7 @@ function App() {
             <ProtectedRoute>
     <NavBar />
             
-              <Movies />
+              <HomePage />
             </ProtectedRoute>
           } 
         />
@@ -42,6 +43,15 @@ function App() {
             <ProtectedRoute>
               <NavBar />
               <Watchlist />
+            </ProtectedRoute>
+          } 
+        />
+             <Route 
+          path="/home" 
+          element={
+            <ProtectedRoute>
+              <NavBar />
+              <HomePage />
             </ProtectedRoute>
           } 
         />

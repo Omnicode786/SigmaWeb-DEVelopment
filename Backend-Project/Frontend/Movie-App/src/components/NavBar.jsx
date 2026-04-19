@@ -23,11 +23,12 @@ const NavBar = () => {
         whitespace-nowrap
       ">
   <Link 
-           to="/watchlist" 
+           to="/home" 
            className="hover:text-blue-800 hover:shadow-lg nav-link cursor-pointer transition-colors"
          >
            Home
-         </Link>         <Link 
+         </Link> 
+         <Link 
            to="/movies" 
            className="hover:text-blue-800 hover:shadow-lg nav-link cursor-pointer transition-colors"
          >
