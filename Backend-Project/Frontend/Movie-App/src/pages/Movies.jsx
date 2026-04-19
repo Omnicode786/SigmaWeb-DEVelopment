@@ -11,7 +11,7 @@ import {
   Star,
   X,
 } from 'lucide-react';
-
+import { LineChart } from 'lucide-react';
 const API_BASE_URL = 'http://localhost:5001';
 const WATCHLIST_ENDPOINT = `${API_BASE_URL}/watchlist`; // change if your route is different
 
@@ -201,6 +201,7 @@ const Movies = () => {
       key={movie.id}
       className="group relative bg-[#0a0a0a] border border-white/[0.05] rounded-[2.5rem] overflow-hidden transition-all duration-700 hover:border-blue-500/40 hover:shadow-[0_0_80px_-20px_rgba(59,130,246,0.3)] hover:-translate-y-2"
     >
+    
       {/* Visual Header / Poster Area */}
       <div className="h-56 relative flex items-center justify-center overflow-hidden">
         {/* Animated Background Mesh */}
@@ -300,6 +301,7 @@ const Movies = () => {
 })}
           </div>
         )}
+       
       </div>
 
       {isModalOpen && selectedMovie && (
