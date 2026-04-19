@@ -3,13 +3,13 @@ import movieRoutes from "./routes/movieRoutes.js";
 import watchListRoutes from "./routes/watchListRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
 import { connectDB, disconnectDB, prisma } from "./config/db.js";
-
+import cors from "cors"
 const app = express();
 
 // body parsing middlewares
 
 app.use(express.json());
-
+app.use(cors())
 app.use(express.urlencoded({extended: true}));
 
 connectDB();
